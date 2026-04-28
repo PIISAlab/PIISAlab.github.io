@@ -1,0 +1,30 @@
+---
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	lang?: 'vi' | 'en';
+}
+
+const { title, lang = 'vi' } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang}>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title} | PIISA Lab</title>
+	</head>
+	<body class="min-h-screen flex flex-col">
+		<Navigation lang={lang} />
+		<main class="flex-grow container mx-auto px-4 py-12">
+			<slot />
+		</main>
+		<Footer lang={lang} />
+	</body>
+</html>

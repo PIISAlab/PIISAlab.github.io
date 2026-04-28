@@ -1,0 +1,17 @@
+---
+interface Props {
+	lang: 'vi' | 'en';
+}
+
+const { lang } = Astro.props;
+---
+
+<footer class="bg-foundation border-t border-white/5 py-16 mt-auto">
+	<div class="container mx-auto px-4 text-center">
+		<p class="text-contrast/60 text-sm max-w-2xl mx-auto">
+			{lang === 'vi' 
+				? '© 2026 Lab PIISA - Khoa Vật lý - Vật lý kỹ thuật, Trường Đại học Khoa học Tự nhiên, ĐHQG-HCM' 
+				: '© 2026 PIISA Lab - Faculty of Physics and Engineering Physics, University of Science, VNUHCM'}
+		</p>
+	</div>
+</footer>

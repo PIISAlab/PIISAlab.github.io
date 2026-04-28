@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro';
+const lang = 'vi';
+---
+<Layout title="Opportunities" lang={lang}>
+	<section class="mb-16">
+		<h1 class="text-4xl font-bold mb-12 border-l-4 border-intellect pl-6">
+			{lang === 'vi' ? 'Cơ hội tham gia' : 'Opportunities'}
+		</h1>
+
+		<div class="bento-card max-w-4xl">
+			<h2 class="text-2xl mb-6 text-insight">{lang === 'vi' ? 'Dành cho Sinh viên' : 'For Prospective Students'}</h2>
+			<div class="text-contrast/80 space-y-6">
+				<p>
+					{lang === 'vi' 
+						? 'PIISA Lab luôn chào đón các sinh viên tài năng và nhiệt huyết tham gia nghiên cứu. Chúng tôi tìm kiếm các ứng viên có nền tảng tốt về vật lý, toán học và kỹ thuật.'
+						: 'PIISA Lab is always looking for talented and motivated students to join our research efforts.'}
+				</p>
+				
+				<div class="grid md:grid-cols-3 gap-4">
+					<div class="p-4 rounded-xl bg-intellect/5 border border-intellect/20 text-center">
+						<span class="block text-2xl mb-2">🎓</span>
+						<span class="font-bold">PhD</span>
+					</div>
+					<div class="p-4 rounded-xl bg-intellect/5 border border-intellect/20 text-center">
+						<span class="block text-2xl mb-2">📜</span>
+						<span class="font-bold">Master</span>
+					</div>
+					<div class="p-4 rounded-xl bg-intellect/5 border border-intellect/20 text-center">
+						<span class="block text-2xl mb-2">🔬</span>
+						<span class="font-bold">Undergraduate</span>
+					</div>
+				</div>
+
+				<p class="pt-6 border-t border-white/5 italic">
+					{lang === 'vi' ? 'Gửi CV và bảng điểm cho TS. Trương Trung Kiên qua email.' : 'Send CV and academic transcripts to Dr. Kien Trung Truong via email.'}
+				</p>
+			</div>
+		</div>
+	</section>
+</Layout>

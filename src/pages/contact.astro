@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/Layout.astro';
+const lang = 'vi';
+---
+<Layout title="Contact" lang={lang}>
+	<section class="mb-16">
+		<h1 class="text-4xl font-bold mb-12 border-l-4 border-intellect pl-6">
+			{lang === 'vi' ? 'Liên hệ' : 'Contact'}
+		</h1>
+
+		<div class="bento-grid">
+			<div class="bento-card md:col-span-2">
+				<h2 class="text-2xl mb-6 text-insight">{lang === 'vi' ? 'Thông tin Liên hệ' : 'Contact Information'}</h2>
+				<div class="space-y-6 text-contrast/80">
+					<div>
+						<h3 class="text-starlight font-bold mb-2">{lang === 'vi' ? 'Địa chỉ:' : 'Address:'}</h3>
+						<p>PIISA Lab, Khoa Vật lý - Vật lý kỹ thuật, Trường Đại học Khoa học Tự nhiên, ĐHQG-HCM.</p>
+						<p>227 Nguyễn Văn Cừ, Phường 4, Quận 5, TP. Hồ Chí Minh, Việt Nam.</p>
+					</div>
+					<div>
+						<h3 class="text-starlight font-bold mb-2">Email:</h3>
+						<a href="mailto:kttruong@hcmus.edu.vn" class="text-intellect hover:text-insight underline">kttruong@hcmus.edu.vn</a>
+					</div>
+				</div>
+			</div>
+			
+			<div class="bento-card flex items-center justify-center bg-intellect/5 border-intellect/20">
+				<div class="text-center">
+					<span class="block text-5xl mb-4">📍</span>
+					<p class="text-sm font-bold text-intellect uppercase tracking-widest">HCMUS / VNU-HCM</p>
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>
