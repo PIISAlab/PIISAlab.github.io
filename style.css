@@ -1,0 +1,153 @@
+:root {
+    --primary: #0056b3; /* Academic Blue */
+    --secondary: #6c757d;
+    --dark: #343a40;
+    --light: #f8f9fa;
+    --white: #ffffff;
+    --accent: #007bff;
+    --news-bg: #f0f7ff;
+}
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    line-height: 1.7;
+    color: var(--dark);
+    background: var(--white);
+}
+
+/* Language Switcher */
+.lang-switcher {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    display: flex;
+    gap: 8px;
+    z-index: 1001;
+}
+.lang-btn {
+    background: transparent;
+    border: 1px solid #ddd;
+    color: var(--secondary);
+    padding: 4px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.lang-btn:hover { background: var(--light); border-color: #ccc; }
+.lang-btn.active { background: var(--primary); border-color: var(--primary); color: white; font-weight: bold; }
+
+/* Header & Hero */
+header { 
+    background: var(--white); 
+    color: var(--dark); 
+    padding: 6rem 2rem 4rem; 
+    text-align: center; 
+    position: relative;
+    border-bottom: 1px solid #eee;
+}
+header h1 { 
+    font-size: 2.8rem; 
+    margin-bottom: 0.5rem; 
+    color: var(--primary);
+    font-weight: 700;
+}
+header p { 
+    font-size: 1.2rem; 
+    color: var(--secondary);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Navigation Menu */
+nav {
+    background: var(--white);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #eee;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.nav-container { max-width: 1100px; margin: 0 auto; display: flex; justify-content: center; padding: 0 1rem; }
+.nav-menu { list-style: none; display: flex; margin: 0; padding: 0; }
+.nav-menu li a {
+    color: var(--secondary);
+    text-decoration: none;
+    padding: 1.2rem 1.5rem;
+    display: block;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.2s, border-bottom 0.2s;
+    border-bottom: 3px solid transparent;
+}
+.nav-menu li a:hover, .nav-menu li a.active { 
+    color: var(--primary); 
+    border-bottom: 3px solid var(--primary);
+}
+
+[lang="en"] .lang-vi { display: none; }
+[lang="vi"] .lang-en { display: none; }
+
+.container { max-width: 1000px; margin: 0 auto; padding: 3rem 2rem; min-height: 50vh; }
+.section { margin-bottom: 5rem; }
+
+/* News Section */
+.news-section {
+    background: var(--news-bg);
+    padding: 2rem 2.5rem;
+    margin-bottom: 5rem;
+    border-radius: 8px;
+}
+.news-item { margin-bottom: 1.2rem; padding-bottom: 1.2rem; border-bottom: 1px solid #d0e4ff; }
+.news-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.news-date { font-size: 0.9rem; color: var(--primary); font-weight: 700; display: block; margin-bottom: 0.3rem; }
+
+footer { 
+    text-align: center; 
+    padding: 5rem 2rem; 
+    background: var(--light); 
+    border-top: 1px solid #eee;
+    color: var(--secondary);
+    font-size: 0.95rem;
+}
+
+h2 { 
+    color: var(--primary); 
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--primary);
+}
+
+a { color: var(--primary); text-decoration: none; font-weight: 500; }
+a:hover { text-decoration: underline; }
+
+.strategic-directions { list-style: none; padding: 0; }
+.strategic-directions li { margin-bottom: 1.5rem; padding-left: 2rem; position: relative; }
+.strategic-directions li::before { 
+    content: "→"; 
+    color: var(--primary); 
+    position: absolute; 
+    left: 0; 
+    font-weight: bold; 
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    header { padding: 4rem 1.5rem 3rem; }
+    header h1 { font-size: 2rem; }
+    header p { font-size: 1rem; }
+    .nav-menu li a { padding: 1rem 0.8rem; font-size: 0.9rem; }
+}

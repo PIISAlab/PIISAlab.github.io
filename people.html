@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIISA Lab | People</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="lang-switcher">
+            <button class="lang-btn active" onclick="setLanguage('vi')" id="btn-vi"><span>🇻🇳</span> VN</button>
+            <button class="lang-btn" onclick="setLanguage('en')" id="btn-en"><span>🇺🇸</span> EN</button>
+        </div>
+        <h1>PIISA Lab</h1>
+        <p class="lang-vi">Phòng Thí nghiệm Hệ thống Thông minh và Ứng dụng Dựa trên Vật lý (PIISA) Lab</p>
+        <p class="lang-en">Physics-Informed Intelligent Systems and Applications (PIISA) Lab</p>
+    </header>
+
+    <nav>
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li><a href="index.html"><span class="lang-vi">Trang chủ</span><span class="lang-en">Home</span></a></li>
+                <li><a href="research.html"><span class="lang-vi">Nghiên cứu</span><span class="lang-en">Research</span></a></li>
+                <li><a href="people.html" class="active"><span class="lang-vi">Thành viên</span><span class="lang-en">People</span></a></li>
+                <li><a href="publications.html"><span class="lang-vi">Công bố</span><span class="lang-en">Publications</span></a></li>
+                <li><a href="opportunities.html"><span class="lang-vi">Cơ hội</span><span class="lang-en">Opportunities</span></a></li>
+                <li><a href="contact.html"><span class="lang-vi">Liên hệ</span><span class="lang-en">Contact</span></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="section">
+            <h2 class="lang-vi">Trưởng Lab (PI)</h2>
+            <h2 class="lang-en">Principal Investigator</h2>
+            <div class="lang-vi">
+                <p><strong>TS. Trương Trung Kiên (Dr. Kien Trung Truong)</strong> hiện là Giảng viên tại Khoa Vật lý - Vật lý kỹ thuật, Trường Đại học Khoa học Tự nhiên, ĐHQG-HCM. Ông là Senior Member của IEEE và là cựu sinh viên VEF.</p>
+                <p>TS. Trương Trung Kiên nhận bằng Thạc sĩ và Tiến sĩ Kỹ thuật Điện tại Đại học Texas tại Austin (UT Austin) dưới sự hướng dẫn của Giáo sư Robert W. Heath, Jr. Các nghiên cứu của ông tập trung vào Massive MIMO, truyền tải năng lượng không dây và xử lý tín hiệu cho mạng 6G.</p>
+            </div>
+            <div class="lang-en">
+                <p><strong>Dr. Kien Trung Truong</strong> is a Lecturer in the Department of Physics and Engineering Physics at the University of Science, VNU-HCM. An IEEE Senior Member and VEF Alumnus.</p>
+                <p>Dr. Truong earned his Ph.D. and M.S.E. in Electrical Engineering from the University of Texas at Austin under the supervision of Professor Robert W. Heath, Jr. His research interests include Massive MIMO, wireless power transfer, and signal processing for 6G networks.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="lang-vi">Thành viên Hiện tại</h2>
+            <h2 class="lang-en">Current Members</h2>
+            <div class="lang-vi">
+                <p><em>Thông tin đang được cập nhật...</em></p>
+            </div>
+            <div class="lang-en">
+                <p><em>Information coming soon...</em></p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="lang-vi">Cựu thành viên (Alumni)</h2>
+            <h2 class="lang-en">Alumni</h2>
+            <div class="lang-vi">
+                <p><em>Thông tin đang được cập nhật...</em></p>
+            </div>
+            <div class="lang-en">
+                <p><em>Information coming soon...</em></p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p class="lang-vi">&copy; 2026 Lab PIISA - Khoa Vật lý - Vật lý kỹ thuật, Trường Đại học Khoa học Tự nhiên, ĐHQG-HCM</p>
+        <p class="lang-en">&copy; 2026 PIISA Lab - Faculty of Physics and Engineering Physics, University of Science, VNUHCM</p>
+    </footer>
+
+    <script>
+        function setLanguage(lang) {
+            document.documentElement.setAttribute('lang', lang);
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            const btnId = 'btn-' + lang;
+            if (document.getElementById(btnId)) document.getElementById(btnId).classList.add('active');
+            localStorage.setItem('piisa-lang', lang);
+        }
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('piisa-lang') || 'vi';
+            setLanguage(savedLang);
+        });
+    </script>
+</body>
+</html>

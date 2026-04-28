@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIISA Lab | Research</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="lang-switcher">
+            <button class="lang-btn active" onclick="setLanguage('vi')" id="btn-vi"><span>🇻🇳</span> VN</button>
+            <button class="lang-btn" onclick="setLanguage('en')" id="btn-en"><span>🇺🇸</span> EN</button>
+        </div>
+        <h1>PIISA Lab</h1>
+        <p class="lang-vi">Phòng Thí nghiệm Hệ thống Thông minh và Ứng dụng Dựa trên Vật lý (PIISA) Lab</p>
+        <p class="lang-en">Physics-Informed Intelligent Systems and Applications (PIISA) Lab</p>
+    </header>
+
+    <nav>
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li><a href="index.html"><span class="lang-vi">Trang chủ</span><span class="lang-en">Home</span></a></li>
+                <li><a href="research.html" class="active"><span class="lang-vi">Nghiên cứu</span><span class="lang-en">Research</span></a></li>
+                <li><a href="people.html"><span class="lang-vi">Thành viên</span><span class="lang-en">People</span></a></li>
+                <li><a href="publications.html"><span class="lang-vi">Công bố</span><span class="lang-en">Publications</span></a></li>
+                <li><a href="opportunities.html"><span class="lang-vi">Cơ hội</span><span class="lang-en">Opportunities</span></a></li>
+                <li><a href="contact.html"><span class="lang-vi">Liên hệ</span><span class="lang-en">Contact</span></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="section">
+            <h2 class="lang-vi">Trụ cột Nghiên cứu & Kỹ thuật</h2>
+            <h2 class="lang-en">Research & Engineering Pillar</h2>
+            <div class="lang-vi">
+                <p>Trọng tâm của chúng tôi nằm ở giao điểm của vật lý và tính toán:</p>
+                <ul class="strategic-directions">
+                    <li><strong>Mạng 6G & Xử lý tín hiệu:</strong> Phát triển các thuật toán tiên tiến cho thế hệ mạng không dây tiếp theo.</li>
+                    <li><strong>Mô phỏng đa vật lý:</strong> Sử dụng các công cụ tính toán để mô phỏng các hiện tượng vật lý phức tạp, đặc biệt là trong lĩnh vực ăng-ten và truyền sóng.</li>
+                    <li><strong>Physics-Informed Machine Learning:</strong> Tích hợp các quy luật vật lý vào các mô hình học máy để tăng cường tính chính xác và khả năng giải thích.</li>
+                    <li><strong>Thiết kế IC:</strong> Thiết kế các mạch tích hợp hiệu suất cao cho các ứng dụng thông tin liên lạc.</li>
+                </ul>
+            </div>
+            <div class="lang-en">
+                <p>Our focus lies at the intersection of physics and computation:</p>
+                <ul class="strategic-directions">
+                    <li><strong>6G Networks & Signal Processing:</strong> Developing advanced algorithms for the next generation of wireless networks.</li>
+                    <li><strong>Multiphysics Simulation:</strong> Using computational tools to simulate complex physical phenomena, especially in antennas and wave propagation.</li>
+                    <li><strong>Physics-Informed Machine Learning:</strong> Integrating physical laws into machine learning models to enhance accuracy and explainability.</li>
+                    <li><strong>IC Design:</strong> Designing high-performance integrated circuits for communication applications.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="lang-vi">Trụ cột Đào tạo & Đổi mới</h2>
+            <h2 class="lang-en">Education & Innovation Pillar</h2>
+            <div class="lang-vi">
+                <p>Chúng tôi cam kết hiện đại hóa giáo dục kỹ thuật tại Việt Nam:</p>
+                <ul class="strategic-directions">
+                    <li><strong>Tư duy Thiết kế (Design Thinking):</strong> Áp dụng quy trình lấy con người làm trung tâm để giải quyết các vấn đề kỹ thuật và xã hội.</li>
+                    <li><strong>Tư duy Hệ thống (Systems Thinking):</strong> Đào tạo sinh viên cách nhìn nhận các vấn đề trong một bức tranh tổng thể và phức tạp.</li>
+                    <li><strong>Đổi mới Sáng tạo:</strong> Thúc đẩy môi trường học thuật năng động, nơi các ý tưởng mới được khuyến khích và hiện thực hóa.</li>
+                </ul>
+            </div>
+            <div class="lang-en">
+                <p>We are committed to modernizing engineering education in Vietnam:</p>
+                <ul class="strategic-directions">
+                    <li><strong>Design Thinking:</strong> Applying human-centered processes to solve engineering and social problems.</li>
+                    <li><strong>Systems Thinking:</strong> Training students to view problems within a holistic and complex framework.</li>
+                    <li><strong>Innovation:</strong> Fostering a dynamic academic environment where new ideas are encouraged and realized.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p class="lang-vi">&copy; 2026 Lab PIISA - Khoa Vật lý - Vật lý kỹ thuật, Trường Đại học Khoa học Tự nhiên, ĐHQG-HCM</p>
+        <p class="lang-en">&copy; 2026 PIISA Lab - Faculty of Physics and Engineering Physics, University of Science, VNUHCM</p>
+    </footer>
+
+    <script>
+        function setLanguage(lang) {
+            document.documentElement.setAttribute('lang', lang);
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            const btnId = 'btn-' + lang;
+            if (document.getElementById(btnId)) document.getElementById(btnId).classList.add('active');
+            localStorage.setItem('piisa-lang', lang);
+        }
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('piisa-lang') || 'vi';
+            setLanguage(savedLang);
+        });
+    </script>
+</body>
+</html>

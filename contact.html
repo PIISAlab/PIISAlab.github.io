@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIISA Lab | Contact</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="lang-switcher">
+            <button class="lang-btn active" onclick="setLanguage('vi')" id="btn-vi"><span>🇻🇳</span> VN</button>
+            <button class="lang-btn" onclick="setLanguage('en')" id="btn-en"><span>🇺🇸</span> EN</button>
+        </div>
+        <h1>PIISA Lab</h1>
+        <p class="lang-vi">Phòng Thí nghiệm Hệ thống Thông minh và Ứng dụng Dựa trên Vật lý (PIISA) Lab</p>
+        <p class="lang-en">Physics-Informed Intelligent Systems and Applications (PIISA) Lab</p>
+    </header>
+
+    <nav>
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li><a href="index.html"><span class="lang-vi">Trang chủ</span><span class="lang-en">Home</span></a></li>
+                <li><a href="research.html"><span class="lang-vi">Nghiên cứu</span><span class="lang-en">Research</span></a></li>
+                <li><a href="people.html"><span class="lang-vi">Thành viên</span><span class="lang-en">People</span></a></li>
+                <li><a href="publications.html"><span class="lang-vi">Công bố</span><span class="lang-en">Publications</span></a></li>
+                <li><a href="opportunities.html"><span class="lang-vi">Cơ hội</span><span class="lang-en">Opportunities</span></a></li>
+                <li><a href="contact.html" class="active"><span class="lang-vi">Liên hệ</span><span class="lang-en">Contact</span></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="section">
+            <h2 class="lang-vi">Thông tin Liên hệ</h2>
+            <h2 class="lang-en">Contact Information</h2>
+            <div class="lang-vi">
+                <p><strong>Địa chỉ:</strong> Phòng Thí nghiệm PIISA, Khoa Vật lý - Vật lý kỹ thuật, Trường Đại học Khoa học Tự nhiên, ĐHQG-HCM.</p>
+                <p>227 Nguyễn Văn Cừ, Phường 4, Quận 5, TP. Hồ Chí Minh, Việt Nam.</p>
+                <p><strong>Email:</strong> <a href="mailto:kttruong@hcmus.edu.vn">kttruong@hcmus.edu.vn</a></p>
+            </div>
+            <div class="lang-en">
+                <p><strong>Address:</strong> PIISA Lab, Department of Physics and Engineering Physics, University of Science, VNU-HCM.</p>
+                <p>227 Nguyen Van Cu Str., Ward 4, District 5, Ho Chi Minh City, Vietnam.</p>
+                <p><strong>Email:</strong> <a href="mailto:kttruong@hcmus.edu.vn">kttruong@hcmus.edu.vn</a></p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p class="lang-vi">&copy; 2026 Lab PIISA - Khoa Vật lý - Vật lý kỹ thuật, Trường Đại học Khoa học Tự nhiên, ĐHQG-HCM</p>
+        <p class="lang-en">&copy; 2026 PIISA Lab - Faculty of Physics and Engineering Physics, University of Science, VNUHCM</p>
+    </footer>
+
+    <script>
+        function setLanguage(lang) {
+            document.documentElement.setAttribute('lang', lang);
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            const btnId = 'btn-' + lang;
+            if (document.getElementById(btnId)) document.getElementById(btnId).classList.add('active');
+            localStorage.setItem('piisa-lang', lang);
+        }
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('piisa-lang') || 'vi';
+            setLanguage(savedLang);
+        });
+    </script>
+</body>
+</html>
