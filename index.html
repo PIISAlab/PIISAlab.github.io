@@ -19,6 +19,7 @@
             line-height: 1.6;
             color: var(--dark);
             background: #fff;
+            scroll-behavior: smooth;
         }
         
         /* Language Switcher */
@@ -52,6 +53,44 @@
             font-weight: bold;
         }
 
+        /* Navigation Menu */
+        nav {
+            background: var(--dark);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            padding: 0 1rem;
+        }
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            overflow-x: auto;
+        }
+        .nav-menu li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            padding: 1rem 1.2rem;
+            display: block;
+            font-size: 0.95rem;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: color 0.2s, background 0.2s;
+        }
+        .nav-menu li a:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
         /* Language-specific visibility */
         [lang="en"] .lang-vi { display: none; }
         [lang="vi"] .lang-en { display: none; }
@@ -59,7 +98,7 @@
         header {
             background: var(--dark);
             color: white;
-            padding: 6rem 2rem 5rem;
+            padding: 5rem 2rem 4rem;
             text-align: center;
             position: relative;
         }
@@ -70,6 +109,7 @@
         }
         .section {
             margin-bottom: 4rem;
+            scroll-margin-top: 80px;
         }
         
         /* News Section Styles */
@@ -194,11 +234,38 @@
         <p class="lang-en">Physics-Informed Intelligent Systems and Applications Lab</p>
     </header>
 
+    <nav>
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li>
+                    <a href="#about" class="lang-vi">Giới thiệu</a>
+                    <a href="#about" class="lang-en">About</a>
+                </li>
+                <li>
+                    <a href="#members" class="lang-vi">Thành viên</a>
+                    <a href="#members" class="lang-en">Members</a>
+                </li>
+                <li>
+                    <a href="#publications" class="lang-vi">Công bố</a>
+                    <a href="#publications" class="lang-en">Publications</a>
+                </li>
+                <li>
+                    <a href="#projects" class="lang-vi">Dự án</a>
+                    <a href="#projects" class="lang-en">Projects</a>
+                </li>
+                <li>
+                    <a href="#contact" class="lang-vi">Liên hệ</a>
+                    <a href="#contact" class="lang-en">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container">
         <!-- News Section -->
-        <div class="news-section">
-            <h2 class="lang-vi">📢 Tin tức mới nhất</h2>
-            <h2 class="lang-en">📢 Latest News</h2>
+        <div id="news" class="news-section">
+            <h2 class="lang-vi" style="border-bottom:none; margin-top:0">📢 Tin tức mới nhất</h2>
+            <h2 class="lang-en" style="border-bottom:none; margin-top:0">📢 Latest News</h2>
             
             <div class="news-item">
                 <span class="news-date lang-vi">07 Tháng 4, 2026</span>
@@ -208,8 +275,8 @@
             </div>
         </div>
 
-        <!-- Introduction -->
-        <div class="section">
+        <!-- About Section -->
+        <div id="about" class="section">
             <h2 class="lang-vi">Giới thiệu về Trưởng Lab</h2>
             <h2 class="lang-en">About the PI</h2>
             
@@ -222,10 +289,21 @@
                 <p><strong>Dr. Kien Trung Truong</strong> is a Lecturer in the Department of Physics and Engineering Physics at the University of Science, VNU-HCM. An IEEE Senior Member and VEF Alumnus, Dr. Truong earned his Ph.D. and M.S.E. in Electrical Engineering from the University of Texas at Austin under the supervision of Professor Robert W. Heath, Jr.</p>
                 <p>His distinguished career is marked by significant contributions to Massive MIMO systems, relay networks, and wireless power transfer, earning him multiple "Best Paper" awards and five U.S. patents. Beyond his technical research, he is deeply committed to transforming Engineering Education in Vietnam through the implementation of innovative pedagogical models.</p>
             </div>
+
+            <h3 class="pub-cat lang-vi">Định hướng Chiến lược</h3>
+            <h3 class="pub-cat lang-en">Strategic Directions</h3>
+            <ul class="strategic-directions lang-vi" style="margin-top:1rem">
+                <li><strong>Nghiên cứu & Kỹ thuật:</strong> Tập trung vào Xử lý tín hiệu và Mô phỏng đa vật lý cho mạng 6G, thiết kế mạch tích hợp (IC) hiệu suất cao, và Physics-Informed Machine Learning.</li>
+                <li><strong>Đào tạo & Đổi mới:</strong> Áp dụng Tư duy Thiết kế (Design Thinking) và Tư duy Hệ thống (Systems Thinking) để thúc đẩy quá trình đổi mới sáng tạo.</li>
+            </ul>
+            <ul class="strategic-directions lang-en" style="margin-top:1rem">
+                <li><strong>Research & Engineering:</strong> Focusing on Signal Processing and Multiphysics Simulation for 6G, high-performance IC design, and Physics-Informed Machine Learning.</li>
+                <li><strong>Education & Innovation:</strong> Applying Design Thinking and Systems Thinking principles to drive innovation from concept to product.</li>
+            </ul>
         </div>
 
-        <!-- Lab Members -->
-        <div class="section">
+        <!-- Lab Members Section -->
+        <div id="members" class="section">
             <h2 class="lang-vi">Thành viên Lab</h2>
             <h2 class="lang-en">Lab Members</h2>
             <div class="grid">
@@ -239,22 +317,8 @@
             </div>
         </div>
 
-        <!-- Strategic Directions -->
-        <div class="section">
-            <h2 class="lang-vi">Định hướng Chiến lược</h2>
-            <h2 class="lang-en">Strategic Directions</h2>
-            <ul class="strategic-directions lang-vi">
-                <li><strong>Nghiên cứu & Kỹ thuật:</strong> Tập trung vào Xử lý tín hiệu và Mô phỏng đa vật lý cho mạng 6G, thiết kế mạch tích hợp (IC) hiệu suất cao, và Physics-Informed Machine Learning.</li>
-                <li><strong>Đào tạo & Đổi mới:</strong> Áp dụng Tư duy Thiết kế (Design Thinking) và Tư duy Hệ thống (Systems Thinking) để thúc đẩy quá trình đổi mới sáng tạo.</li>
-            </ul>
-            <ul class="strategic-directions lang-en">
-                <li><strong>Research & Engineering:</strong> Focusing on Signal Processing and Multiphysics Simulation for 6G, high-performance IC design, and Physics-Informed Machine Learning.</li>
-                <li><strong>Education & Innovation:</strong> Applying Design Thinking and Systems Thinking principles to drive innovation from concept to product.</li>
-            </ul>
-        </div>
-
-        <!-- Publications -->
-        <div class="section">
+        <!-- Publications Section -->
+        <div id="publications" class="section">
             <h2 class="lang-vi">Công bố Khoa học</h2>
             <h2 class="lang-en">Publications</h2>
 
@@ -304,8 +368,8 @@
             </ul>
         </div>
 
-        <!-- Projects -->
-        <div class="section">
+        <!-- Projects Section -->
+        <div id="projects" class="section">
             <h2 class="lang-vi">Nghiên cứu & Dự án Hiện tại</h2>
             <h2 class="lang-en">Current Research & Projects</h2>
             <div class="grid">
@@ -324,8 +388,8 @@
             </div>
         </div>
 
-        <!-- Contact -->
-        <div class="section">
+        <!-- Contact Section -->
+        <div id="contact" class="section">
             <h2 class="lang-vi">Thông tin Liên hệ</h2>
             <h2 class="lang-en">Contact Information</h2>
             <p>Email: <a href="mailto:piisa.lab@gmail.com">piisa.lab@gmail.com</a></p>
