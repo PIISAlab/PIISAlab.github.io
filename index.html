@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIISA Lab | HCMUS Robotics 2026</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --dark: #1f2937;
+            --light: #f3f4f6;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            color: var(--dark);
+            background: #fff;
+        }
+        header {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .card {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: transform 0.2s;
+            background: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+        .card a {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .card a:hover {
+            text-decoration: underline;
+        }
+        .badge {
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 0.2rem 0.6rem;
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: var(--light);
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>PIISA Lab</h1>
+        <p>Phân Giải Mạch & Intelligence Systems Architecture</p>
+        <p>HCMUS Robotics Workshop | May 29, 2026</p>
+    </header>
+
+    <div class="container">
+        <h2>Exhibition Projects</h2>
+        <p>Exploring Edge AI and dual-processor robotics architectures with the Arduino UNO Q.</p>
+        
+        <div class="grid">
+            <div class="card">
+                <span class="badge">Vision</span>
+                <h3>Q-Navigator</h3>
+                <p>A real-time vision-based object tracking rover using the Qualcomm Dragonwing MPU and STM32 MCU.</p>
+                <a href="https://github.com/PIISAlab/Q-Navigator">View Repository →</a>
+            </div>
+
+            <div class="card">
+                <span class="badge">Multimodal</span>
+                <h3>EchoFlow</h3>
+                <p>On-device hybrid voice and gesture robotic controller demonstrating human-robot interaction.</p>
+                <a href="https://github.com/PIISAlab/EchoFlow">View Repository →</a>
+            </div>
+
+            <div class="card">
+                <span class="badge">Industry 5.0</span>
+                <h3>Sentry-Q</h3>
+                <p>AI-driven acoustic and vibration anomaly detection for predictive maintenance in robotic joints.</p>
+                <a href="https://github.com/PIISAlab/Sentry-Q">View Repository →</a>
+            </div>
+
+            <div class="card">
+                <span class="badge">CV Sorter</span>
+                <h3>Q-Sorter</h3>
+                <p>Edge-vision automated industrial sorting system for quality control and material separation.</p>
+                <a href="https://github.com/PIISAlab/Q-Sorter">View Repository →</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 PIISA Lab - VNU-HCM University of Science</p>
+        <p><a href="https://github.com/PIISAlab">GitHub Organization</a></p>
+    </footer>
+</body>
+</html>
