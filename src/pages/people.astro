@@ -1,41 +1,42 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import BentoCard from '../components/BentoCard.astro';
 
 const lang = 'vi';
 ---
 
-<Layout title="People" lang={lang}>
+<Layout title="Thành viên" lang={lang}>
 	<section class="mb-16">
-		<h1 class="text-4xl font-bold mb-8 border-l-4 border-intellect pl-6">
-			Thành viên
+		<h1 class="text-5xl font-black mb-12 tracking-tighter">
+			Thành <span class="text-gradient font-serif">viên</span>
 		</h1>
 
 		<div class="bento-grid">
 			<!-- PI Card -->
-			<div class="bento-card md:col-span-3 flex flex-col md:flex-row gap-8 items-start">
-				<div class="w-full md:w-64 h-64 rounded-2xl overflow-hidden flex-shrink-0 border border-black/10 dark:border-white/10">
+			<BentoCard class="md:col-span-3 flex flex-col md:flex-row gap-10 items-center md:items-start" showBorderBeam={true}>
+				<div class="w-full md:w-72 h-72 rounded-[2rem] overflow-hidden flex-shrink-0 border-2 border-intellect/20 shadow-2xl shadow-intellect/10">
 					<img src="/images/kien-truong.jpg" alt="TS. Trương Trung Kiên" class="w-full h-full object-cover" />
 				</div>
 				<div class="flex-grow">
-					<h2 class="text-3xl font-bold mb-2">
+					<h2 class="text-4xl font-bold mb-3 tracking-tight">
 						TS. Trương Trung Kiên
 					</h2>
-					<p class="text-intellect font-semibold mb-6">Principal Investigator</p>
+					<p class="text-intellect font-black uppercase tracking-widest text-sm mb-8 bg-intellect/10 inline-block px-4 py-1.5 rounded-full">Principal Investigator</p>
 					
-					<div class="text-contrast/80 space-y-4 text-lg">
+					<div class="text-contrast/80 space-y-5 text-lg leading-relaxed">
 						<p><strong>TS. Trương Trung Kiên</strong> hiện là Giảng viên tại Khoa Vật lý - Vật lý kỹ thuật, Trường Đại học Khoa học Tự nhiên, ĐHQG-HCM. Ông là Senior Member của IEEE và là cựu sinh viên VEF.</p>
 						<p>Ông nhận bằng Thạc sĩ và Tiến sĩ Kỹ thuật Điện tại Đại học Texas tại Austin (UT Austin) dưới sự hướng dẫn của Giáo sư Robert W. Heath, Jr. Các nghiên cứu của ông tập trung vào Massive MIMO, truyền tải năng lượng không dây và xử lý tín hiệu cho mạng 6G.</p>
 					</div>
 				</div>
-			</div>
+			</BentoCard>
 
 			<!-- Current Members -->
-			<div class="bento-card md:col-span-3">
-				<h2 class="text-2xl font-bold mb-6">Thành viên Hiện tại</h2>
-				<p class="text-contrast/60 italic">
+			<BentoCard class="md:col-span-3">
+				<h2 class="text-2xl font-bold mb-6 tracking-tight">Thành viên Hiện tại</h2>
+				<p class="text-contrast/50 italic text-lg">
 					Thông tin đang được cập nhật...
 				</p>
-			</div>
+			</BentoCard>
 		</div>
 	</section>
 </Layout>

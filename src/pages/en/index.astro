@@ -1,109 +1,112 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import BentoCard from '../../components/BentoCard.astro';
 
 const lang = 'en';
 ---
 
 <Layout title="Home" lang={lang}>
 	<!-- Hero Section -->
-	<section class="relative min-h-[70vh] flex flex-col items-center justify-center py-20 overflow-hidden">
+	<section class="relative min-h-[80vh] flex flex-col items-center justify-center py-24 overflow-hidden">
 		<!-- Dynamic Background Elements -->
-		<div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[800px] bg-intellect/20 blur-[160px] rounded-full -z-10 animate-pulse"></div>
+		<div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[800px] bg-intellect/10 blur-[160px] rounded-full -z-10 animate-pulse"></div>
 		<div class="absolute bottom-0 right-1/4 w-[600px] h-[400px] bg-insight/10 blur-[120px] rounded-full -z-10"></div>
-
+		
+		<!-- Vector Field Background -->
+		<div class="absolute inset-0 -z-20 opacity-[0.03] dark:opacity-[0.07]" style="background-image: url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M30 5v10M30 45v10M5 30h10M45 30h10M12.32 12.32l7.07 7.07M40.61 40.61l7.07 7.07M12.32 47.68l7.07-7.07M40.61 19.39l7.07-7.07\" stroke=\"%230A6BFF\" stroke-width=\"1\" stroke-linecap=\"round\"/%3E%3C/svg%3E');"></div>
+		
 		<div class="text-center z-10 max-w-5xl px-4">
-			<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-intellect/10 border border-intellect/20 text-intellect text-xs font-bold uppercase tracking-wider mb-8 animate-fade-in">
+			<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-intellect/10 border border-intellect/20 text-intellect text-xs font-bold uppercase tracking-widest mb-10 animate-fade-in shadow-xl shadow-intellect/5 backdrop-blur-sm">
 				<span class="relative flex h-2 w-2">
 					<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-intellect opacity-75"></span>
 					<span class="relative inline-flex rounded-full h-2 w-2 bg-intellect"></span>
 				</span>
 				The Nexus of Physics & Intelligence
 			</div>
-
-			<h1 class="text-4xl md:text-8xl font-black tracking-tighter mb-8 leading-[1.1]">
+			
+			<h1 class="text-5xl md:text-9xl font-black tracking-tighter mb-10 leading-[1] text-starlight">
 				Physics-Informed <br/>
-				<span class="text-gradient">Intelligent Systems</span>
+				<span class="text-gradient font-serif">Intelligent Systems & Applications</span>
 			</h1>
-
-			<p class="text-xl md:text-2xl text-contrast/80 max-w-3xl mx-auto leading-relaxed mb-12 font-medium">
+			
+			<p class="text-xl md:text-3xl text-contrast/80 max-w-4xl mx-auto leading-relaxed mb-16 font-medium">
 				Physics-Informed Intelligent Systems and Applications (PIISA) Lab
-				<span class="block text-sm mt-4 text-contrast/50 font-normal">Faculty of Physics and Engineering Physics, University of Science, VNU-HCM</span>
+				<span class="block text-sm md:text-base mt-6 text-contrast/50 font-normal tracking-wide">Faculty of Physics - Engineering Physics, University of Science, VNU-HCM</span>
 			</p>
 
-			<div class="flex flex-wrap justify-center gap-4">
-				<a href="/en/research.html" class="glass-button bg-intellect text-white border-transparent">
+			<div class="flex flex-wrap justify-center gap-6">
+				<a href="/en/research" class="glass-button bg-intellect text-white border-transparent">
 					Explore Research
-					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 				</a>
-				<a href="/en/publications" class="glass-button">
+				<a href="/en/publications" class="glass-button backdrop-blur-md">
 					View Publications
 				</a>
 			</div>
 		</div>
 	</section>
 
-	<div class="bento-grid mt-24">
+	<div class="bento-grid mt-32">
 		<!-- Welcome Card -->
-		<div class="bento-card md:col-span-2 group">
+		<BentoCard class="md:col-span-2" showBorderBeam={true}>
 			<div class="flex flex-col h-full">
-				<div class="mb-6">
-					<span class="w-12 h-12 rounded-2xl bg-insight/10 text-insight flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+				<div class="mb-8">
+					<span class="w-16 h-16 rounded-2xl bg-insight/10 text-insight flex items-center justify-center text-3xl group-hover:scale-110 transition-transform duration-500 ease-expo-out shadow-lg shadow-insight/5">
 						✦
 					</span>
 				</div>
-				<h2 class="text-3xl font-bold mb-4">Welcome to PIISA Lab</h2>
-				<div class="text-lg text-contrast/80 space-y-4 flex-grow">
-					<p>We are a pioneering research center dedicated to integrating <strong>fundamental physical laws</strong> with modern <strong>Artificial Intelligence</strong> techniques.</p>
-					<p>Our mission is to solve complex engineering challenges in next-generation wireless networks (6G), multi-physics simulations, and intelligent system design.</p>
+				<h2 class="text-4xl font-bold mb-6 tracking-tight">Welcome to <span class="font-serif text-intellect">PIISA Lab</span></h2>
+				<div class="text-xl text-contrast/80 space-y-6 flex-grow leading-relaxed">
+					<p>We are a research group focusing on the integration of <strong>fundamental physics laws</strong> with modern <strong>artificial intelligence techniques</strong>.</p>
+					<p>Our mission is to solve complex engineering challenges in next-generation wireless networks (6G), multi-physics simulation, and intelligent system design.</p>
 				</div>
-				<div class="mt-8 flex gap-4">
-					<div class="px-4 py-2 rounded-lg bg-foundation border border-black/5 dark:border-white/5 text-sm font-semibold">
-						<span class="text-intellect">5+</span> Active Projects
+				<div class="mt-10 flex flex-wrap gap-4">
+					<div class="px-5 py-3 rounded-2xl bg-foundation border border-black/5 dark:border-white/5 text-sm font-bold shadow-sm">
+						<span class="text-intellect text-lg mr-1">5+</span> Active Projects
 					</div>
-					<div class="px-4 py-2 rounded-lg bg-foundation border border-black/5 dark:border-white/5 text-sm font-semibold">
-						<span class="text-insight">10+</span> Members
+					<div class="px-5 py-3 rounded-2xl bg-foundation border border-black/5 dark:border-white/5 text-sm font-bold shadow-sm">
+						<span class="text-insight text-lg mr-1">10+</span> Members
 					</div>
 				</div>
 			</div>
-		</div>
+		</BentoCard>
 
 		<!-- Latest News Card -->
-		<div class="bento-card bg-gradient-to-br from-intellect/10 to-transparent border-intellect/20">
-			<h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
-				<span class="p-2 rounded-lg bg-intellect/20 text-intellect">📢</span>
+		<BentoCard class="bg-gradient-to-br from-intellect/5 to-transparent border-intellect/10">
+			<h2 class="text-2xl font-bold mb-8 flex items-center gap-3">
+				<span class="p-2.5 rounded-xl bg-intellect/10 text-intellect">📢</span>
 				News
 			</h2>
-			<div class="space-y-6">
+			<div class="space-y-8">
 				<div class="group/news cursor-default">
-					<span class="text-xs font-bold text-intellect uppercase tracking-wider bg-intellect/10 px-2 py-1 rounded">April 07, 2026</span>
-					<p class="text-base mt-3 text-starlight font-semibold leading-snug group-hover/news:text-intellect transition-colors">
+					<span class="text-xs font-black text-intellect uppercase tracking-widest bg-intellect/10 px-3 py-1.5 rounded-lg">April 07, 2026</span>
+					<p class="text-lg mt-4 text-starlight font-bold leading-tight group-hover/news:text-intellect transition-colors duration-300">
 						Paper "Electrohydrodynamics of a Liquid-Metal Monopole Antenna Channel" accepted at FEDSM2026.
 					</p>
 				</div>
 			</div>
-			<a href="/en/news.html" class="mt-12 inline-flex items-center gap-2 text-sm font-bold text-intellect hover:underline">
+			<a href="/en/news" class="mt-16 inline-flex items-center gap-2 text-sm font-bold text-intellect hover:underline group/more">
 				All news
-				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+				<svg class="group-hover/more:translate-x-1 transition-transform" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 			</a>
-		</div>
+		</BentoCard>
 
 		<!-- Focus Area 1 -->
-		<div class="bento-card group hover:border-innovation/30">
-			<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-				<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 7h10"/><path d="M7 12h10"/><path d="M7 17h10"/></svg>
+		<BentoCard class="hover:border-innovation/30">
+			<div class="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity duration-500">
+				<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 7h10"/><path d="M7 12h10"/><path d="M7 17h10"/></svg>
 			</div>
-			<h3 class="text-xl font-bold mb-2 text-innovation">6G Communications</h3>
-			<p class="text-contrast/70">Optimizing network resources and beamforming using AI-Physics integration.</p>
-		</div>
+			<h3 class="text-2xl font-bold mb-3 text-innovation tracking-tight">6G Communications</h3>
+			<p class="text-contrast/70 text-lg leading-relaxed">Network resource optimization and signal processing based on AI-Physics.</p>
+		</BentoCard>
 
 		<!-- Focus Area 2 -->
-		<div class="bento-card group hover:border-prestige/30">
-			<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-				<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="7.5 4.21 12 6.81 16.5 4.21"/><polyline points="7.5 19.79 7.5 14.63 3 12"/><polyline points="21 12 16.5 14.63 16.5 19.79"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+		<BentoCard class="hover:border-prestige/30">
+			<div class="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity duration-500">
+				<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="7.5 4.21 12 6.81 16.5 4.21"/><polyline points="7.5 19.79 7.5 14.63 3 12"/><polyline points="21 12 16.5 14.63 16.5 19.79"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
 			</div>
-			<h3 class="text-xl font-bold mb-2 text-prestige">Multi-physics Simulation</h3>
-			<p class="text-contrast/70">Simulating fluid dynamics and electromagnetic fields using neural networks.</p>
-		</div>
+			<h3 class="text-2xl font-bold mb-3 text-prestige tracking-tight">Multi-physics Simulation</h3>
+			<p class="text-contrast/70 text-lg leading-relaxed">Fluid dynamics and electromagnetics simulation of Fluid-antenna systems.</p>
+		</BentoCard>
 	</div>
 </Layout>
-

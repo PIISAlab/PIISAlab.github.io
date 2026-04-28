@@ -1,39 +1,45 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import BentoCard from '../../components/BentoCard.astro';
 const lang = 'en';
 ---
 <Layout title="Opportunities" lang={lang}>
 	<section class="mb-16">
-		<h1 class="text-4xl font-bold mb-12 border-l-4 border-intellect pl-6">
-			Opportunities
+		<h1 class="text-5xl font-black mb-16 tracking-tighter">
+			Join the <span class="text-gradient font-serif">Lab</span>
 		</h1>
 
-		<div class="bento-card max-w-4xl">
-			<h2 class="text-2xl mb-6 text-insight">For Prospective Students</h2>
-			<div class="text-contrast/80 space-y-6">
-				<p>
-					PIISA Lab is always looking for talented and motivated students to join our research efforts.
+		<BentoCard class="max-w-4xl" showBorderBeam={true}>
+			<h2 class="text-3xl mb-8 text-insight font-bold tracking-tight">For Prospective Students</h2>
+			<div class="text-contrast/80 space-y-8">
+				<p class="text-lg leading-relaxed">
+					PIISA Lab is always looking for talented and motivated students to join our research efforts. We seek candidates with a strong foundation in physics, mathematics, and engineering.
 				</p>
 				
-				<div class="grid md:grid-cols-3 gap-4">
-					<div class="p-4 rounded-xl bg-intellect/5 border border-intellect/20 text-center">
-						<span class="block text-2xl mb-2">🎓</span>
-						<span class="font-bold">PhD</span>
+				<div class="grid md:grid-cols-3 gap-6">
+					<div class="p-6 rounded-2xl bg-intellect/5 border border-intellect/20 text-center group hover:bg-intellect/10 transition-colors">
+						<span class="block text-4xl mb-3 group-hover:scale-110 transition-transform">🎓</span>
+						<span class="font-black text-starlight tracking-widest text-sm uppercase">Ph.D. Candidates</span>
 					</div>
-					<div class="p-4 rounded-xl bg-intellect/5 border border-intellect/20 text-center">
-						<span class="block text-2xl mb-2">📜</span>
-						<span class="font-bold">Master</span>
+					<div class="p-6 rounded-2xl bg-insight/5 border border-insight/20 text-center group hover:bg-insight/10 transition-colors">
+						<span class="block text-4xl mb-3 group-hover:scale-110 transition-transform">📜</span>
+						<span class="font-black text-starlight tracking-widest text-sm uppercase">Master Students</span>
 					</div>
-					<div class="p-4 rounded-xl bg-intellect/5 border border-intellect/20 text-center">
-						<span class="block text-2xl mb-2">🔬</span>
-						<span class="font-bold">Undergraduate</span>
+					<div class="p-6 rounded-2xl bg-innovation/5 border border-innovation/20 text-center group hover:bg-innovation/10 transition-colors">
+						<span class="block text-4xl mb-3 group-hover:scale-110 transition-transform">🔬</span>
+						<span class="font-black text-starlight tracking-widest text-sm uppercase">Undergraduates</span>
 					</div>
 				</div>
 
-				<p class="pt-6 border-t border-black/5 dark:border-white/5 italic">
-					Send CV and academic transcripts to Dr. Kien Trung Truong via email.
-				</p>
+				<div class="pt-10 border-t border-black/5 dark:border-white/5">
+					<div class="flex items-center gap-4 text-intellect">
+						<span class="w-10 h-10 rounded-full bg-intellect/10 flex items-center justify-center font-bold">!</span>
+						<p class="text-lg font-medium italic leading-relaxed">
+							Send your CV and academic transcripts to Dr. Kien Truong via email to apply.
+						</p>
+					</div>
+				</div>
 			</div>
-		</div>
+		</BentoCard>
 	</section>
 </Layout>

@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import BentoCard from '../../components/BentoCard.astro';
 const lang = 'en';
 
 const publications = {
@@ -56,29 +57,29 @@ const publications = {
 ---
 <Layout title="Publications" lang={lang}>
 	<section class="mb-16">
-		<h1 class="text-4xl font-bold mb-12 border-l-4 border-intellect pl-6">
-			Full Publication List
+		<h1 class="text-5xl font-black mb-16 tracking-tighter">
+			Full <span class="text-gradient font-serif">Publications</span>
 		</h1>
 
-		<div class="space-y-16">
+		<div class="space-y-24">
 			<!-- International Journals -->
 			<div>
-				<h2 class="text-2xl mb-8 text-insight font-bold flex items-center">
-					<span class="w-10 h-10 rounded-lg bg-insight/10 text-insight flex items-center justify-center mr-4 text-sm border border-insight/20">J</span>
+				<h2 class="text-3xl mb-10 text-insight font-bold flex items-center tracking-tight">
+					<span class="w-12 h-12 rounded-xl bg-insight/10 text-insight flex items-center justify-center mr-5 text-lg border border-insight/20 shadow-lg shadow-insight/5">J</span>
 					International Journals
 				</h2>
-				<div class="grid gap-4">
+				<div class="grid gap-6">
 					{publications.journals.map(pub => (
-						<div class="p-6 rounded-2xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-intellect/50 hover:bg-black/[0.07] dark:hover:bg-white/[0.07] transition-all group">
-							<div class="flex items-start gap-4">
-								<span class="text-xs font-mono text-intellect bg-intellect/10 px-2 py-1 rounded shrink-0 mt-1">{pub.id}</span>
+						<div class="p-8 rounded-[2rem] bg-card-bg border border-card-border hover:border-intellect/30 hover:bg-intellect/5 transition-all duration-500 ease-expo-out group relative overflow-hidden">
+							<div class="flex items-start gap-6 relative z-10">
+								<span class="text-xs font-black text-intellect bg-intellect/10 px-3 py-1.5 rounded-lg shrink-0 mt-1 tracking-widest">{pub.id}</span>
 								<div>
-									<h3 class="text-starlight font-bold leading-snug mb-2 group-hover:text-intellect transition-colors">{pub.title}</h3>
-									<p class="text-sm text-contrast/60 mb-3">{pub.authors}</p>
-									<div class="flex items-center text-xs text-intellect/80 font-medium">
-										<span class="bg-intellect/5 px-2 py-0.5 rounded border border-intellect/10">{pub.venue}</span>
-										<span class="mx-3 text-contrast/30">•</span>
-										<span>{pub.year}</span>
+									<h3 class="text-xl text-starlight font-bold leading-snug mb-3 group-hover:text-intellect transition-colors duration-300 tracking-tight">{pub.title}</h3>
+									<p class="text-base text-contrast/60 mb-4 leading-relaxed">{pub.authors}</p>
+									<div class="flex flex-wrap items-center gap-y-2 text-sm text-intellect/80 font-bold">
+										<span class="bg-intellect/10 px-3 py-1 rounded-lg border border-intellect/10">{pub.venue}</span>
+										<span class="mx-3 text-contrast/20 hidden sm:inline">•</span>
+										<span class="text-contrast/40">{pub.year}</span>
 									</div>
 								</div>
 							</div>
@@ -89,22 +90,22 @@ const publications = {
 
 			<!-- International Conferences -->
 			<div>
-				<h2 class="text-2xl mb-8 text-intellect font-bold flex items-center">
-					<span class="w-10 h-10 rounded-lg bg-intellect/10 text-intellect flex items-center justify-center mr-4 text-sm border border-intellect/20">C</span>
+				<h2 class="text-3xl mb-10 text-intellect font-bold flex items-center tracking-tight">
+					<span class="w-12 h-12 rounded-xl bg-intellect/10 text-intellect flex items-center justify-center mr-5 text-lg border border-intellect/20 shadow-lg shadow-intellect/5">C</span>
 					International Conferences
 				</h2>
-				<div class="grid gap-4">
+				<div class="grid gap-6">
 					{publications.conferences.map(pub => (
-						<div class="p-6 rounded-2xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-insight/50 hover:bg-black/[0.07] dark:hover:bg-white/[0.07] transition-all group">
-							<div class="flex items-start gap-4">
-								<span class="text-xs font-mono text-insight bg-insight/10 px-2 py-1 rounded shrink-0 mt-1">{pub.id}</span>
+						<div class="p-8 rounded-[2rem] bg-card-bg border border-card-border hover:border-insight/30 hover:bg-insight/5 transition-all duration-500 ease-expo-out group relative overflow-hidden">
+							<div class="flex items-start gap-6 relative z-10">
+								<span class="text-xs font-black text-insight bg-insight/10 px-3 py-1.5 rounded-lg shrink-0 mt-1 tracking-widest">{pub.id}</span>
 								<div>
-									<h3 class="text-starlight font-bold leading-snug mb-2 group-hover:text-insight transition-colors">{pub.title}</h3>
-									<p class="text-sm text-contrast/60 mb-3">{pub.authors}</p>
-									<div class="flex items-center text-xs text-insight/80 font-medium">
-										<span class="bg-insight/5 px-2 py-0.5 rounded border border-insight/10">{pub.venue}</span>
-										<span class="mx-3 text-contrast/30">•</span>
-										<span>{pub.year}</span>
+									<h3 class="text-xl text-starlight font-bold leading-snug mb-3 group-hover:text-insight transition-colors duration-300 tracking-tight">{pub.title}</h3>
+									<p class="text-base text-contrast/60 mb-4 leading-relaxed">{pub.authors}</p>
+									<div class="flex flex-wrap items-center gap-y-2 text-sm text-insight/80 font-bold">
+										<span class="bg-insight/10 px-3 py-1 rounded-lg border border-insight/10">{pub.venue}</span>
+										<span class="mx-3 text-contrast/20 hidden sm:inline">•</span>
+										<span class="text-contrast/40">{pub.year}</span>
 									</div>
 								</div>
 							</div>
@@ -116,38 +117,38 @@ const publications = {
 			<!-- Patents & Domestic -->
 			<div class="grid md:grid-cols-2 gap-12">
 				<div>
-					<h2 class="text-2xl mb-8 text-starlight font-bold flex items-center">
-						<span class="w-10 h-10 rounded-lg bg-black/10 dark:bg-white/10 text-starlight flex items-center justify-center mr-4 text-sm border border-black/20 dark:border-white/20">P</span>
+					<h2 class="text-3xl mb-10 text-starlight font-bold flex items-center tracking-tight">
+						<span class="w-12 h-12 rounded-xl bg-black/5 dark:bg-white/5 text-starlight flex items-center justify-center mr-5 text-lg border border-black/10 dark:border-white/10 shadow-lg shadow-black/5">P</span>
 						US Patents
 					</h2>
-					<div class="space-y-4">
+					<div class="space-y-6">
 						{publications.patents.map(pub => (
-							<div class="p-5 rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10">
-								<div class="flex justify-between items-start mb-2">
-									<span class="text-xs font-mono text-intellect font-bold">{pub.id}</span>
-									<span class="text-xs text-contrast/40">{pub.year}</span>
+							<div class="p-6 rounded-2xl bg-card-bg border border-card-border hover:border-intellect/20 transition-all duration-300">
+								<div class="flex justify-between items-start mb-3">
+									<span class="text-xs font-black text-intellect tracking-widest bg-intellect/10 px-2 py-1 rounded">{pub.id}</span>
+									<span class="text-xs font-bold text-contrast/40">{pub.year}</span>
 								</div>
-								<h3 class="text-starlight font-bold mb-2 text-sm leading-tight">{pub.title}</h3>
-								<p class="text-[10px] text-contrast/50 uppercase tracking-widest">{pub.venue}</p>
+								<h3 class="text-starlight font-bold mb-3 text-base leading-snug tracking-tight">{pub.title}</h3>
+								<p class="text-[11px] font-black text-contrast/50 uppercase tracking-widest bg-black/5 dark:bg-white/5 px-2 py-1 rounded inline-block">{pub.venue}</p>
 							</div>
 						))}
 					</div>
 				</div>
 
 				<div>
-					<h2 class="text-2xl mb-8 text-contrast/80 font-bold flex items-center">
-						<span class="w-10 h-10 rounded-lg bg-black/5 dark:bg-white/5 text-contrast/80 flex items-center justify-center mr-4 text-sm border border-black/10 dark:border-white/10">D</span>
+					<h2 class="text-3xl mb-10 text-contrast/80 font-bold flex items-center tracking-tight">
+						<span class="w-12 h-12 rounded-xl bg-black/5 dark:bg-white/5 text-contrast/80 flex items-center justify-center mr-5 text-lg border border-black/10 dark:border-white/10 shadow-lg shadow-black/5">D</span>
 						Domestic
 					</h2>
-					<div class="space-y-4">
+					<div class="space-y-6">
 						{publications.domestic.map(pub => (
-							<div class="p-5 rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10">
-								<div class="flex justify-between items-start mb-2">
-									<span class="text-xs font-mono text-insight font-bold">{pub.id}</span>
-									<span class="text-xs text-contrast/40">{pub.year}</span>
+							<div class="p-6 rounded-2xl bg-card-bg border border-card-border hover:border-insight/20 transition-all duration-300">
+								<div class="flex justify-between items-start mb-3">
+									<span class="text-xs font-black text-insight tracking-widest bg-insight/10 px-2 py-1 rounded">{pub.id}</span>
+									<span class="text-xs font-bold text-contrast/40">{pub.year}</span>
 								</div>
-								<h3 class="text-starlight font-bold mb-2 text-sm leading-tight">{pub.title}</h3>
-								<p class="text-[10px] text-contrast/50 italic">{pub.venue}</p>
+								<h3 class="text-starlight font-bold mb-3 text-base leading-snug tracking-tight">{pub.title}</h3>
+								<p class="text-[11px] font-bold text-contrast/50 italic bg-black/5 dark:bg-white/5 px-2 py-1 rounded inline-block">{pub.venue}</p>
 							</div>
 						))}
 					</div>
@@ -155,24 +156,24 @@ const publications = {
 			</div>
 
 			<!-- Theses -->
-			<div class="bento-card bg-intellect/5 border-intellect/20">
-				<h2 class="text-xl font-bold mb-6 flex items-center">
-					<span class="mr-3">🎓</span>
+			<BentoCard class="bg-gradient-to-br from-intellect/5 to-transparent border-intellect/20" showBorderBeam={true}>
+				<h2 class="text-2xl font-bold mb-10 flex items-center tracking-tight">
+					<span class="w-10 h-10 rounded-lg bg-intellect/10 flex items-center justify-center mr-4">🎓</span>
 					Theses
 				</h2>
-				<div class="grid md:grid-cols-2 gap-8">
-					<div class="border-l-2 border-intellect/30 pl-6">
-						<span class="text-[10px] text-intellect font-bold uppercase tracking-tighter">Ph.D. Dissertation (2012)</span>
-						<p class="text-starlight font-bold mt-1">Transmission Strategies for Wireless Multiple-Antenna Relay-Assisted Networks</p>
-						<p class="text-xs text-contrast/60 mt-2">The University of Texas at Austin</p>
+				<div class="grid md:grid-cols-2 gap-12">
+					<div class="border-l-4 border-intellect/30 pl-8 py-2">
+						<span class="text-xs text-intellect font-black uppercase tracking-[0.2em]">Ph.D. Dissertation (2012)</span>
+						<p class="text-xl text-starlight font-bold mt-3 leading-snug tracking-tight">Transmission Strategies for Wireless Multiple-Antenna Relay-Assisted Networks</p>
+						<p class="text-sm text-contrast/60 mt-4 font-medium italic">The University of Texas at Austin</p>
 					</div>
-					<div class="border-l-2 border-insight/30 pl-6">
-						<span class="text-[10px] text-insight font-bold uppercase tracking-tighter">Master's Report (2008)</span>
-						<p class="text-starlight font-bold mt-1">The Transmission Capacity of Two-way Communication in Wireless Ad-hoc Networks</p>
-						<p class="text-xs text-contrast/60 mt-2">The University of Texas at Austin</p>
+					<div class="border-l-4 border-insight/30 pl-8 py-2">
+						<span class="text-xs text-insight font-black uppercase tracking-[0.2em]">Master's Report (2008)</span>
+						<p class="text-xl text-starlight font-bold mt-3 leading-snug tracking-tight">The Transmission Capacity of Two-way Communication in Wireless Ad-hoc Networks</p>
+						<p class="text-sm text-contrast/60 mt-4 font-medium italic">The University of Texas at Austin</p>
 					</div>
 				</div>
-			</div>
+			</BentoCard>
 		</div>
 	</section>
 </Layout>

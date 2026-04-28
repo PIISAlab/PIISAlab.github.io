@@ -1,41 +1,42 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import BentoCard from '../../components/BentoCard.astro';
 
 const lang = 'en';
 ---
 
 <Layout title="People" lang={lang}>
 	<section class="mb-16">
-		<h1 class="text-4xl font-bold mb-8 border-l-4 border-intellect pl-6">
-			People
+		<h1 class="text-5xl font-black mb-12 tracking-tighter">
+			Our <span class="text-gradient font-serif">People</span>
 		</h1>
 
 		<div class="bento-grid">
 			<!-- PI Card -->
-			<div class="bento-card md:col-span-3 flex flex-col md:flex-row gap-8 items-start">
-				<div class="w-full md:w-64 h-64 rounded-2xl overflow-hidden flex-shrink-0 border border-black/10 dark:border-white/10">
-					<img src="/images/kien-truong.jpg" alt="Dr. Kien Trung Truong" class="w-full h-full object-cover" />
+			<BentoCard class="md:col-span-3 flex flex-col md:flex-row gap-10 items-center md:items-start" showBorderBeam={true}>
+				<div class="w-full md:w-72 h-72 rounded-[2rem] overflow-hidden flex-shrink-0 border-2 border-intellect/20 shadow-2xl shadow-intellect/10">
+					<img src="/images/kien-truong.jpg" alt="Dr. Kien Truong" class="w-full h-full object-cover" />
 				</div>
 				<div class="flex-grow">
-					<h2 class="text-3xl font-bold mb-2">
-						Dr. Kien Trung Truong
+					<h2 class="text-4xl font-bold mb-3 tracking-tight">
+						Dr. Kien Truong
 					</h2>
-					<p class="text-intellect font-semibold mb-6">Principal Investigator</p>
+					<p class="text-intellect font-black uppercase tracking-widest text-sm mb-8 bg-intellect/10 inline-block px-4 py-1.5 rounded-full">Principal Investigator</p>
 					
-					<div class="text-contrast/80 space-y-4 text-lg">
-						<p><strong>Dr. Kien Trung Truong</strong> is a Lecturer in the Department of Physics and Engineering Physics at the University of Science, VNU-HCM. An IEEE Senior Member and VEF Alumnus.</p>
-						<p>Dr. Truong earned his Ph.D. and M.S.E. in Electrical Engineering from the University of Texas at Austin under the supervision of Professor Robert W. Heath, Jr. His research interests include Massive MIMO, wireless power transfer, and signal processing for 6G networks.</p>
+					<div class="text-contrast/80 space-y-5 text-lg leading-relaxed">
+						<p><strong>Dr. Kien Truong</strong> is currently a Lecturer in the Faculty of Physics and Engineering Physics, University of Science, VNU-HCM. He is an IEEE Senior Member and a VEF alumnus.</p>
+						<p>He received the M.S. and Ph.D. degrees in Electrical Engineering from The University of Texas at Austin (UT Austin) under the supervision of Prof. Robert W. Heath, Jr. His research interests include Massive MIMO, wireless power transfer, and signal processing for 6G networks.</p>
 					</div>
 				</div>
-			</div>
+			</BentoCard>
 
 			<!-- Current Members -->
-			<div class="bento-card md:col-span-3">
-				<h2 class="text-2xl font-bold mb-6">Current Members</h2>
-				<p class="text-contrast/60 italic">
-					Information coming soon...
+			<BentoCard class="md:col-span-3">
+				<h2 class="text-2xl font-bold mb-6 tracking-tight">Current Members</h2>
+				<p class="text-contrast/50 italic text-lg">
+					Information being updated...
 				</p>
-			</div>
+			</BentoCard>
 		</div>
 	</section>
 </Layout>

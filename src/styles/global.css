@@ -19,10 +19,20 @@
   --color-starlight-light: #151A30;
   
   --animate-gradient: gradient 8s ease infinite;
+  --animate-border-beam: border-beam 4s linear infinite;
+  
+  --font-serif: "Instrument Serif", serif;
+  
+  --ease-expo-out: cubic-bezier(0.19, 1, 0.22, 1);
   
   @keyframes gradient {
     0%, 100% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
+  }
+
+  @keyframes border-beam {
+    0% { offset-distance: 0%; }
+    100% { offset-distance: 100%; }
   }
 }
 
@@ -39,6 +49,7 @@
     --card-bg: rgba(255, 255, 255, 0.7);
     --card-border: rgba(0, 0, 0, 0.05);
     --text-muted: #64748B;
+    --noise-opacity: 0.02;
   }
 
   :root.dark {
@@ -52,6 +63,7 @@
     --card-bg: rgba(255, 255, 255, 0.03);
     --card-border: rgba(255, 255, 255, 0.08);
     --text-muted: rgba(226, 232, 240, 0.6);
+    --noise-opacity: 0.05;
   }
 
   body {
@@ -64,10 +76,28 @@
     overflow-x: hidden;
   }
 
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Ffilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: var(--noise-opacity);
+    pointer-events: none;
+    z-index: 50;
+  }
+
   h1, h2, h3, h4, h5, h6 {
     color: var(--heading-color);
     font-weight: 700;
     letter-spacing: -0.02em;
+  }
+
+  .font-serif {
+    font-family: var(--font-serif);
+    font-style: italic;
   }
 
   a {
@@ -84,46 +114,49 @@
   .bento-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
+    gap: 2rem;
   }
 
   .bento-card {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
-    padding: 1.5rem;
-    border-radius: 1.5rem;
+    padding: 2rem;
+    border-radius: 2rem;
     backdrop-filter: blur(12px);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.5s var(--ease-expo-out);
     position: relative;
     overflow: hidden;
   }
 
   .bento-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-8px);
+    box-shadow: 0 32px 64px -16px rgba(0, 0, 0, 0.1);
+    border-color: rgba(10, 107, 255, 0.2);
   }
 
   .dark .bento-card:hover {
     background: rgba(255, 255, 255, 0.05);
     border-color: rgba(10, 107, 255, 0.3);
-    box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 32px 64px -16px rgba(0, 0, 0, 0.5);
   }
 
   .glass-button {
-    @apply px-6 py-3 rounded-xl font-bold transition-all duration-300 flex items-center gap-2;
+    @apply px-8 py-4 rounded-2xl font-bold transition-all duration-500 flex items-center gap-2;
     background: rgba(10, 107, 255, 0.1);
     border: 1px solid rgba(10, 107, 255, 0.2);
     color: var(--color-intellect);
+    transition-timing-function: var(--ease-expo-out);
   }
 
   .glass-button:hover {
     background: var(--color-intellect);
     color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px -8px var(--color-intellect);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px -12px var(--color-intellect);
   }
 
   .text-gradient {
     @apply text-transparent bg-clip-text bg-gradient-to-r from-intellect via-insight to-intellect bg-[length:200%_auto] animate-gradient;
   }
 }
+

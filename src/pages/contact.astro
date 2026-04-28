@@ -1,30 +1,42 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import BentoCard from '../components/BentoCard.astro';
 const lang = 'vi';
 ---
-<Layout title="Contact" lang={lang}>
+<Layout title="Liên hệ" lang={lang}>
 	<section class="mb-16">
-		<h1 class="text-4xl font-bold mb-12 border-l-4 border-intellect pl-6">
-			{lang === 'vi' ? 'Liên hệ' : 'Contact'}
+		<h1 class="text-5xl font-black mb-16 tracking-tighter">
+			Kết <span class="text-gradient font-serif">nối</span>
 		</h1>
 
 		<div class="bento-grid">
-			<div class="bento-card md:col-span-2">
-				<h2 class="text-2xl mb-6 text-insight">{lang === 'vi' ? 'Thông tin Liên hệ' : 'Contact Information'}</h2>
-				<div class="space-y-6 text-contrast/80">
-					<div>
-						<h3 class="text-starlight font-bold mb-2">{lang === 'vi' ? 'Địa chỉ:' : 'Address:'}</h3>
-						<p>PIISA Lab, Khoa Vật lý - Vật lý kỹ thuật, Trường Đại học Khoa học Tự nhiên, ĐHQG-HCM.</p>
-						<p>227 Nguyễn Văn Cừ, Phường 4, Quận 5, TP. Hồ Chí Minh, Việt Nam.</p>
+			<BentoCard class="md:col-span-2" showBorderBeam={true}>
+				<h2 class="text-3xl mb-10 text-insight font-bold tracking-tight">Thông tin Liên hệ</h2>
+				<div class="space-y-10 text-contrast/80">
+					<div class="p-6 rounded-2xl bg-foundation border border-black/5 dark:border-white/5">
+						<h3 class="text-xl text-starlight font-bold mb-4 flex items-center gap-3">
+							<span class="p-2 rounded-lg bg-intellect/10 text-intellect">📍</span>
+							Địa chỉ:
+						</h3>
+						<div class="text-lg leading-relaxed pl-12">
+							<p class="font-bold text-starlight">PIISA Lab, Khoa Vật lý - Vật lý kỹ thuật</p>
+							<p>Trường Đại học Khoa học Tự nhiên, ĐHQG-HCM.</p>
+							<p>227 Nguyễn Văn Cừ, Phường 4, Quận 5, TP. Hồ Chí Minh, Việt Nam.</p>
+						</div>
 					</div>
-					<div>
-						<h3 class="text-starlight font-bold mb-2">Email:</h3>
-						<a href="mailto:truongkien@hcmus.edu.vn" class="text-intellect hover:text-insight underline">truongkien@hcmus.edu.vn</a>
+					<div class="p-6 rounded-2xl bg-foundation border border-black/5 dark:border-white/5">
+						<h3 class="text-xl text-starlight font-bold mb-4 flex items-center gap-3">
+							<span class="p-2 rounded-lg bg-intellect/10 text-intellect">✉️</span>
+							Email:
+						</h3>
+						<div class="pl-12">
+							<a href="mailto:truongkien@hcmus.edu.vn" class="text-2xl font-serif text-intellect hover:text-insight transition-colors underline decoration-intellect/30 underline-offset-8">truongkien@hcmus.edu.vn</a>
+						</div>
 					</div>
 				</div>
-			</div>
+			</BentoCard>
 			
-			<div class="bento-card p-0 overflow-hidden min-h-[300px] border-intellect/20">
+			<BentoCard class="p-0 overflow-hidden min-h-[400px] border-intellect/20">
 				<iframe 
 					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.630773293551!2d106.6799830758414!3d10.762912959444738!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f1c06f4e593%3A0xd6e07adca6940a45!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBLaG9hIGjhu41jIFThu7EgbmnDqm4gLSDEkEhRRyBUUEhDTQ!5e0!3m2!1svi!2s!4v1714316143415!5m2!1svi!2s" 
 					width="100%" 
@@ -33,9 +45,9 @@ const lang = 'vi';
 					allowfullscreen="" 
 					loading="lazy" 
 					referrerpolicy="no-referrer-when-downgrade"
-					class="w-full h-full grayscale hover:grayscale-0 transition-all duration-500"
+					class="w-full h-full grayscale contrast-125 dark:invert dark:hue-rotate-180 hover:grayscale-0 transition-all duration-700"
 				></iframe>
-			</div>
+			</BentoCard>
 		</div>
 	</section>
 </Layout>

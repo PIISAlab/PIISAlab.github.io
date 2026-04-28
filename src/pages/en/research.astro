@@ -1,41 +1,48 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import BentoCard from '../../components/BentoCard.astro';
 const lang = 'en';
 ---
 <Layout title="Research" lang={lang}>
 	<section class="mb-16">
-		<h1 class="text-4xl font-bold mb-12 border-l-4 border-intellect pl-6">
-			Research & Engineering
+		<h1 class="text-5xl font-black mb-16 tracking-tighter">
+			Research & <span class="text-gradient font-serif">Engineering</span>
 		</h1>
 
 		<div class="bento-grid">
-			<div class="bento-card md:col-span-2">
-				<h2 class="text-2xl mb-6 text-insight">Research Pillars</h2>
-				<ul class="space-y-4 text-contrast/80">
-					<li class="flex items-start">
-						<span class="text-intellect mr-3">→</span>
+			<BentoCard class="md:col-span-2" showBorderBeam={true}>
+				<h2 class="text-3xl mb-8 text-insight font-bold tracking-tight">Research Pillars</h2>
+				<ul class="space-y-8 text-contrast/80">
+					<li class="flex items-start group/item">
+						<span class="text-intellect mr-5 text-2xl group-hover/item:translate-x-1 transition-transform">→</span>
 						<div>
-							<strong class="text-starlight">6G Networks & Signal Processing:</strong>
-							<p class="text-sm mt-1">Developing advanced algorithms for the next generation of wireless networks.</p>
+							<strong class="text-2xl text-starlight tracking-tight">6G Networks & Signal Processing:</strong>
+							<p class="text-lg mt-3 leading-relaxed">Developing advanced algorithms for next-generation wireless networks, focusing on Massive MIMO and Beamforming.</p>
 						</div>
 					</li>
-					<li class="flex items-start">
-						<span class="text-intellect mr-3">→</span>
+					<li class="flex items-start group/item">
+						<span class="text-intellect mr-5 text-2xl group-hover/item:translate-x-1 transition-transform">→</span>
 						<div>
-							<strong class="text-starlight">Multi-physics Simulation:</strong>
-							<p class="text-sm mt-1">Simulating complex physical phenomena in antennas and wave propagation.</p>
+							<strong class="text-2xl text-starlight tracking-tight">Multi-physics Simulation:</strong>
+							<p class="text-lg mt-3 leading-relaxed">Simulating complex physical phenomena in antennas, wave propagation, and fluid dynamics using Neural Networks.</p>
 						</div>
 					</li>
 				</ul>
-			</div>
+			</BentoCard>
 			
-			<div class="bento-card">
-				<h2 class="text-2xl mb-6 text-intellect">Education</h2>
-				<ul class="space-y-4 text-contrast/80 text-sm">
-					<li><strong>Design Thinking:</strong> Human-centered processes.</li>
-					<li><strong>Systems Thinking:</strong> Holistic framework.</li>
+			<BentoCard class="bg-gradient-to-br from-intellect/5 to-transparent border-intellect/10">
+				<h2 class="text-3xl mb-8 text-intellect font-bold tracking-tight">Education</h2>
+				<ul class="space-y-6 text-contrast/80">
+					<li class="p-4 rounded-xl bg-foundation border border-black/5 dark:border-white/5">
+						<strong class="text-starlight text-lg block mb-1">Design Thinking:</strong> 
+						<span class="text-base leading-relaxed italic">Human-centered approach in engineering solutions.</span>
+					</li>
+					<li class="p-4 rounded-xl bg-foundation border border-black/5 dark:border-white/5">
+						<strong class="text-starlight text-lg block mb-1">Systems Thinking:</strong> 
+						<span class="text-base leading-relaxed italic">Developing a holistic view of complex intelligent systems.</span>
+					</li>
 				</ul>
-			</div>
+			</BentoCard>
 		</div>
 	</section>
 </Layout>
