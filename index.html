@@ -124,35 +124,33 @@
             font-weight: 600;
         }
 
-        /* Member Specific Styles */
-        .member-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-        .member-role {
-            font-weight: bold;
-            color: var(--secondary);
-            margin-bottom: 0.5rem;
-        }
-
-        .strategic-directions {
+        /* Publication List Styles */
+        .pub-list {
             list-style: none;
             padding: 0;
         }
-        .strategic-directions li {
-            margin-bottom: 1.2rem;
-            padding-left: 1.5rem;
-            position: relative;
+        .pub-item {
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 3px solid #e5e7eb;
         }
-        .strategic-directions li::before {
-            content: "•";
-            color: var(--accent);
-            position: absolute;
-            left: 0;
+        .pub-item:hover {
+            border-left-color: var(--accent);
+        }
+        .pub-title {
             font-weight: bold;
+            display: block;
         }
+        .pub-authors {
+            font-size: 0.95rem;
+            color: var(--dark);
+        }
+        .pub-venue {
+            font-style: italic;
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+
         footer {
             text-align: center;
             padding: 4rem 2rem;
@@ -164,12 +162,12 @@
             padding-bottom: 0.5rem;
             margin-top: 3rem;
         }
-        .news-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 0 !important;
-            border-bottom: none !important;
+        h3.pub-cat {
+            color: var(--dark);
+            margin-top: 2rem;
+            font-size: 1.2rem;
+            border-left: 4px solid var(--accent);
+            padding-left: 10px;
         }
         a {
             color: var(--primary);
@@ -199,8 +197,8 @@
     <div class="container">
         <!-- News Section -->
         <div class="news-section">
-            <h2 class="lang-vi news-header">📢 Tin tức mới nhất</h2>
-            <h2 class="lang-en news-header">📢 Latest News</h2>
+            <h2 class="lang-vi">📢 Tin tức mới nhất</h2>
+            <h2 class="lang-en">📢 Latest News</h2>
             
             <div class="news-item">
                 <span class="news-date lang-vi">07 Tháng 4, 2026</span>
@@ -212,17 +210,32 @@
 
         <!-- Introduction -->
         <div class="section">
-            <h2 class="lang-vi">Giới thiệu</h2>
-            <h2 class="lang-en">Introduction</h2>
+            <h2 class="lang-vi">Giới thiệu về Trưởng Lab</h2>
+            <h2 class="lang-en">About the PI</h2>
             
             <div class="lang-vi">
-                <p>Phòng Thí nghiệm Hệ thống Thông minh và Ứng dụng Dựa trên Vật lý (PIISA) thuộc Khoa Vật lý - Vật lý kỹ thuật, trường Đại học Khoa học Tự nhiên, Đại học Quốc gia thành phố Hồ Chí Minh được thành lập với Sứ mệnh tiên phong phát triển các công nghệ tính toán và truyền thông thế hệ mới.</p>
-                <p>Tầm nhìn của chúng tôi là trở thành một trung tâm nghiên cứu và đổi mới sáng tạo hàng đầu, tạo ra sự hội tụ mạnh mẽ giữa khoa học vật lý nền tảng, trí tuệ nhân tạo tiên tiến, và phương pháp luận thiết kế lấy con người làm trung tâm, từ đó kiến tạo nên các giải pháp thông minh, hiệu suất cao cho thế giới.</p>
+                <p><strong>TS. Trương Kiên (Dr. Kien Trung Truong)</strong> hiện là Giảng viên tại Khoa Vật lý - Vật lý kỹ thuật, Trường Đại học Khoa học Tự nhiên, ĐHQG-HCM. Ông là Senior Member của IEEE và là cựu sinh viên VEF. TS. Trương Kiên nhận bằng Thạc sĩ và Tiến sĩ Kỹ thuật Điện tại Đại học Texas tại Austin (UT Austin) dưới sự hướng dẫn của Giáo sư Robert W. Heath, Jr.</p>
+                <p>Sự nghiệp của ông ghi dấu ấn với những đóng góp quan trọng trong lĩnh vực hệ thống Massive MIMO, mạng chuyển tiếp và truyền năng lượng không dây, với nhiều giải thưởng "Bài báo xuất sắc nhất" và 5 bằng sáng chế tại Hoa Kỳ. Bên cạnh nghiên cứu kỹ thuật, ông còn tâm huyết với việc cải cách Đào tạo Kỹ thuật tại Việt Nam thông qua các mô hình sư phạm đổi mới.</p>
             </div>
             
             <div class="lang-en">
-                <p>The Physics-Informed Intelligent Systems and Applications (PIISA) Lab, Faculty of Physics and Engineering Physics, University of Science, VNU-HCM, is founded with the Mission to pioneer the development of next-generation computing and communication technologies.</p>
-                <p>Our Vision is to become a leading research and innovation hub, creating a powerful convergence between fundamental physics science, advanced artificial intelligence, and human-centered design methodologies, thereby architecting high-performance, intelligent solutions for the world.</p>
+                <p><strong>Dr. Kien Trung Truong</strong> is a Lecturer in the Department of Physics and Engineering Physics at the University of Science, VNU-HCM. An IEEE Senior Member and VEF Alumnus, Dr. Truong earned his Ph.D. and M.S.E. in Electrical Engineering from the University of Texas at Austin under the supervision of Professor Robert W. Heath, Jr.</p>
+                <p>His distinguished career is marked by significant contributions to Massive MIMO systems, relay networks, and wireless power transfer, earning him multiple "Best Paper" awards and five U.S. patents. Beyond his technical research, he is deeply committed to transforming Engineering Education in Vietnam through the implementation of innovative pedagogical models.</p>
+            </div>
+        </div>
+
+        <!-- Lab Members -->
+        <div class="section">
+            <h2 class="lang-vi">Thành viên Lab</h2>
+            <h2 class="lang-en">Lab Members</h2>
+            <div class="grid">
+                <div class="card">
+                    <span class="badge">Research</span>
+                    <h3 class="lang-vi">Đội ngũ Sinh viên</h3>
+                    <h3 class="lang-en">Undergraduate Team</h3>
+                    <p class="lang-vi">Nhóm sinh viên đại học tài năng đang thực hiện các dự án nghiên cứu về AI, Robotics và Hệ thống nhúng.</p>
+                    <p class="lang-en">A team of talented undergraduate students conducting research in AI, Robotics, and Embedded Systems.</p>
+                </div>
             </div>
         </div>
 
@@ -230,82 +243,83 @@
         <div class="section">
             <h2 class="lang-vi">Định hướng Chiến lược</h2>
             <h2 class="lang-en">Strategic Directions</h2>
-            
             <ul class="strategic-directions lang-vi">
-                <li><strong>Nghiên cứu & Kỹ thuật:</strong> Tập trung vào các lĩnh vực đột phá như Xử lý tín hiệu và Mô phỏng đa vật lý cho mạng 6G, thiết kế mạch tích hợp (IC) hiệu suất cao, và phát triển các thuật toán học máy Dựa trên Vật lý (Physics-Informed Machine Learning).</li>
-                <li><strong>Đào tạo & Đổi mới Sáng tạo:</strong> Cung cấp môi trường học tập đa ngành, thực tiễn, đào tạo kỹ sư và nhà nghiên cứu có khả năng thiết kế hệ thống toàn diện áp dụng Tư duy Thiết kế (Design Thinking) và Tư duy Hệ thống (Systems Thinking).</li>
+                <li><strong>Nghiên cứu & Kỹ thuật:</strong> Tập trung vào Xử lý tín hiệu và Mô phỏng đa vật lý cho mạng 6G, thiết kế mạch tích hợp (IC) hiệu suất cao, và Physics-Informed Machine Learning.</li>
+                <li><strong>Đào tạo & Đổi mới:</strong> Áp dụng Tư duy Thiết kế (Design Thinking) và Tư duy Hệ thống (Systems Thinking) để thúc đẩy quá trình đổi mới sáng tạo.</li>
             </ul>
-
             <ul class="strategic-directions lang-en">
-                <li><strong>Research & Engineering:</strong> Focusing on breakthrough areas such as Signal Processing and Multiphysics Simulation for 6G networks, high-performance IC design, and Physics-Informed Machine Learning algorithms.</li>
-                <li><strong>Education & Innovation:</strong> Providing a multidisciplinary, hands-on learning environment, training engineers and researchers in comprehensive system design using Design Thinking and Systems Thinking principles.</li>
+                <li><strong>Research & Engineering:</strong> Focusing on Signal Processing and Multiphysics Simulation for 6G, high-performance IC design, and Physics-Informed Machine Learning.</li>
+                <li><strong>Education & Innovation:</strong> Applying Design Thinking and Systems Thinking principles to drive innovation from concept to product.</li>
             </ul>
         </div>
 
-        <!-- Lab Members (PIISA Group) -->
+        <!-- Publications -->
         <div class="section">
-            <h2 class="lang-vi">Thành viên Lab</h2>
-            <h2 class="lang-en">Lab Members</h2>
-            
-            <div class="grid">
-                <!-- Principal Investigator -->
-                <div class="card member-card">
-                    <span class="badge lang-vi">Trưởng Lab</span>
-                    <span class="badge lang-en">Principal Investigator</span>
-                    <h3>Dr. Kien T. Truong</h3>
-                    <p class="member-role lang-vi">TS. Trương Kiên</p>
-                    <p class="lang-vi">Chuyên gia về AI, Robotics và Kiến trúc Hệ thống thông minh.</p>
-                    <p class="lang-en">Expert in AI, Robotics, and Intelligent System Architecture.</p>
-                </div>
+            <h2 class="lang-vi">Công bố Khoa học</h2>
+            <h2 class="lang-en">Publications</h2>
 
-                <!-- Undergraduate Students -->
-                <div class="card member-card">
-                    <span class="badge lang-vi">Sinh viên</span>
-                    <span class="badge lang-en">Students</span>
-                    <h3 class="lang-vi">Đội ngũ Sinh viên Research</h3>
-                    <h3 class="lang-en">Undergraduate Research Team</h3>
-                    <p class="lang-vi">Nhóm sinh viên đại học tài năng đang thực hiện các dự án nghiên cứu về AI, Robotics và Hệ thống nhúng.</p>
-                    <p class="lang-en">A team of talented undergraduate students conducting research in AI, Robotics, and Embedded Systems.</p>
-                </div>
-            </div>
+            <h3 class="pub-cat">Journal Papers</h3>
+            <ul class="pub-list">
+                <li class="pub-item">
+                    <span class="pub-title">Resource allocation for SWIPT networks in the presence of nonlinear energy harvesting</span>
+                    <span class="pub-authors">K. T. Truong et al.</span>
+                    <span class="pub-venue">IEEE Transactions on Vehicular Technology, 2018.</span>
+                </li>
+                <li class="pub-item">
+                    <span class="pub-title">Effects of channel aging in TDD massive MIMO systems</span>
+                    <span class="pub-authors">K. T. Truong and R. W. Heath, Jr.</span>
+                    <span class="pub-venue">Journal of Communications and Networks, 2013 (Best Paper Award).</span>
+                </li>
+                <li class="pub-item">
+                    <span class="pub-title">Cooperative algorithms for amplify-and-forward relay networks</span>
+                    <span class="pub-authors">K. T. Truong and R. W. Heath, Jr.</span>
+                    <span class="pub-venue">IEEE Transactions on Signal Processing, 2013.</span>
+                </li>
+            </ul>
+
+            <h3 class="pub-cat">Conference Papers</h3>
+            <ul class="pub-list">
+                <li class="pub-item">
+                    <span class="pub-title">Internal reciprocity calibration for TDD massive MIMO</span>
+                    <span class="pub-authors">K. T. Truong et al.</span>
+                    <span class="pub-venue">IEEE ATC, 2018 (Best Paper Award).</span>
+                </li>
+                <li class="pub-item">
+                    <span class="pub-title">Analog CSI feedback in FDD massive MIMO systems</span>
+                    <span class="pub-authors">K. T. Truong et al.</span>
+                    <span class="pub-venue">IEEE Asilomar, 2015.</span>
+                </li>
+            </ul>
+
+            <h3 class="pub-cat">Patents</h3>
+            <ul class="pub-list">
+                <li class="pub-item">
+                    <span class="pub-title">Methods and systems for massive MIMO adaptation</span>
+                    <span class="pub-venue">US Patent #10,686,498 (2020).</span>
+                </li>
+                <li class="pub-item">
+                    <span class="pub-title">Distributed power control in a wireless network</span>
+                    <span class="pub-venue">US Patent #8,706,026 (2014).</span>
+                </li>
+            </ul>
         </div>
 
         <!-- Projects -->
         <div class="section">
             <h2 class="lang-vi">Nghiên cứu & Dự án Hiện tại</h2>
             <h2 class="lang-en">Current Research & Projects</h2>
-            
             <div class="grid">
                 <div class="card">
-                    <span class="badge lang-vi">Thị giác</span>
-                    <span class="badge lang-en">Vision</span>
+                    <span class="badge">Vision</span>
                     <h3>Q-Navigator</h3>
-                    <p class="lang-vi">Robot dò đường theo vật thể thời gian thực sử dụng kiến trúc xử lý kép (Qualcomm Dragonwing MPU + STM32 MCU).</p>
-                    <p class="lang-en">Real-time vision-based object tracking rover utilizing dual-processor architecture (Qualcomm Dragonwing MPU + STM32 MCU).</p>
+                    <p class="lang-vi">Robot dò đường theo vật thể thời gian thực sử dụng kiến trúc xử lý kép.</p>
+                    <p class="lang-en">Real-time vision-based object tracking rover utilizing dual-processor architecture.</p>
                 </div>
-
                 <div class="card">
-                    <span class="badge lang-vi">Tương tác</span>
-                    <span class="badge lang-en">HRI</span>
+                    <span class="badge">HRI</span>
                     <h3>EchoFlow</h3>
-                    <p class="lang-vi">Hệ thống điều khiển robot bằng giọng nói và cử chỉ tích hợp, minh họa tương tác Người-Máy tiên tiến.</p>
-                    <p class="lang-en">On-device hybrid voice and gesture robotic controller demonstrating advanced Human-Robot Interaction.</p>
-                </div>
-
-                <div class="card">
-                    <span class="badge lang-vi">Công nghiệp 5.0</span>
-                    <span class="badge lang-en">Industry 5.0</span>
-                    <h3>Sentry-Q</h3>
-                    <p class="lang-vi">Hệ thống phát hiện bất thường dựa trên âm thanh và rung động bằng AI cho bảo trì dự báo trong các hệ thống thông minh.</p>
-                    <p class="lang-en">AI-driven acoustic and vibration anomaly detection for predictive maintenance in intelligent systems.</p>
-                </div>
-
-                <div class="card">
-                    <span class="badge lang-vi">Trí tuệ</span>
-                    <span class="badge lang-en">Intelligence</span>
-                    <h3>Q-Sorter</h3>
-                    <p class="lang-vi">Hệ thống phân loại công nghiệp tự động dựa trên thị giác máy tính cho kiểm soát chất lượng và phân tách vật liệu.</p>
-                    <p class="lang-en">Edge-vision automated industrial sorting system for quality control and material separation.</p>
+                    <p class="lang-vi">Điều khiển robot bằng giọng nói và cử chỉ tích hợp.</p>
+                    <p class="lang-en">On-device hybrid voice and gesture robotic controller.</p>
                 </div>
             </div>
         </div>
@@ -323,24 +337,16 @@
     <footer>
         <p class="lang-vi">&copy; 2026 Lab PIISA - Đại học Khoa học Tự nhiên, ĐHQG-HCM</p>
         <p class="lang-en">&copy; 2026 PIISA Lab - VNU-HCM University of Science</p>
-        <p><a href="https://github.com/PIISAlab">GitHub Organization</a></p>
     </footer>
 
     <script>
         function setLanguage(lang) {
-            // Set lang attribute on body
             document.documentElement.setAttribute('lang', lang);
-            
-            // Update buttons
             document.getElementById('btn-vi').classList.toggle('active', lang === 'vi');
             document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-            
-            // Save preference
             localStorage.setItem('piisa-lang', lang);
         }
-
-        // Initialize language
-        window.addEventListener('DOMContentLoaded', (event) => {
+        window.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem('piisa-lang') || 'vi';
             setLanguage(savedLang);
         });
