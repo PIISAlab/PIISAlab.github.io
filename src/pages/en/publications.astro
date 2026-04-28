@@ -57,7 +57,7 @@ const publications = {
 <Layout title="Publications" lang={lang}>
 	<section class="mb-16">
 		<h1 class="text-4xl font-bold mb-12 border-l-4 border-intellect pl-6">
-			{lang === 'vi' ? 'Toàn bộ Công bố' : 'Full Publication List'}
+			Full Publication List
 		</h1>
 
 		<div class="space-y-16">
@@ -65,7 +65,7 @@ const publications = {
 			<div>
 				<h2 class="text-2xl mb-8 text-insight font-bold flex items-center">
 					<span class="w-10 h-10 rounded-lg bg-insight/10 text-insight flex items-center justify-center mr-4 text-sm border border-insight/20">J</span>
-					{lang === 'vi' ? 'Tạp chí Quốc tế' : 'International Journals'}
+					International Journals
 				</h2>
 				<div class="grid gap-4">
 					{publications.journals.map(pub => (
@@ -91,7 +91,7 @@ const publications = {
 			<div>
 				<h2 class="text-2xl mb-8 text-intellect font-bold flex items-center">
 					<span class="w-10 h-10 rounded-lg bg-intellect/10 text-intellect flex items-center justify-center mr-4 text-sm border border-intellect/20">C</span>
-					{lang === 'vi' ? 'Hội nghị Quốc tế' : 'International Conferences'}
+					International Conferences
 				</h2>
 				<div class="grid gap-4">
 					{publications.conferences.map(pub => (
@@ -118,7 +118,7 @@ const publications = {
 				<div>
 					<h2 class="text-2xl mb-8 text-starlight font-bold flex items-center">
 						<span class="w-10 h-10 rounded-lg bg-black/10 dark:bg-white/10 text-starlight flex items-center justify-center mr-4 text-sm border border-black/20 dark:border-white/20">P</span>
-						{lang === 'vi' ? 'Bằng sáng chế US' : 'US Patents'}
+						US Patents
 					</h2>
 					<div class="space-y-4">
 						{publications.patents.map(pub => (
@@ -137,7 +137,7 @@ const publications = {
 				<div>
 					<h2 class="text-2xl mb-8 text-contrast/80 font-bold flex items-center">
 						<span class="w-10 h-10 rounded-lg bg-black/5 dark:bg-white/5 text-contrast/80 flex items-center justify-center mr-4 text-sm border border-black/10 dark:border-white/10">D</span>
-						{lang === 'vi' ? 'Trong nước' : 'Domestic'}
+						Domestic
 					</h2>
 					<div class="space-y-4">
 						{publications.domestic.map(pub => (
