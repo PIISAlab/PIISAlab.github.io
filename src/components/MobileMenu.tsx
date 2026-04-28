@@ -58,7 +58,7 @@ export default function MobileMenu({ lang, menuItems }: Props) {
         <div className="absolute top-20 left-0 right-0 bg-foundation border-b border-black/10 dark:border-white/10 p-4 shadow-xl animate-fade-in z-50">
           <ul className="flex flex-col space-y-4">
             {menuItems.map((item) => {
-              const href = lang === 'vi' ? item.href : `/en${item.href}`;
+              const href = lang === 'vi' ? item.href : `/en${item.href === '/' ? '' : item.href}`;
               return (
                 <li key={item.href}>
                   <a

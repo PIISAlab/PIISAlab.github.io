@@ -14,9 +14,6 @@ export default defineConfig({
     }
   },
   integrations: [react()],
-  build: {
-    format: 'file'
-  },
   vite: {
     plugins: [tailwindcss()]
   }
