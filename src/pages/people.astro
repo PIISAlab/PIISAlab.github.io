@@ -36,7 +36,7 @@ const lang = 'vi';
 					<span class="p-2.5 rounded-xl bg-insight/10 text-insight">👥</span>
 					Thành viên Hiện tại
 				</h2>
-				<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+				<div class="grid sm:grid-cols-2 gap-6">
 					<!-- Cao Khánh Duy -->
 					<div class="group p-6 rounded-2xl bg-foundation border border-black/5 dark:border-white/5 hover:border-insight/30 hover:shadow-xl hover:shadow-insight/5 transition-all duration-500">
 						<div class="w-full h-36 rounded-[1.25rem] mb-5 bg-gradient-to-br from-insight/10 to-intellect/10 flex items-center justify-center border border-insight/10 group-hover:from-insight/15 group-hover:to-intellect/15 transition-all duration-500">
@@ -47,9 +47,15 @@ const lang = 'vi';
 							<span class="text-xs font-black uppercase tracking-widest text-insight bg-insight/10 px-3 py-1 rounded-full border border-insight/20">22CVD</span>
 							<span class="text-xs font-bold text-contrast/50 bg-black/5 dark:bg-white/5 px-3 py-1 rounded-full">Khóa luận TN</span>
 						</div>
-						<div class="pt-4 border-t border-black/5 dark:border-white/5">
-							<p class="text-xs font-black text-contrast/40 uppercase tracking-widest mb-2">Đề tài</p>
-							<p class="text-sm text-contrast/80 leading-relaxed">Thiết kế và hiện thực hệ thống tăng cường tầm nhìn trên nền tảng FPGA DE1-SoC</p>
+						<div class="pt-4 border-t border-black/5 dark:border-white/5 space-y-4">
+							<div>
+								<p class="text-xs font-black text-contrast/40 uppercase tracking-widest mb-2">Đề tài</p>
+								<p class="text-sm font-semibold text-starlight leading-relaxed">Thiết kế và hiện thực hệ thống tăng cường tầm nhìn trên nền tảng FPGA DE1-SoC</p>
+							</div>
+							<div>
+								<p class="text-xs font-black text-contrast/40 uppercase tracking-widest mb-2">Tóm tắt</p>
+								<p class="text-sm text-contrast/70 leading-relaxed">Trong bối cảnh các ứng dụng giám sát và cứu hộ đòi hỏi khả năng quan sát chính xác dưới điều kiện thời tiết khắc nghiệt, các hệ thống tăng cường tầm nhìn đóng vai trò vô cùng cấp thiết. Khóa luận này tập trung thiết kế và hiện thực hệ thống khử sương mù, khói thời gian thực trên nền tảng FPGA DE1-SoC. Bằng cách tối ưu hóa kiến trúc SoC, nhiệm vụ được phân chia hiệu quả giữa phần cứng FPGA (xử lý DSP song song, độ trễ thấp qua Verilog) và phần mềm HPS (điều khiển hệ thống trên ARM Cortex-A9). Quy trình từ mô phỏng MATLAB, kiểm tra ModelSim đến thực thi trên Quartus đã chứng minh được ưu thế vượt trội của FPGA trong xử lý ảnh tốc độ cao. Kết quả nghiên cứu không chỉ cải thiện chất lượng hình ảnh thực tế mà còn thiết lập khung tiêu chuẩn cho các hệ thống tăng cường tầm nhìn thông minh trong tương lai.</p>
+							</div>
 						</div>
 					</div>
 
@@ -63,9 +69,15 @@ const lang = 'vi';
 							<span class="text-xs font-black uppercase tracking-widest text-prestige bg-prestige/10 px-3 py-1 rounded-full border border-prestige/20">22CVD</span>
 							<span class="text-xs font-bold text-contrast/50 bg-black/5 dark:bg-white/5 px-3 py-1 rounded-full">Khóa luận TN</span>
 						</div>
-						<div class="pt-4 border-t border-black/5 dark:border-white/5">
-							<p class="text-xs font-black text-contrast/40 uppercase tracking-widest mb-2">Đề tài</p>
-							<p class="text-sm text-contrast/80 leading-relaxed">Mô phỏng đa vật lý của các hệ thống anten có thể cấu hình lại bằng kim loại lỏng</p>
+						<div class="pt-4 border-t border-black/5 dark:border-white/5 space-y-4">
+							<div>
+								<p class="text-xs font-black text-contrast/40 uppercase tracking-widest mb-2">Đề tài</p>
+								<p class="text-sm font-semibold text-starlight leading-relaxed">Mô phỏng đa vật lý của các hệ thống anten có thể cấu hình lại bằng kim loại lỏng</p>
+							</div>
+							<div>
+								<p class="text-xs font-black text-contrast/40 uppercase tracking-widest mb-2">Tóm tắt</p>
+								<p class="text-sm text-contrast/70 leading-relaxed">Các hệ thống anten kim loại lỏng hiện đang thu hút sự quan tâm đặc biệt trong phát triển mạng thông tin di động thế hệ 6 (6G) nhờ khả năng tái cấu hình linh hoạt về cấu trúc hình học và đặc tính bức xạ. Khoá luận này tập trung nghiên cứu giản đồ bức xạ và các tham số hiệu năng đặc trưng của mảng anten kim loại lỏng thông qua mô phỏng điện từ sóng toàn phần (full-wave) trên giao diện Electromagnetic Waves, Frequency Domain của phần mềm COMSOL Multiphysics. Kết quả nghiên cứu phân tích chi tiết tác động của các tham số như số lượng phần tử, cấu hình hình học và tần số hoạt động đến các tham số hiệu năng then chốt như độ lợi (gain) và tổn hao phản xạ (return loss). Những phát hiện này không chỉ cung cấp cái nhìn chuyên sâu về hành vi điện từ của anten kim loại lỏng, mà còn thiết lập khung mô phỏng nền tảng cho các hệ thống anten tái cấu hình dựa trên chất lỏng trong tương lai.</p>
+							</div>
 						</div>
 					</div>
 				</div>
