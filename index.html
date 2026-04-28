@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,11 +19,48 @@
             color: var(--dark);
             background: #fff;
         }
+        
+        /* Language Switcher */
+        .lang-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        .lang-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Language-specific visibility */
+        [lang="en"] .lang-vi { display: none; }
+        [lang="vi"] .lang-en { display: none; }
+
         header {
             background: var(--dark);
             color: white;
-            padding: 5rem 2rem;
+            padding: 6rem 2rem 5rem;
             text-align: center;
+            position: relative;
         }
         .container {
             max-width: 1000px;
@@ -59,21 +96,12 @@
             font-size: 0.8rem;
             font-weight: 600;
         }
-        .lang-section {
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-        .lang-column {
-            flex: 1;
-            min-width: 300px;
-        }
         .strategic-directions {
             list-style: none;
             padding: 0;
         }
         .strategic-directions li {
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
             padding-left: 1.5rem;
             position: relative;
         }
@@ -97,81 +125,131 @@
         }
     </style>
 </head>
-<body>
+<body id="main-body">
     <header>
+        <div class="lang-switcher">
+            <button class="lang-btn active" onclick="setLanguage('vi')" id="btn-vi">
+                <span style="font-size: 1.2rem;">🇻🇳</span> VN
+            </button>
+            <button class="lang-btn" onclick="setLanguage('en')" id="btn-en">
+                <span style="font-size: 1.2rem;">🇺🇸</span> EN
+            </button>
+        </div>
+        
         <h1>PIISA Lab</h1>
-        <p>Phòng Thí nghiệm Hệ thống Thông minh và Ứng dụng Dựa trên Vật lý</p>
-        <p>Physics-Informed Intelligent Systems and Applications Lab</p>
+        <p class="lang-vi">Phòng Thí nghiệm Hệ thống Thông minh và Ứng dụng Dựa trên Vật lý</p>
+        <p class="lang-en">Physics-Informed Intelligent Systems and Applications Lab</p>
     </header>
 
     <div class="container">
-        <div class="section lang-section">
-            <div class="lang-column">
-                <h2>Giới thiệu</h2>
+        <!-- Introduction -->
+        <div class="section">
+            <h2 class="lang-vi">Giới thiệu</h2>
+            <h2 class="lang-en">Introduction</h2>
+            
+            <div class="lang-vi">
                 <p>Phòng Thí nghiệm Hệ thống Thông minh và Ứng dụng Dựa trên Vật lý (PIISA) thuộc Khoa Vật lý - Vật lý kỹ thuật, trường Đại học Khoa học Tự nhiên, Đại học Quốc gia thành phố Hồ Chí Minh được thành lập với Sứ mệnh tiên phong phát triển các công nghệ tính toán và truyền thông thế hệ mới.</p>
                 <p>Tầm nhìn của chúng tôi là trở thành một trung tâm nghiên cứu và đổi mới sáng tạo hàng đầu, tạo ra sự hội tụ mạnh mẽ giữa khoa học vật lý nền tảng, trí tuệ nhân tạo tiên tiến, và phương pháp luận thiết kế lấy con người làm trung tâm, từ đó kiến tạo nên các giải pháp thông minh, hiệu suất cao cho thế giới.</p>
-                
-                <h3>Các Định hướng Chiến lược:</h3>
-                <ul class="strategic-directions">
-                    <li><strong>Nghiên cứu & Kỹ thuật:</strong> Tập trung vào các lĩnh vực đột phá như Xử lý tín hiệu và Mô phỏng đa vật lý cho mạng 6G, thiết kế mạch tích hợp (IC) hiệu suất cao, và phát triển các thuật toán học máy Dựa trên Vật lý (Physics-Informed Machine Learning).</li>
-                    <li><strong>Đào tạo & Đổi mới Sáng tạo:</strong> Cung cấp môi trường học tập đa ngành, thực tiễn, đào tạo kỹ sư và nhà nghiên cứu có khả năng thiết kế hệ thống toàn diện áp dụng Tư duy Thiết kế (Design Thinking) và Tư duy Hệ thống (Systems Thinking).</li>
-                    <li><strong>Phát triển Sản phẩm & Ứng dụng:</strong> Chuyển hóa nhanh chóng các kết quả nghiên cứu thành các sản phẩm có giá trị thương mại, đặc biệt là các ứng dụng AI-powered cho doanh nghiệp.</li>
-                </ul>
             </div>
             
-            <div class="lang-column">
-                <h2>Introduction</h2>
+            <div class="lang-en">
                 <p>The Physics-Informed Intelligent Systems and Applications (PIISA) Lab, Faculty of Physics and Engineering Physics, University of Science, VNU-HCM, is founded with the Mission to pioneer the development of next-generation computing and communication technologies.</p>
                 <p>Our Vision is to become a leading research and innovation hub, creating a powerful convergence between fundamental physics science, advanced artificial intelligence, and human-centered design methodologies, thereby architecting high-performance, intelligent solutions for the world.</p>
-
-                <h3>Strategic Directions:</h3>
-                <ul class="strategic-directions">
-                    <li><strong>Research & Engineering:</strong> Focusing on breakthrough areas such as Signal Processing and Multiphysics Simulation for 6G networks, high-performance IC design, and Physics-Informed Machine Learning algorithms.</li>
-                    <li><strong>Education & Innovation:</strong> Providing a multidisciplinary, hands-on learning environment, training engineers and researchers in comprehensive system design using Design Thinking and Systems Thinking principles.</li>
-                    <li><strong>Product Development & Applications:</strong> Rapidly translating research outcomes into valuable commercial products, especially AI-powered applications for enterprise customers.</li>
-                </ul>
             </div>
         </div>
 
+        <!-- Strategic Directions -->
         <div class="section">
-            <h2>Current Research & Projects</h2>
+            <h2 class="lang-vi">Định hướng Chiến lược</h2>
+            <h2 class="lang-en">Strategic Directions</h2>
+            
+            <ul class="strategic-directions lang-vi">
+                <li><strong>Nghiên cứu & Kỹ thuật:</strong> Tập trung vào các lĩnh vực đột phá như Xử lý tín hiệu và Mô phỏng đa vật lý cho mạng 6G, thiết kế mạch tích hợp (IC) hiệu suất cao, và phát triển các thuật toán học máy Dựa trên Vật lý (Physics-Informed Machine Learning).</li>
+                <li><strong>Đào tạo & Đổi mới Sáng tạo:</strong> Cung cấp môi trường học tập đa ngành, thực tiễn, đào tạo kỹ sư và nhà nghiên cứu có khả năng thiết kế hệ thống toàn diện áp dụng Tư duy Thiết kế (Design Thinking) và Tư duy Hệ thống (Systems Thinking).</li>
+                <li><strong>Phát triển Sản phẩm & Ứng dụng:</strong> Chuyển hóa nhanh chóng các kết quả nghiên cứu thành các sản phẩm có giá trị thương mại, đặc biệt là các ứng dụng AI-powered cho doanh nghiệp.</li>
+            </ul>
+
+            <ul class="strategic-directions lang-en">
+                <li><strong>Research & Engineering:</strong> Focusing on breakthrough areas such as Signal Processing and Multiphysics Simulation for 6G networks, high-performance IC design, and Physics-Informed Machine Learning algorithms.</li>
+                <li><strong>Education & Innovation:</strong> Providing a multidisciplinary, hands-on learning environment, training engineers and researchers in comprehensive system design using Design Thinking and Systems Thinking principles.</li>
+                <li><strong>Product Development & Applications:</strong> Rapidly translating research outcomes into valuable commercial products, especially AI-powered applications for enterprise customers.</li>
+            </ul>
+        </div>
+
+        <!-- Projects -->
+        <div class="section">
+            <h2 class="lang-vi">Nghiên cứu & Dự án Hiện tại</h2>
+            <h2 class="lang-en">Current Research & Projects</h2>
+            
             <div class="grid">
                 <div class="card">
-                    <span class="badge">Vision</span>
+                    <span class="badge lang-vi">Thị giác</span>
+                    <span class="badge lang-en">Vision</span>
                     <h3>Q-Navigator</h3>
-                    <p>Real-time vision-based object tracking rover utilizing dual-processor architecture (Qualcomm Dragonwing MPU + STM32 MCU).</p>
+                    <p class="lang-vi">Robot dò đường theo vật thể thời gian thực sử dụng kiến trúc xử lý kép (Qualcomm Dragonwing MPU + STM32 MCU).</p>
+                    <p class="lang-en">Real-time vision-based object tracking rover utilizing dual-processor architecture (Qualcomm Dragonwing MPU + STM32 MCU).</p>
                 </div>
 
                 <div class="card">
-                    <span class="badge">HRI</span>
+                    <span class="badge lang-vi">Tương tác</span>
+                    <span class="badge lang-en">HRI</span>
                     <h3>EchoFlow</h3>
-                    <p>On-device hybrid voice and gesture robotic controller demonstrating advanced Human-Robot Interaction.</p>
+                    <p class="lang-vi">Hệ thống điều khiển robot bằng giọng nói và cử chỉ tích hợp, minh họa tương tác Người-Máy tiên tiến.</p>
+                    <p class="lang-en">On-device hybrid voice and gesture robotic controller demonstrating advanced Human-Robot Interaction.</p>
                 </div>
 
                 <div class="card">
-                    <span class="badge">Industry 5.0</span>
+                    <span class="badge lang-vi">Công nghiệp 5.0</span>
+                    <span class="badge lang-en">Industry 5.0</span>
                     <h3>Sentry-Q</h3>
-                    <p>AI-driven acoustic and vibration anomaly detection for predictive maintenance in intelligent systems.</p>
+                    <p class="lang-vi">Hệ thống phát hiện bất thường dựa trên âm thanh và rung động bằng AI cho bảo trì dự báo trong các hệ thống thông minh.</p>
+                    <p class="lang-en">AI-driven acoustic and vibration anomaly detection for predictive maintenance in intelligent systems.</p>
                 </div>
 
                 <div class="card">
-                    <span class="badge">Intelligence</span>
+                    <span class="badge lang-vi">Trí tuệ</span>
+                    <span class="badge lang-en">Intelligence</span>
                     <h3>Q-Sorter</h3>
-                    <p>Edge-vision automated industrial sorting system for quality control and material separation.</p>
+                    <p class="lang-vi">Hệ thống phân loại công nghiệp tự động dựa trên thị giác máy tính cho kiểm soát chất lượng và phân tách vật liệu.</p>
+                    <p class="lang-en">Edge-vision automated industrial sorting system for quality control and material separation.</p>
                 </div>
             </div>
         </div>
 
+        <!-- Contact -->
         <div class="section">
-            <h2>Contact Information</h2>
+            <h2 class="lang-vi">Thông tin Liên hệ</h2>
+            <h2 class="lang-en">Contact Information</h2>
             <p>Email: <a href="mailto:piisa.lab@gmail.com">piisa.lab@gmail.com</a></p>
-            <p>Location: Faculty of Physics and Engineering Physics, University of Science, VNU-HCM</p>
+            <p class="lang-vi">Địa điểm: Khoa Vật lý - Vật lý kỹ thuật, Đại học Khoa học Tự nhiên, ĐHQG-HCM</p>
+            <p class="lang-en">Location: Faculty of Physics and Engineering Physics, University of Science, VNU-HCM</p>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2026 PIISA Lab - VNU-HCM University of Science</p>
+        <p class="lang-vi">&copy; 2026 Lab PIISA - Đại học Khoa học Tự nhiên, ĐHQG-HCM</p>
+        <p class="lang-en">&copy; 2026 PIISA Lab - VNU-HCM University of Science</p>
         <p><a href="https://github.com/PIISAlab">GitHub Organization</a></p>
     </footer>
+
+    <script>
+        function setLanguage(lang) {
+            // Set lang attribute on body
+            document.documentElement.setAttribute('lang', lang);
+            
+            // Update buttons
+            document.getElementById('btn-vi').classList.toggle('active', lang === 'vi');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            
+            // Save preference
+            localStorage.setItem('piisa-lang', lang);
+        }
+
+        // Initialize language
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const savedLang = localStorage.getItem('piisa-lang') || 'vi';
+            setLanguage(savedLang);
+        });
+    </script>
 </body>
 </html>
