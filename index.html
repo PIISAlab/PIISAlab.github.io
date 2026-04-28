@@ -11,6 +11,7 @@
             --dark: #1f2937;
             --light: #f3f4f6;
             --accent: #3b82f6;
+            --news-bg: #eff6ff;
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -70,6 +71,32 @@
         .section {
             margin-bottom: 4rem;
         }
+        
+        /* News Section Styles */
+        .news-section {
+            background: var(--news-bg);
+            border-left: 5px solid var(--primary);
+            padding: 1.5rem 2rem;
+            margin-bottom: 4rem;
+            border-radius: 0 8px 8px 0;
+        }
+        .news-item {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #dbeafe;
+        }
+        .news-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .news-date {
+            font-size: 0.85rem;
+            color: var(--secondary);
+            font-weight: bold;
+            display: block;
+        }
+
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -123,6 +150,13 @@
             padding-bottom: 0.5rem;
             margin-top: 3rem;
         }
+        .news-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 0 !important;
+            border-bottom: none !important;
+        }
     </style>
 </head>
 <body id="main-body">
@@ -142,6 +176,26 @@
     </header>
 
     <div class="container">
+        <!-- News Section -->
+        <div class="news-section">
+            <h2 class="lang-vi news-header">📢 Tin tức mới nhất</h2>
+            <h2 class="lang-en news-header">📢 Latest News</h2>
+            
+            <div class="news-item">
+                <span class="news-date lang-vi">28 Tháng 4, 2026</span>
+                <span class="news-date lang-en">April 28, 2026</span>
+                <p class="lang-vi">PIISA Lab khởi động chuỗi dự án Robotics mới tập trung vào kiến trúc xử lý kép Qualcomm Dragonwing và STM32 cho các ứng dụng Edge AI.</p>
+                <p class="lang-en">PIISA Lab launches a new series of Robotics projects focusing on Qualcomm Dragonwing and STM32 dual-processor architectures for Edge AI applications.</p>
+            </div>
+
+            <div class="news-item">
+                <span class="news-date lang-vi">17 Tháng 4, 2026</span>
+                <span class="news-date lang-en">April 17, 2026</span>
+                <p class="lang-vi">Cập nhật danh mục tác nhân PAI (PAI Agent Registry) cho các trạm làm việc của lab, tối ưu hóa quy trình nghiên cứu và phát triển hệ thống thông minh.</p>
+                <p class="lang-en">Updated the PAI Agent Registry for lab workstations, optimizing research and development workflows for intelligent systems.</p>
+            </div>
+        </div>
+
         <!-- Introduction -->
         <div class="section">
             <h2 class="lang-vi">Giới thiệu</h2>
