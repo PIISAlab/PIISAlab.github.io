@@ -1,5 +1,6 @@
 ---
 import ThemeToggle from './ThemeToggle';
+import MobileMenu from './MobileMenu';
 
 interface Props {
 	lang: 'vi' | 'en';
@@ -58,6 +59,7 @@ if (lang === 'vi') {
 				>
 					{lang === 'vi' ? '🇺🇸 EN' : '🇻🇳 VN'}
 				</a>
+				<MobileMenu client:load lang={lang} menuItems={menuItems} />
 			</div>
 		</div>
 	</div>
