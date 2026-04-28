@@ -6,47 +6,103 @@ const lang = 'vi';
 
 <Layout title="Trang chủ" lang={lang}>
 	<!-- Hero Section -->
-	<section class="relative py-20 overflow-hidden">
-		<div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-intellect/10 blur-[120px] rounded-full -z-10"></div>
-		<div class="text-center">
-			<h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
+	<section class="relative min-h-[70vh] flex flex-col items-center justify-center py-20 overflow-hidden">
+		<!-- Dynamic Background Elements -->
+		<div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[800px] bg-intellect/20 blur-[160px] rounded-full -z-10 animate-pulse"></div>
+		<div class="absolute bottom-0 right-1/4 w-[600px] h-[400px] bg-insight/10 blur-[120px] rounded-full -z-10"></div>
+		
+		<div class="text-center z-10 max-w-5xl px-4">
+			<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-intellect/10 border border-intellect/20 text-intellect text-xs font-bold uppercase tracking-wider mb-8 animate-fade-in">
+				<span class="relative flex h-2 w-2">
+					<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-intellect opacity-75"></span>
+					<span class="relative inline-flex rounded-full h-2 w-2 bg-intellect"></span>
+				</span>
+				The Nexus of Physics & Intelligence
+			</div>
+			
+			<h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-8 leading-[1.1]">
 				Physics-Informed <br/>
-				<span class="text-transparent bg-clip-text bg-gradient-to-r from-intellect to-insight">Intelligent Systems</span>
+				<span class="text-gradient">Intelligent Systems</span>
 			</h1>
-			<p class="text-xl text-contrast/80 max-w-3xl mx-auto leading-relaxed">
-				Phòng Thí nghiệm Hệ thống Thông minh và Ứng dụng Dựa trên Vật lý (PIISA) Lab, Khoa Vật lý - Vật lý kỹ thuật, Trường Đại học Khoa học Tự nhiên, ĐHQG-HCM
+			
+			<p class="text-xl md:text-2xl text-contrast/80 max-w-3xl mx-auto leading-relaxed mb-12 font-medium">
+				Phòng Thí nghiệm Hệ thống Thông minh và Ứng dụng Dựa trên Vật lý (PIISA)
+				<span class="block text-sm mt-4 text-contrast/50 font-normal">Khoa Vật lý - Vật lý kỹ thuật, Trường Đại học Khoa học Tự nhiên, ĐHQG-HCM</span>
 			</p>
+
+			<div class="flex flex-wrap justify-center gap-4">
+				<a href="/research.html" class="glass-button bg-intellect text-white border-transparent">
+					Khám phá Nghiên cứu
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+				</a>
+				<a href="/publications.html" class="glass-button">
+					Xem Công bố
+				</a>
+			</div>
 		</div>
 	</section>
 
-	<div class="bento-grid mt-12">
+	<div class="bento-grid mt-24">
 		<!-- Welcome Card -->
-		<div class="bento-card md:col-span-2">
-			<h2 class="text-2xl mb-4 flex items-center text-starlight">
-				<span class="w-8 h-8 rounded-lg bg-insight/20 text-insight flex items-center justify-center mr-3 text-lg">✦</span>
-				Chào mừng bạn đến với PIISA Lab
-			</h2>
-			<div class="text-contrast/80 space-y-4">
-				<p><strong>PIISA Lab</strong> là trung tâm nghiên cứu tiên phong trong việc kết hợp các quy luật vật lý cơ bản với các kỹ thuật trí tuệ nhân tạo hiện đại.</p>
-				<p>Chúng tôi tận tâm giải quyết các thách thức kỹ thuật phức tạp trong mạng không dây thế hệ tiếp theo (6G), mô phỏng đa vật lý và thiết kế hệ thống thông minh.</p>
+		<div class="bento-card md:col-span-2 group">
+			<div class="flex flex-col h-full">
+				<div class="mb-6">
+					<span class="w-12 h-12 rounded-2xl bg-insight/10 text-insight flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+						✦
+					</span>
+				</div>
+				<h2 class="text-3xl font-bold mb-4">Chào mừng đến với PIISA Lab</h2>
+				<div class="text-lg text-contrast/80 space-y-4 flex-grow">
+					<p>Chúng tôi là trung tâm nghiên cứu tiên phong trong việc kết hợp các <strong>quy luật vật lý cơ bản</strong> với các <strong>kỹ thuật trí tuệ nhân tạo</strong> hiện đại.</p>
+					<p>Sứ mệnh của chúng tôi là giải quyết các thách thức kỹ thuật phức tạp trong mạng không dây thế hệ tiếp theo (6G), mô phỏng đa vật lý và thiết kế hệ thống thông minh.</p>
+				</div>
+				<div class="mt-8 flex gap-4">
+					<div class="px-4 py-2 rounded-lg bg-foundation border border-black/5 dark:border-white/5 text-sm font-semibold">
+						<span class="text-intellect">5+</span> Dự án Đang chạy
+					</div>
+					<div class="px-4 py-2 rounded-lg bg-foundation border border-black/5 dark:border-white/5 text-sm font-semibold">
+						<span class="text-insight">10+</span> Thành viên
+					</div>
+				</div>
 			</div>
 		</div>
 
 		<!-- Latest News Card -->
-		<div class="bento-card">
-			<h2 class="text-2xl mb-4 flex items-center text-starlight">
-				<span class="w-8 h-8 rounded-lg bg-intellect/20 text-intellect flex items-center justify-center mr-3 text-lg">📢</span>
-				Tin tức mới nhất
+		<div class="bento-card bg-gradient-to-br from-intellect/10 to-transparent border-intellect/20">
+			<h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+				<span class="p-2 rounded-lg bg-intellect/20 text-intellect">📢</span>
+				Tin tức
 			</h2>
 			<div class="space-y-6">
-				<div class="relative pl-6 border-l-2 border-intellect/30">
-					<div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-intellect"></div>
-					<span class="text-xs font-bold text-intellect uppercase tracking-wider">07 Tháng 4, 2026</span>
-					<p class="text-sm mt-2 text-contrast/90 font-medium">
-						Bài báo "Electrohydrodynamics of a Liquid-Metal Monopole Antenna Channel" được chấp nhận đăng tại FEDSM2026.
+				<div class="group/news cursor-default">
+					<span class="text-xs font-bold text-intellect uppercase tracking-wider bg-intellect/10 px-2 py-1 rounded">07 Tháng 4, 2026</span>
+					<p class="text-base mt-3 text-starlight font-semibold leading-snug group-hover/news:text-intellect transition-colors">
+						Bài báo "Electrohydrodynamics of a Liquid-Metal Monopole Antenna Channel" được chấp nhận tại FEDSM2026.
 					</p>
 				</div>
 			</div>
+			<a href="/news.html" class="mt-12 inline-flex items-center gap-2 text-sm font-bold text-intellect hover:underline">
+				Tất cả tin tức
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+			</a>
+		</div>
+
+		<!-- Focus Area 1 -->
+		<div class="bento-card group hover:border-innovation/30">
+			<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+				<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 7h10"/><path d="M7 12h10"/><path d="M7 17h10"/></svg>
+			</div>
+			<h3 class="text-xl font-bold mb-2 text-innovation">6G Communications</h3>
+			<p class="text-contrast/70">Tối ưu hóa tài nguyên mạng và beamforming dựa trên AI-Physics.</p>
+		</div>
+
+		<!-- Focus Area 2 -->
+		<div class="bento-card group hover:border-prestige/30">
+			<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+				<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="7.5 4.21 12 6.81 16.5 4.21"/><polyline points="7.5 19.79 7.5 14.63 3 12"/><polyline points="21 12 16.5 14.63 16.5 19.79"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+			</div>
+			<h3 class="text-xl font-bold mb-2 text-prestige">Multi-physics Simulation</h3>
+			<p class="text-contrast/70">Mô phỏng động học chất lỏng và điện từ trường bằng mạng thần kinh.</p>
 		</div>
 	</div>
 </Layout>

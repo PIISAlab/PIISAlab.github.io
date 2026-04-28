@@ -69,7 +69,7 @@ const publications = {
 				</h2>
 				<div class="grid gap-4">
 					{publications.journals.map(pub => (
-						<div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-intellect/50 hover:bg-white/[0.07] transition-all group">
+						<div class="p-6 rounded-2xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-intellect/50 hover:bg-black/[0.07] dark:hover:bg-white/[0.07] transition-all group">
 							<div class="flex items-start gap-4">
 								<span class="text-xs font-mono text-intellect bg-intellect/10 px-2 py-1 rounded shrink-0 mt-1">{pub.id}</span>
 								<div>
@@ -95,7 +95,7 @@ const publications = {
 				</h2>
 				<div class="grid gap-4">
 					{publications.conferences.map(pub => (
-						<div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-insight/50 hover:bg-white/[0.07] transition-all group">
+						<div class="p-6 rounded-2xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-insight/50 hover:bg-black/[0.07] dark:hover:bg-white/[0.07] transition-all group">
 							<div class="flex items-start gap-4">
 								<span class="text-xs font-mono text-insight bg-insight/10 px-2 py-1 rounded shrink-0 mt-1">{pub.id}</span>
 								<div>
@@ -117,12 +117,12 @@ const publications = {
 			<div class="grid md:grid-cols-2 gap-12">
 				<div>
 					<h2 class="text-2xl mb-8 text-starlight font-bold flex items-center">
-						<span class="w-10 h-10 rounded-lg bg-white/10 text-starlight flex items-center justify-center mr-4 text-sm border border-white/20">P</span>
+						<span class="w-10 h-10 rounded-lg bg-black/10 dark:bg-white/10 text-starlight flex items-center justify-center mr-4 text-sm border border-black/20 dark:border-white/20">P</span>
 						{lang === 'vi' ? 'Bằng sáng chế US' : 'US Patents'}
 					</h2>
 					<div class="space-y-4">
 						{publications.patents.map(pub => (
-							<div class="p-5 rounded-xl bg-white/5 border border-white/10">
+							<div class="p-5 rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10">
 								<div class="flex justify-between items-start mb-2">
 									<span class="text-xs font-mono text-intellect font-bold">{pub.id}</span>
 									<span class="text-xs text-contrast/40">{pub.year}</span>
@@ -136,12 +136,12 @@ const publications = {
 
 				<div>
 					<h2 class="text-2xl mb-8 text-contrast/80 font-bold flex items-center">
-						<span class="w-10 h-10 rounded-lg bg-white/5 text-contrast/80 flex items-center justify-center mr-4 text-sm border border-white/10">D</span>
+						<span class="w-10 h-10 rounded-lg bg-black/5 dark:bg-white/5 text-contrast/80 flex items-center justify-center mr-4 text-sm border border-black/10 dark:border-white/10">D</span>
 						{lang === 'vi' ? 'Trong nước' : 'Domestic'}
 					</h2>
 					<div class="space-y-4">
 						{publications.domestic.map(pub => (
-							<div class="p-5 rounded-xl bg-white/5 border border-white/10">
+							<div class="p-5 rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10">
 								<div class="flex justify-between items-start mb-2">
 									<span class="text-xs font-mono text-insight font-bold">{pub.id}</span>
 									<span class="text-xs text-contrast/40">{pub.year}</span>
