@@ -1,6 +1,27 @@
 ---
 import Layout from '../layouts/Layout.astro';
 const lang = 'vi';
+
+const publications = {
+	journals: [
+		{ id: '[J12]', title: 'Attacker Detection in Massive MIMO Systems over Spatially Uncorrelated Rician Fading Channels', authors: 'G. Q. L. Vu, H. Tran, C. V. Trinh, and K. T. Truong', venue: 'IEEE Access', year: '2022' },
+		{ id: '[J11]', title: 'Phase Impairment Estimation for mmWave MIMO Systems with Low Resolutions ADC and Imperfect CSI', authors: 'N. D. Nguyen and K. T. Truong', venue: 'IEEE Endorsed Transactions on Industrial Networks and Intelligent Systems', year: '2022' },
+		{ id: '[J09]', title: 'Resource Allocation in SWIPT Networks Under a Nonlinear Energy Harvesting Model: Power Efficiency, User Fairness, and Channel Nonreciprocity', authors: 'H.-V. Tran; G. Kaddoum and K. T. Truong', venue: 'IEEE Transactions on Vehicular Technology', year: '2018' },
+		{ id: '[J08]', title: 'Effects of Channel Aging in Massive MIMO Systems', authors: 'K. T. Truong and R. W. Heath, Jr.', venue: 'IEEE/KICS Journal of Communications and Networks (JCN)', year: '2013' },
+		{ id: '[J05]', title: 'Cooperative Algorithms for MIMO Amplify-and-Forward Relay Networks', authors: 'K. T. Truong, P. Sartori and R. W. Heath, Jr.', venue: 'IEEE Transactions on Signal Processing', year: '2013' },
+		{ id: '[J03]', title: 'Multimode Antenna Selection for MIMO Amplify-and-Forward Relay Systems', authors: 'K. T. Truong and R. W. Heath, Jr.', venue: 'IEEE Transactions on Signal Processing', year: '2010' },
+	],
+	conferences: [
+		{ id: '[C19]', title: 'Jammer Detection in Multicell Massive MIMO with Correlated Rician Channels', authors: 'G. Q. L. Vu, K. T. Truong, et al.', venue: 'IEEE ATC', year: '2025' },
+		{ id: '[C18]', title: 'Using the STEAM-D Framework for Transdisciplinary Design Training...', authors: 'K. T. Truong, L. H. Phan, et al.', venue: 'E&PDE 2025', year: '2025' },
+		{ id: '[C11]', title: 'Compressive channel estimation in FDD multi-cell massive MIMO systems...', authors: 'N. González-Prelcic, K. T. Truong, et al.', venue: 'IEEE GLOBECOM', year: '2016' },
+		{ id: '[C03]', title: 'Transmission Capacity of Two-way Communication in Wireless Ad hoc Networks', authors: 'K. T. Truong, S. Weber and R. W. Heath, Jr.', venue: 'IEEE ICC', year: '2009' },
+	],
+	patents: [
+		{ id: '[P5]', title: 'Systems and Methods for Massive MIMO Adaptation', authors: 'K. T. Truong, R. W. Heath, Jr. and H. Nikopour', venue: 'US #10,686,498', year: '2020' },
+		{ id: '[P3]', title: 'System and method for downlink channel estimation in massive MIMO', authors: 'K. T. Truong, P. Zhu, J. Ma and R. W. Heath, Jr.', venue: 'US #10,250,309', year: '2019' },
+	]
+};
 ---
 <Layout title="Publications" lang={lang}>
 	<section class="mb-16">
@@ -8,27 +29,65 @@ const lang = 'vi';
 			{lang === 'vi' ? 'Công bố & Dự án' : 'Publications & Projects'}
 		</h1>
 
-		<div class="space-y-8">
-			<div class="bento-card">
-				<h2 class="text-2xl mb-6 text-insight">{lang === 'vi' ? 'Bài báo tiêu biểu' : 'Selected Publications'}</h2>
+		<div class="space-y-12">
+			<!-- Selected Journals -->
+			<div>
+				<h2 class="text-2xl mb-6 text-insight font-bold flex items-center">
+					<span class="w-8 h-8 rounded bg-insight/10 text-insight flex items-center justify-center mr-3 text-sm">J</span>
+					{lang === 'vi' ? 'Tạp chí Quốc tế (Selected)' : 'International Journals (Selected)'}
+				</h2>
 				<div class="space-y-4">
-					<div class="p-4 rounded-lg bg-white/5 border border-white/10">
-						<span class="text-xs font-bold text-intellect px-2 py-1 bg-intellect/10 rounded mr-3">ASME 2026</span>
-						<p class="mt-3 text-contrast/90">
-							Nhật Minh Đoàn and Trung Kiên Trương, "Electrohydrodynamics of a Liquid-Metal Monopole Antenna Channel," accepted to <em>ASME 2026 Fluids Engineering Division Summer Meeting (FEDSM2026)</em>.
-						</p>
-					</div>
+					{publications.journals.map(pub => (
+						<div class="p-5 rounded-xl bg-white/5 border border-white/10 hover:border-intellect/50 transition-colors">
+							<div class="flex items-start gap-4">
+								<span class="text-xs font-mono text-intellect bg-intellect/10 px-2 py-1 rounded shrink-0 mt-1">{pub.id}</span>
+								<div>
+									<h3 class="text-starlight font-bold leading-tight mb-2">{pub.title}</h3>
+									<p class="text-sm text-contrast/70 mb-2">{pub.authors}</p>
+									<p class="text-xs text-intellect/80 italic">{pub.venue}, {pub.year}</p>
+								</div>
+							</div>
+						</div>
+					))}
 				</div>
 			</div>
 
-			<div class="bento-grid">
-				<div class="bento-card">
-					<h3 class="text-xl font-bold mb-4">{lang === 'vi' ? 'Dự án trọng điểm' : 'Key Projects'}</h3>
-					<ul class="list-disc list-inside text-contrast/70 space-y-2 text-sm">
-						<li>Liquid-metal antennas for 6G</li>
-						<li>Multiphysics mobile simulation</li>
-						<li>AI in radio signal processing</li>
-					</ul>
+			<!-- Selected Conferences -->
+			<div>
+				<h2 class="text-2xl mb-6 text-intellect font-bold flex items-center">
+					<span class="w-8 h-8 rounded bg-intellect/10 text-intellect flex items-center justify-center mr-3 text-sm">C</span>
+					{lang === 'vi' ? 'Hội nghị Quốc tế (Selected)' : 'International Conferences (Selected)'}
+				</h2>
+				<div class="space-y-4">
+					{publications.conferences.map(pub => (
+						<div class="p-5 rounded-xl bg-white/5 border border-white/10 hover:border-insight/50 transition-colors">
+							<div class="flex items-start gap-4">
+								<span class="text-xs font-mono text-insight bg-insight/10 px-2 py-1 rounded shrink-0 mt-1">{pub.id}</span>
+								<div>
+									<h3 class="text-starlight font-bold leading-tight mb-2">{pub.title}</h3>
+									<p class="text-sm text-contrast/70 mb-2">{pub.authors}</p>
+									<p class="text-xs text-insight/80 italic">{pub.venue}, {pub.year}</p>
+								</div>
+							</div>
+						</div>
+					))}
+				</div>
+			</div>
+
+			<!-- Patents -->
+			<div>
+				<h2 class="text-2xl mb-6 text-starlight font-bold flex items-center">
+					<span class="w-8 h-8 rounded bg-white/10 text-starlight flex items-center justify-center mr-3 text-sm">P</span>
+					{lang === 'vi' ? 'Bằng sáng chế (Selected)' : 'US Patents (Selected)'}
+				</h2>
+				<div class="grid md:grid-cols-2 gap-4">
+					{publications.patents.map(pub => (
+						<div class="p-5 rounded-xl bg-white/5 border border-white/10">
+							<span class="text-xs font-mono text-contrast/50 block mb-2">{pub.id} • {pub.year}</span>
+							<h3 class="text-starlight font-bold mb-2 text-sm">{pub.title}</h3>
+							<p class="text-xs text-intellect">{pub.venue}</p>
+						</div>
+					))}
 				</div>
 			</div>
 		</div>
