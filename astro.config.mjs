@@ -8,7 +8,9 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://piisalab.github.io',
   integrations: [react()],
-
+  build: {
+    format: 'file'
+  },
   vite: {
     plugins: [tailwindcss()]
   }

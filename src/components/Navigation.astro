@@ -6,19 +6,19 @@ interface Props {
 const { lang } = Astro.props;
 
 const menuItems = [
-	{ href: '/', label: { vi: 'Trang chủ', en: 'Home' } },
-	{ href: '/research', label: { vi: 'Nghiên cứu', en: 'Research' } },
-	{ href: '/people', label: { vi: 'Thành viên', en: 'People' } },
-	{ href: '/publications', label: { vi: 'Công bố', en: 'Publications' } },
-	{ href: '/opportunities', label: { vi: 'Cơ hội', en: 'Opportunities' } },
-	{ href: '/contact', label: { vi: 'Liên hệ', en: 'Contact' } },
+	{ href: '/index.html', label: { vi: 'Trang chủ', en: 'Home' } },
+	{ href: '/research.html', label: { vi: 'Nghiên cứu', en: 'Research' } },
+	{ href: '/people.html', label: { vi: 'Thành viên', en: 'People' } },
+	{ href: '/publications.html', label: { vi: 'Công bố', en: 'Publications' } },
+	{ href: '/opportunities.html', label: { vi: 'Cơ hội', en: 'Opportunities' } },
+	{ href: '/contact.html', label: { vi: 'Liên hệ', en: 'Contact' } },
 ];
 ---
 
 <nav class="sticky top-0 z-50 bg-foundation/80 backdrop-blur-md border-b border-white/10">
 	<div class="container mx-auto px-4">
 		<div class="flex justify-between items-center h-20">
-			<a href="/" class="text-2xl font-bold text-starlight tracking-tight">
+			<a href="/index.html" class="text-2xl font-bold text-starlight tracking-tight">
 				PIISA<span class="text-intellect">Lab</span>
 			</a>
 			
