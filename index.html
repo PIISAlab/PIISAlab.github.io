@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PIISA Lab | HCMUS Robotics 2026</title>
+    <title>PIISA Lab | Physics-Informed Intelligent Systems and Applications</title>
     <style>
         :root {
             --primary: #2563eb;
             --secondary: #1e40af;
             --dark: #1f2937;
             --light: #f3f4f6;
+            --accent: #3b82f6;
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -21,7 +22,7 @@
         header {
             background: var(--dark);
             color: white;
-            padding: 4rem 2rem;
+            padding: 5rem 2rem;
             text-align: center;
         }
         .container {
@@ -29,11 +30,14 @@
             margin: 0 auto;
             padding: 2rem;
         }
+        .section {
+            margin-bottom: 4rem;
+        }
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
+            margin-top: 2rem;
         }
         .card {
             border: 1px solid #e5e7eb;
@@ -43,22 +47,9 @@
             background: white;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
-        .card:hover {
-            transform: translateY(-5px);
-        }
         .card h3 {
             margin-top: 0;
             color: var(--primary);
-        }
-        .card a {
-            display: inline-block;
-            margin-top: 1rem;
-            color: var(--secondary);
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .card a:hover {
-            text-decoration: underline;
         }
         .badge {
             background: #dbeafe;
@@ -68,53 +59,113 @@
             font-size: 0.8rem;
             font-weight: 600;
         }
+        .lang-section {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .lang-column {
+            flex: 1;
+            min-width: 300px;
+        }
+        .strategic-directions {
+            list-style: none;
+            padding: 0;
+        }
+        .strategic-directions li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        .strategic-directions li::before {
+            content: "•";
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
         footer {
             text-align: center;
             padding: 4rem 2rem;
             background: var(--light);
             margin-top: 4rem;
         }
+        h2 {
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.5rem;
+            margin-top: 3rem;
+        }
     </style>
 </head>
 <body>
     <header>
         <h1>PIISA Lab</h1>
-        <p>Phân Giải Mạch & Intelligence Systems Architecture</p>
-        <p>HCMUS Robotics Workshop | May 29, 2026</p>
+        <p>Phòng Thí nghiệm Hệ thống Thông minh và Ứng dụng Dựa trên Vật lý</p>
+        <p>Physics-Informed Intelligent Systems and Applications Lab</p>
     </header>
 
     <div class="container">
-        <h2>Exhibition Projects</h2>
-        <p>Exploring Edge AI and dual-processor robotics architectures with the Arduino UNO Q.</p>
-        
-        <div class="grid">
-            <div class="card">
-                <span class="badge">Vision</span>
-                <h3>Q-Navigator</h3>
-                <p>A real-time vision-based object tracking rover using the Qualcomm Dragonwing MPU and STM32 MCU.</p>
-                <a href="https://github.com/PIISAlab/Q-Navigator">View Repository →</a>
+        <div class="section lang-section">
+            <div class="lang-column">
+                <h2>Giới thiệu</h2>
+                <p>Phòng Thí nghiệm Hệ thống Thông minh và Ứng dụng Dựa trên Vật lý (PIISA) thuộc Khoa Vật lý - Vật lý kỹ thuật, trường Đại học Khoa học Tự nhiên, Đại học Quốc gia thành phố Hồ Chí Minh được thành lập với Sứ mệnh tiên phong phát triển các công nghệ tính toán và truyền thông thế hệ mới.</p>
+                <p>Tầm nhìn của chúng tôi là trở thành một trung tâm nghiên cứu và đổi mới sáng tạo hàng đầu, tạo ra sự hội tụ mạnh mẽ giữa khoa học vật lý nền tảng, trí tuệ nhân tạo tiên tiến, và phương pháp luận thiết kế lấy con người làm trung tâm, từ đó kiến tạo nên các giải pháp thông minh, hiệu suất cao cho thế giới.</p>
+                
+                <h3>Các Định hướng Chiến lược:</h3>
+                <ul class="strategic-directions">
+                    <li><strong>Nghiên cứu & Kỹ thuật:</strong> Tập trung vào các lĩnh vực đột phá như Xử lý tín hiệu và Mô phỏng đa vật lý cho mạng 6G, thiết kế mạch tích hợp (IC) hiệu suất cao, và phát triển các thuật toán học máy Dựa trên Vật lý (Physics-Informed Machine Learning).</li>
+                    <li><strong>Đào tạo & Đổi mới Sáng tạo:</strong> Cung cấp môi trường học tập đa ngành, thực tiễn, đào tạo kỹ sư và nhà nghiên cứu có khả năng thiết kế hệ thống toàn diện áp dụng Tư duy Thiết kế (Design Thinking) và Tư duy Hệ thống (Systems Thinking).</li>
+                    <li><strong>Phát triển Sản phẩm & Ứng dụng:</strong> Chuyển hóa nhanh chóng các kết quả nghiên cứu thành các sản phẩm có giá trị thương mại, đặc biệt là các ứng dụng AI-powered cho doanh nghiệp.</li>
+                </ul>
             </div>
+            
+            <div class="lang-column">
+                <h2>Introduction</h2>
+                <p>The Physics-Informed Intelligent Systems and Applications (PIISA) Lab, Faculty of Physics and Engineering Physics, University of Science, VNU-HCM, is founded with the Mission to pioneer the development of next-generation computing and communication technologies.</p>
+                <p>Our Vision is to become a leading research and innovation hub, creating a powerful convergence between fundamental physics science, advanced artificial intelligence, and human-centered design methodologies, thereby architecting high-performance, intelligent solutions for the world.</p>
 
-            <div class="card">
-                <span class="badge">Multimodal</span>
-                <h3>EchoFlow</h3>
-                <p>On-device hybrid voice and gesture robotic controller demonstrating human-robot interaction.</p>
-                <a href="https://github.com/PIISAlab/EchoFlow">View Repository →</a>
+                <h3>Strategic Directions:</h3>
+                <ul class="strategic-directions">
+                    <li><strong>Research & Engineering:</strong> Focusing on breakthrough areas such as Signal Processing and Multiphysics Simulation for 6G networks, high-performance IC design, and Physics-Informed Machine Learning algorithms.</li>
+                    <li><strong>Education & Innovation:</strong> Providing a multidisciplinary, hands-on learning environment, training engineers and researchers in comprehensive system design using Design Thinking and Systems Thinking principles.</li>
+                    <li><strong>Product Development & Applications:</strong> Rapidly translating research outcomes into valuable commercial products, especially AI-powered applications for enterprise customers.</li>
+                </ul>
             </div>
+        </div>
 
-            <div class="card">
-                <span class="badge">Industry 5.0</span>
-                <h3>Sentry-Q</h3>
-                <p>AI-driven acoustic and vibration anomaly detection for predictive maintenance in robotic joints.</p>
-                <a href="https://github.com/PIISAlab/Sentry-Q">View Repository →</a>
-            </div>
+        <div class="section">
+            <h2>Current Research & Projects</h2>
+            <div class="grid">
+                <div class="card">
+                    <span class="badge">Vision</span>
+                    <h3>Q-Navigator</h3>
+                    <p>Real-time vision-based object tracking rover utilizing dual-processor architecture (Qualcomm Dragonwing MPU + STM32 MCU).</p>
+                </div>
 
-            <div class="card">
-                <span class="badge">CV Sorter</span>
-                <h3>Q-Sorter</h3>
-                <p>Edge-vision automated industrial sorting system for quality control and material separation.</p>
-                <a href="https://github.com/PIISAlab/Q-Sorter">View Repository →</a>
+                <div class="card">
+                    <span class="badge">HRI</span>
+                    <h3>EchoFlow</h3>
+                    <p>On-device hybrid voice and gesture robotic controller demonstrating advanced Human-Robot Interaction.</p>
+                </div>
+
+                <div class="card">
+                    <span class="badge">Industry 5.0</span>
+                    <h3>Sentry-Q</h3>
+                    <p>AI-driven acoustic and vibration anomaly detection for predictive maintenance in intelligent systems.</p>
+                </div>
+
+                <div class="card">
+                    <span class="badge">Intelligence</span>
+                    <h3>Q-Sorter</h3>
+                    <p>Edge-vision automated industrial sorting system for quality control and material separation.</p>
+                </div>
             </div>
+        </div>
+
+        <div class="section">
+            <h2>Contact Information</h2>
+            <p>Email: <a href="mailto:piisa.lab@gmail.com">piisa.lab@gmail.com</a></p>
+            <p>Location: Faculty of Physics and Engineering Physics, University of Science, VNU-HCM</p>
         </div>
     </div>
 
