@@ -123,6 +123,20 @@
             font-size: 0.8rem;
             font-weight: 600;
         }
+
+        /* Member Specific Styles */
+        .member-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .member-role {
+            font-weight: bold;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
         .strategic-directions {
             list-style: none;
             padding: 0;
@@ -220,14 +234,40 @@
             <ul class="strategic-directions lang-vi">
                 <li><strong>Nghiên cứu & Kỹ thuật:</strong> Tập trung vào các lĩnh vực đột phá như Xử lý tín hiệu và Mô phỏng đa vật lý cho mạng 6G, thiết kế mạch tích hợp (IC) hiệu suất cao, và phát triển các thuật toán học máy Dựa trên Vật lý (Physics-Informed Machine Learning).</li>
                 <li><strong>Đào tạo & Đổi mới Sáng tạo:</strong> Cung cấp môi trường học tập đa ngành, thực tiễn, đào tạo kỹ sư và nhà nghiên cứu có khả năng thiết kế hệ thống toàn diện áp dụng Tư duy Thiết kế (Design Thinking) và Tư duy Hệ thống (Systems Thinking).</li>
-                <li><strong>Phát triển Sản phẩm & Ứng dụng:</strong> Chuyển hóa nhanh chóng các kết quả nghiên cứu thành các sản phẩm có giá trị thương mại, đặc biệt là các ứng dụng AI-powered cho doanh nghiệp.</li>
             </ul>
 
             <ul class="strategic-directions lang-en">
                 <li><strong>Research & Engineering:</strong> Focusing on breakthrough areas such as Signal Processing and Multiphysics Simulation for 6G networks, high-performance IC design, and Physics-Informed Machine Learning algorithms.</li>
                 <li><strong>Education & Innovation:</strong> Providing a multidisciplinary, hands-on learning environment, training engineers and researchers in comprehensive system design using Design Thinking and Systems Thinking principles.</li>
-                <li><strong>Product Development & Applications:</strong> Rapidly translating research outcomes into valuable commercial products, especially AI-powered applications for enterprise customers.</li>
             </ul>
+        </div>
+
+        <!-- Lab Members (PIISA Group) -->
+        <div class="section">
+            <h2 class="lang-vi">Thành viên Lab</h2>
+            <h2 class="lang-en">Lab Members</h2>
+            
+            <div class="grid">
+                <!-- Principal Investigator -->
+                <div class="card member-card">
+                    <span class="badge lang-vi">Trưởng Lab</span>
+                    <span class="badge lang-en">Principal Investigator</span>
+                    <h3>Dr. Kien T. Truong</h3>
+                    <p class="member-role lang-vi">TS. Trương Kiên</p>
+                    <p class="lang-vi">Chuyên gia về AI, Robotics và Kiến trúc Hệ thống thông minh.</p>
+                    <p class="lang-en">Expert in AI, Robotics, and Intelligent System Architecture.</p>
+                </div>
+
+                <!-- Undergraduate Students -->
+                <div class="card member-card">
+                    <span class="badge lang-vi">Sinh viên</span>
+                    <span class="badge lang-en">Students</span>
+                    <h3 class="lang-vi">Đội ngũ Sinh viên Research</h3>
+                    <h3 class="lang-en">Undergraduate Research Team</h3>
+                    <p class="lang-vi">Nhóm sinh viên đại học tài năng đang thực hiện các dự án nghiên cứu về AI, Robotics và Hệ thống nhúng.</p>
+                    <p class="lang-en">A team of talented undergraduate students conducting research in AI, Robotics, and Embedded Systems.</p>
+                </div>
+            </div>
         </div>
 
         <!-- Projects -->
