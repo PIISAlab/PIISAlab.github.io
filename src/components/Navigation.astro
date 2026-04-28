@@ -16,18 +16,17 @@ const menuItems = [
 	{ href: '/contact.html', label: { vi: 'Liên hệ', en: 'Contact' } },
 ];
 
-const langLabels = {
-	vi: '🇻🇳 Tiếng Việt',
-	en: '🇺🇸 English'
-};
-
 const currentPath = Astro.url.pathname;
-const targetLang = lang === 'vi' ? 'en' : 'vi';
 
-// Simple logic to compute target URL for the other language
-const targetUrl = lang === 'vi' 
-  ? `/en${currentPath}` 
-  : currentPath.replace(/^\/en/, '') || '/index.html';
+// Target URL for switching languages
+let targetUrl = '/index.html';
+if (lang === 'vi') {
+    // Current is Vietnamese (root), switch to English
+    targetUrl = `/en${currentPath === '/' ? '/index.html' : currentPath}`;
+} else {
+    // Current is English (/en/...), switch to Vietnamese (root)
+    targetUrl = currentPath.replace(/^\/en/, '') || '/index.html';
+}
 
 ---
 
