@@ -58,7 +58,7 @@ const publications = {
 <Layout title="Công bố" lang={lang}>
 	<section class="mb-16">
 		<h1 class="text-5xl font-black mb-16 tracking-tighter">
-			Toàn bộ <span class="text-gradient font-serif">Công bố </span>
+			Toàn bộ <span class="text-gradient font-montserrat italic">Công bố </span>
 		</h1>
 
 		<div class="space-y-24">
@@ -70,7 +70,7 @@ const publications = {
 				</h2>
 				<div class="grid gap-6">
 					{publications.journals.map(pub => (
-						<div class="p-8 rounded-[2rem] bg-card-bg border border-card-border hover:border-intellect/30 hover:bg-intellect/5 transition-all duration-500 ease-expo-out group relative overflow-hidden">
+						<div class="p-8 rounded-lg bg-card-bg border border-card-border hover:border-intellect/30 hover:bg-intellect/5 transition-all duration-500 ease-expo-out group relative overflow-hidden">
 							<div class="flex items-start gap-6 relative z-10">
 								<span class="text-xs font-black text-intellect bg-intellect/10 px-3 py-1.5 rounded-lg shrink-0 mt-1 tracking-widest">{pub.id}</span>
 								<div>
@@ -96,7 +96,7 @@ const publications = {
 				</h2>
 				<div class="grid gap-6">
 					{publications.conferences.map(pub => (
-						<div class="p-8 rounded-[2rem] bg-card-bg border border-card-border hover:border-insight/30 hover:bg-insight/5 transition-all duration-500 ease-expo-out group relative overflow-hidden">
+						<div class="p-8 rounded-lg bg-card-bg border border-card-border hover:border-insight/30 hover:bg-insight/5 transition-all duration-500 ease-expo-out group relative overflow-hidden">
 							<div class="flex items-start gap-6 relative z-10">
 								<span class="text-xs font-black text-insight bg-insight/10 px-3 py-1.5 rounded-lg shrink-0 mt-1 tracking-widest">{pub.id}</span>
 								<div>
@@ -123,7 +123,7 @@ const publications = {
 					</h2>
 					<div class="space-y-6">
 						{publications.patents.map(pub => (
-							<div class="p-6 rounded-2xl bg-card-bg border border-card-border hover:border-intellect/20 transition-all duration-300">
+							<div class="p-6 rounded-lg bg-card-bg border border-card-border hover:border-intellect/20 transition-all duration-300">
 								<div class="flex justify-between items-start mb-3">
 									<span class="text-xs font-black text-intellect tracking-widest bg-intellect/10 px-2 py-1 rounded">{pub.id}</span>
 									<span class="text-xs font-bold text-contrast/40">{pub.year}</span>
@@ -142,7 +142,7 @@ const publications = {
 					</h2>
 					<div class="space-y-6">
 						{publications.domestic.map(pub => (
-							<div class="p-6 rounded-2xl bg-card-bg border border-card-border hover:border-insight/20 transition-all duration-300">
+							<div class="p-6 rounded-lg bg-card-bg border border-card-border hover:border-insight/20 transition-all duration-300">
 								<div class="flex justify-between items-start mb-3">
 									<span class="text-xs font-black text-insight tracking-widest bg-insight/10 px-2 py-1 rounded">{pub.id}</span>
 									<span class="text-xs font-bold text-contrast/40">{pub.year}</span>

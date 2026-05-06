@@ -31,19 +31,22 @@ if (lang === 'vi') {
 
 ---
 
-<nav class="sticky top-0 z-50 bg-foundation/80 backdrop-blur-md border-b border-black/5 dark:border-white/10 transition-colors">
+<nav class="sticky top-0 z-50 bg-foundation/80 backdrop-blur-md border-b border-neutral-200 dark:border-neutral-800 transition-colors">
 	<div class="container mx-auto px-4">
-		<div class="flex justify-between items-center h-20">
-			<a href={lang === 'vi' ? '/' : '/en'} class="text-2xl font-bold text-starlight tracking-tight transition-colors">
+		<!-- Venizia spec §B.8 TopBar: 64px height (h-16) -->
+		<div class="flex justify-between items-center h-16">
+			<!-- Logo: Montserrat 900 (font-black) per Venizia §4.1 display family -->
+			<a href={lang === 'vi' ? '/' : '/en'} class="text-2xl font-montserrat font-black text-starlight tracking-tight transition-colors">
 				PIISA<span class="text-intellect">Lab</span>
 			</a>
-			
+
+			<!-- Nav links: Inter 500 (font-medium) per Venizia §4.3 chrome typography -->
 			<ul class="hidden md:flex space-x-8">
 				{menuItems.map(item => {
 					const href = lang === 'vi' ? item.href : `/en${item.href === '/' ? '' : item.href}`;
 					return (
 						<li>
-							<a href={href} class="text-sm font-semibold hover:text-intellect dark:hover:text-insight transition-colors">
+							<a href={href} class="text-sm font-inter font-medium hover:text-intellect dark:hover:text-insight transition-colors">
 								{item.label[lang]}
 							</a>
 						</li>
@@ -53,9 +56,9 @@ if (lang === 'vi') {
 
 			<div class="flex items-center space-x-4">
 				<ThemeToggle client:load />
-				<a 
+				<a
 					href={targetUrl}
-					class="text-xs font-bold px-3 py-2 rounded-lg bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
+					class="text-xs font-inter font-semibold px-3 py-2 rounded-md bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
 				>
 					{lang === 'vi' ? '🇺🇸 EN' : '🇻🇳 VN'}
 				</a>

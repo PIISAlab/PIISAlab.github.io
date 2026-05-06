@@ -4,14 +4,27 @@ interface Props {
 }
 
 const { lang } = Astro.props;
+
+// Venizia §4.1 type families: Montserrat (display), Be Vietnam Pro (body), Inter (UI).
+// Footer uses Be Vietnam Pro for body copy + Montserrat for the brand mark.
+const vnuUrl = 'https://hcmus.edu.vn/';
+const vnuLabel = lang === 'vi' ? 'ĐHQG-HCM' : 'VNUHCM';
+const facultyText = lang === 'vi'
+	? 'Bộ môn Vật lý tin học, Khoa Vật lý - Vật lý kỹ thuật, Trường Đại học Khoa học Tự nhiên'
+	: 'Computer Science Physics Division, Faculty of Physics and Engineering Physics, University of Science';
 ---
 
-<footer class="bg-foundation border-t border-black/5 dark:border-white/5 py-16 mt-auto">
-	<div class="container mx-auto px-4 text-center">
-		<p class="text-contrast/60 text-sm max-w-2xl mx-auto">
-			{lang === 'vi' 
-				? '© 2026 Lab PIISA - Khoa Vật lý - Vật lý kỹ thuật, Trường Đại học Khoa học Tự nhiên, ĐHQG-HCM' 
-				: '© 2026 PIISA Lab - Faculty of Physics and Engineering Physics, University of Science, VNUHCM'}
-		</p>
+<footer class="bg-foundation border-t border-neutral-200 dark:border-neutral-800 py-12 mt-auto">
+	<div class="container mx-auto px-4">
+		<div class="flex flex-col items-center text-center gap-3">
+			<!-- Brand line: Montserrat 900 wordmark per Venizia §1 -->
+			<a href={lang === 'vi' ? '/' : '/en'} class="text-xl font-montserrat font-black text-starlight tracking-tight">
+				PIISA<span class="text-intellect">Lab</span>
+			</a>
+			<!-- Body line: Be Vietnam Pro 400 per Venizia §4.1 body family -->
+			<p class="font-be-vietnam-pro text-sm text-neutral-500 dark:text-neutral-400 max-w-2xl">
+				© 2026 PIISA Lab — {facultyText}, <a href={vnuUrl} target="_blank" rel="noopener noreferrer" class="hover:text-intellect underline-offset-4 hover:underline transition-colors">{vnuLabel}</a>
+			</p>
+		</div>
 	</div>
 </footer>

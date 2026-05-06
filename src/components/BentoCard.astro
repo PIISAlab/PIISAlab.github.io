@@ -1,4 +1,7 @@
 ---
+// Venizia §7 elevation-3 + §6 radius/lg (8px) — bento-card class is in global.css (Mrs-Des owns tokens).
+// Hover shadow uses Venizia elevation-3: 0 8px 24px -8px rgba(0,0,0,0.12).
+// Border-beam radius uses var(--radius-lg) = 8px to match the new card radius.
 interface Props {
     class?: string;
     showBorderBeam?: boolean;
@@ -9,7 +12,7 @@ const { class: className, showBorderBeam = false } = Astro.props;
 
 <div class={`bento-card group ${className || ''}`}>
     {showBorderBeam && (
-        <div class="absolute inset-0 border-2 border-transparent rounded-[2rem] pointer-events-none overflow-hidden">
+        <div class="absolute inset-0 border-2 border-transparent rounded-lg pointer-events-none overflow-hidden">
             <div class="absolute inset-0 animate-border-beam opacity-0 group-hover:opacity-100 transition-opacity" style="background: conic-gradient(from 0deg at 50% 50%, transparent 0deg, var(--color-intellect) 60deg, var(--color-insight) 120deg, transparent 180deg); width: 200%; height: 200%; top: -50%; left: -50%;"></div>
         </div>
     )}

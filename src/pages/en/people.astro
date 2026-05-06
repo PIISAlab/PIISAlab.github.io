@@ -8,23 +8,23 @@ const lang = 'en';
 <Layout title="People" lang={lang}>
 	<section class="mb-16">
 		<h1 class="text-5xl font-black mb-12 tracking-tighter">
-			Our <span class="text-gradient font-serif">People</span>
+			Our <span class="text-gradient font-montserrat italic">People</span>
 		</h1>
 
 		<div class="bento-grid">
 			<!-- PI Card -->
 			<BentoCard class="md:col-span-3 flex flex-col md:flex-row gap-10 items-center md:items-start" showBorderBeam={true}>
-				<div class="w-full md:w-72 h-72 rounded-[2rem] overflow-hidden flex-shrink-0 border-2 border-intellect/20 shadow-2xl shadow-intellect/10">
+				<div class="w-full md:w-72 h-72 rounded-xl overflow-hidden flex-shrink-0 border-2 border-intellect/20 shadow-2xl shadow-intellect/10">
 					<img src="/images/kien-truong.jpg" alt="Dr. Kien Truong" class="w-full h-full object-cover" />
 				</div>
 				<div class="flex-grow">
 					<h2 class="text-4xl font-bold mb-3 tracking-tight">
 						Dr. Kien Truong
 					</h2>
-					<p class="text-intellect font-black uppercase tracking-widest text-sm mb-8 bg-intellect/10 inline-block px-4 py-1.5 rounded-full">Principal Investigator</p>
+					<p class="text-intellect font-black uppercase tracking-widest text-sm mb-8 bg-intellect/10 inline-block px-4 py-1.5 rounded-md">Principal Investigator</p>
 					
 					<div class="text-contrast/80 space-y-5 text-lg leading-relaxed">
-						<p><strong>Dr. Kien Truong</strong> is currently a Lecturer in the Faculty of Physics and Engineering Physics, University of Science, VNU-HCM. He is an IEEE Senior Member and a VEF alumnus.</p>
+						<p><strong>Dr. Kien Truong</strong> is currently a Lecturer in the Computer Science Physics Division, Faculty of Physics and Engineering Physics, University of Science, VNU-HCM. He is an IEEE Senior Member and a VEF alumnus.</p>
 						<p>He received the M.S. and Ph.D. degrees in Electrical Engineering from The University of Texas at Austin (UT Austin) under the supervision of Prof. Robert W. Heath, Jr. His research interests include Massive MIMO, wireless power transfer, and signal processing for 6G networks.</p>
 					</div>
 				</div>
@@ -33,19 +33,19 @@ const lang = 'en';
 			<!-- Current Members -->
 			<BentoCard class="md:col-span-3">
 				<h2 class="text-2xl font-bold mb-8 tracking-tight flex items-center gap-3">
-					<span class="p-2.5 rounded-xl bg-insight/10 text-insight">👥</span>
+					<span class="p-2.5 rounded-md bg-insight/10 text-insight">👥</span>
 					Current Members
 				</h2>
 				<div class="grid sm:grid-cols-2 gap-6">
 					<!-- Cao Khánh Duy -->
-					<div class="group p-6 rounded-2xl bg-foundation border border-black/5 dark:border-white/5 hover:border-insight/30 hover:shadow-xl hover:shadow-insight/5 transition-all duration-500">
-						<div class="w-full h-36 rounded-[1.25rem] mb-5 bg-gradient-to-br from-insight/10 to-intellect/10 flex items-center justify-center border border-insight/10 group-hover:from-insight/15 group-hover:to-intellect/15 transition-all duration-500">
+					<div class="group p-6 rounded-lg bg-foundation border border-black/5 dark:border-white/5 hover:border-insight/30 hover:shadow-xl hover:shadow-insight/5 transition-all duration-500">
+						<div class="w-full h-36 rounded-lg mb-5 bg-gradient-to-br from-insight/10 to-intellect/10 flex items-center justify-center border border-insight/10 group-hover:from-insight/15 group-hover:to-intellect/15 transition-all duration-500">
 							<span class="text-4xl font-black text-insight/40 tracking-tighter select-none group-hover:text-insight/60 transition-colors duration-500">CKD</span>
 						</div>
 						<h3 class="text-xl font-bold text-starlight tracking-tight mb-2">Cao Khánh Duy</h3>
 						<div class="flex flex-wrap gap-2 mb-4">
-							<span class="text-xs font-black uppercase tracking-widest text-insight bg-insight/10 px-3 py-1 rounded-full border border-insight/20">22CVD</span>
-							<span class="text-xs font-bold text-contrast/50 bg-black/5 dark:bg-white/5 px-3 py-1 rounded-full">Senior Thesis</span>
+							<span class="text-xs font-black uppercase tracking-widest text-insight bg-insight/10 px-3 py-1 rounded-sm border border-insight/20">22CVD</span>
+							<span class="text-xs font-bold text-contrast/50 bg-black/5 dark:bg-white/5 px-3 py-1 rounded-sm">Senior Thesis</span>
 						</div>
 						<div class="pt-4 border-t border-black/5 dark:border-white/5 space-y-4">
 							<div>
@@ -66,14 +66,14 @@ const lang = 'en';
 					</div>
 
 					<!-- Nguyễn Thái Hoà -->
-					<div class="group p-6 rounded-2xl bg-foundation border border-black/5 dark:border-white/5 hover:border-prestige/30 hover:shadow-xl hover:shadow-prestige/5 transition-all duration-500">
-						<div class="w-full h-36 rounded-[1.25rem] mb-5 bg-gradient-to-br from-prestige/10 to-insight/10 flex items-center justify-center border border-prestige/10 group-hover:from-prestige/15 group-hover:to-insight/15 transition-all duration-500">
+					<div class="group p-6 rounded-lg bg-foundation border border-black/5 dark:border-white/5 hover:border-prestige/30 hover:shadow-xl hover:shadow-prestige/5 transition-all duration-500">
+						<div class="w-full h-36 rounded-lg mb-5 bg-gradient-to-br from-prestige/10 to-insight/10 flex items-center justify-center border border-prestige/10 group-hover:from-prestige/15 group-hover:to-insight/15 transition-all duration-500">
 							<span class="text-4xl font-black text-prestige/40 tracking-tighter select-none group-hover:text-prestige/60 transition-colors duration-500">NTH</span>
 						</div>
 						<h3 class="text-xl font-bold text-starlight tracking-tight mb-2">Nguyễn Thái Hoà</h3>
 						<div class="flex flex-wrap gap-2 mb-4">
-							<span class="text-xs font-black uppercase tracking-widest text-prestige bg-prestige/10 px-3 py-1 rounded-full border border-prestige/20">22CVD</span>
-							<span class="text-xs font-bold text-contrast/50 bg-black/5 dark:bg-white/5 px-3 py-1 rounded-full">Senior Thesis</span>
+							<span class="text-xs font-black uppercase tracking-widest text-prestige bg-prestige/10 px-3 py-1 rounded-sm border border-prestige/20">22CVD</span>
+							<span class="text-xs font-bold text-contrast/50 bg-black/5 dark:bg-white/5 px-3 py-1 rounded-sm">Senior Thesis</span>
 						</div>
 						<div class="pt-4 border-t border-black/5 dark:border-white/5 space-y-4">
 							<div>

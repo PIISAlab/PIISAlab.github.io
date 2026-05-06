@@ -18,7 +18,7 @@ export default function MobileMenu({ lang, menuItems }: Props) {
     <div className="md:hidden">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="p-2 rounded-lg bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
+        className="p-2 rounded-md bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
         aria-label="Toggle Menu"
       >
         <svg
@@ -55,15 +55,16 @@ export default function MobileMenu({ lang, menuItems }: Props) {
       </button>
 
       {isOpen && (
-        <div className="absolute top-20 left-0 right-0 bg-foundation border-b border-black/10 dark:border-white/10 p-4 shadow-xl animate-fade-in z-50">
-          <ul className="flex flex-col space-y-4">
+        // Dropdown anchored to nav bottom (Venizia §B.8 TopBar h-16 = 64px)
+        <div className="absolute top-16 left-0 right-0 bg-foundation border-b border-neutral-200 dark:border-neutral-800 p-4 shadow-lg animate-fade-in z-50">
+          <ul className="flex flex-col space-y-2">
             {menuItems.map((item) => {
               const href = lang === 'vi' ? item.href : `/en${item.href === '/' ? '' : item.href}`;
               return (
                 <li key={item.href}>
                   <a
                     href={href}
-                    className="text-lg font-semibold block py-2 hover:text-intellect transition-colors"
+                    className="text-base font-inter font-medium block py-2 px-3 rounded-md hover:bg-black/5 dark:hover:bg-white/5 hover:text-intellect transition-colors"
                     onClick={() => setIsOpen(false)}
                   >
                     {item.label[lang]}

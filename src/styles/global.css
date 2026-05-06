@@ -1,30 +1,97 @@
 @import "tailwindcss";
 
+/* =====================================================================
+ * PIISA Lab — Token Layer
+ * Aligned with Venizia AI Design System (Mrs. Des, 2026-05-06)
+ * Source: ~/.claude/PAI/USER/DESIGN/VeniziaDesignSystem.md
+ * Fonts loaded in src/layouts/Layout.astro <head> via Google Fonts:
+ *   Montserrat (display), Be Vietnam Pro (body), Inter (UI chrome)
+ * ===================================================================== */
+
 @theme {
-  --color-foundation: var(--foundation);
-  --color-foundation-dark: #0B1221;
-  --color-foundation-light: #F7F9FC;
-  
-  --color-intellect: #0A6BFF;
-  --color-insight: #00E096;
-  --color-innovation: #FF3D71;
-  --color-prestige: #FFAA00;
-  
-  --color-contrast: var(--contrast);
-  --color-contrast-dark: #E2E8F0;
-  --color-contrast-light: #334155;
-  
-  --color-starlight: var(--starlight);
-  --color-starlight-dark: #F8FAFC;
-  --color-starlight-light: #151A30;
-  
+  /* ---- Brand / semantic colors (Venizia canonical) ---- */
+  --color-intellect:  #0A6BFF;   /* Blue 500 — primary brand */
+  --color-insight:    #22C55E;   /* Green 500 — success */
+  --color-innovation: #EF4444;   /* Red 500 — danger */
+  --color-prestige:   #F59E0B;   /* Amber 500 — warning */
+  --color-info:       #06B6D4;   /* Cyan 500 — info */
+
+  /* ---- Brand ramp (Blue) ---- */
+  --color-brand-50:  #EFF4FF;
+  --color-brand-100: #DCE8FF;
+  --color-brand-200: #B9D1FF;
+  --color-brand-300: #85B3FF;
+  --color-brand-400: #4288FF;
+  --color-brand-500: #0A6BFF;
+  --color-brand-600: #0055D4;
+  --color-brand-700: #0043A9;
+  --color-brand-800: #003882;
+  --color-brand-900: #002D6B;
+  --color-brand-950: #001A40;
+
+  /* ---- Neutral ramp (Slate, light mode) ---- */
+  --color-slate-50:  #F8FAFC;
+  --color-slate-100: #F1F5F9;
+  --color-slate-200: #E2E8F0;
+  --color-slate-300: #CBD5E1;
+  --color-slate-400: #94A3B8;
+  --color-slate-500: #64748B;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1E293B;
+  --color-slate-900: #0F172A;
+  --color-slate-950: #020617;
+
+  /* ---- Neutral ramp (Zinc, dark mode) ---- */
+  --color-zinc-50:  #18181B;
+  --color-zinc-100: #27272A;
+  --color-zinc-200: #3F3F46;
+  --color-zinc-300: #3F3F46;
+  --color-zinc-400: #52525B;
+  --color-zinc-500: #71717A;
+  --color-zinc-600: #A1A1AA;
+  --color-zinc-700: #D4D4D8;
+  --color-zinc-800: #F4F4F5;
+  --color-zinc-900: #FAFAFA;
+  --color-zinc-950: #020617;
+
+  /* ---- Semantic intent aliases (legacy) ---- */
+  --color-foundation: var(--surface-canvas);
+  --color-contrast:   var(--text-primary);
+  --color-starlight:  var(--text-primary);
+
+  /* ---- Type families (Venizia three-family system) ---- */
+  --font-display: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-sans:    "Be Vietnam Pro", ui-sans-serif, system-ui, sans-serif;
+  --font-ui:      "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif:   "Montserrat", ui-sans-serif, system-ui, sans-serif; /* legacy alias — was Instrument Serif */
+
+  /* ---- Border radius (Venizia scale) ---- */
+  --radius-xs:  2px;
+  --radius-sm:  4px;
+  --radius-md:  6px;
+  --radius:     8px;   /* DEFAULT — cards, badges */
+  --radius-lg:  10px;
+  --radius-xl:  12px;
+  --radius-2xl: 16px;
+  --radius-3xl: 20px;
+  --radius-4xl: 24px;
+
+  /* ---- Shadow / elevation (Venizia six-step ramp) ---- */
+  --shadow-xs:    0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-sm:    0 1px 3px 0 rgb(0 0 0 / 0.10), 0 1px 2px -1px rgb(0 0 0 / 0.10);
+  --shadow-md:    0 4px 6px -1px rgb(0 0 0 / 0.10), 0 2px 4px -2px rgb(0 0 0 / 0.10);
+  --shadow-lg:    0 10px 15px -3px rgb(0 0 0 / 0.10), 0 4px 6px -4px rgb(0 0 0 / 0.10);
+  --shadow-xl:    0 20px 25px -5px rgb(0 0 0 / 0.10), 0 8px 10px -6px rgb(0 0 0 / 0.10);
+  --shadow-2xl:   0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --shadow-brand: 0 4px 16px 0 rgba(10, 107, 255, 0.35);
+  --shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+
+  /* ---- Motion ---- */
   --animate-gradient: gradient 8s ease infinite;
   --animate-border-beam: border-beam 4s linear infinite;
-  
-  --font-serif: "Instrument Serif", serif;
-  
   --ease-expo-out: cubic-bezier(0.19, 1, 0.22, 1);
-  
+
   @keyframes gradient {
     0%, 100% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -38,41 +105,64 @@
 
 @layer base {
   :root {
-    --foundation: #F7F9FC;
-    --contrast: #334155;
-    --starlight: #151A30;
-    
-    --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    --bg-color: var(--foundation);
-    --text-color: var(--contrast);
-    --heading-color: var(--starlight);
-    --card-bg: rgba(255, 255, 255, 0.7);
-    --card-border: rgba(0, 0, 0, 0.05);
-    --text-muted: #64748B;
-    --noise-opacity: 0.02;
+    /* ---- Surface intents (light) ---- */
+    --surface-canvas:  #FFFFFF;
+    --surface-card:    #FFFFFF;
+    --surface-subtle:  #F8FAFC;
+    --surface-brand:   #EFF4FF;
+    --border-default:  #E2E8F0;
+    --border-strong:   #CBD5E1;
+    --text-primary:    #0F172A;
+    --text-secondary:  #475569;
+    --text-tertiary:   #94A3B8;
+    --text-brand:      #0055D4;
+
+    /* ---- Compatibility aliases (existing components) ---- */
+    --foundation:      var(--surface-canvas);
+    --contrast:        var(--text-primary);
+    --starlight:       var(--text-primary);
+    --bg-color:        var(--surface-canvas);
+    --text-color:      var(--text-primary);
+    --heading-color:   var(--text-primary);
+    --card-bg:         var(--surface-card);
+    --card-border:     var(--border-default);
+    --text-muted:      var(--text-tertiary);
+    --noise-opacity:   0.02;
   }
 
   :root.dark {
-    --foundation: #0B1221;
-    --contrast: #E2E8F0;
-    --starlight: #F8FAFC;
-    
-    --bg-color: var(--foundation);
-    --text-color: var(--contrast);
-    --heading-color: var(--starlight);
-    --card-bg: rgba(255, 255, 255, 0.03);
-    --card-border: rgba(255, 255, 255, 0.08);
-    --text-muted: rgba(226, 232, 240, 0.6);
-    --noise-opacity: 0.05;
+    /* ---- Surface intents (dark) ---- */
+    --surface-canvas:  #09090B;
+    --surface-card:    #1C1C1F;
+    --surface-subtle:  #27272A;
+    --surface-brand:   #001A40;
+    --border-default:  #27272A;
+    --border-strong:   #3F3F46;
+    --text-primary:    #FAFAFA;
+    --text-secondary:  #A1A1AA;
+    --text-tertiary:   #71717A;
+    --text-brand:      #4288FF;
+
+    /* ---- Compatibility aliases (existing components) ---- */
+    --foundation:      var(--surface-canvas);
+    --contrast:        var(--text-primary);
+    --starlight:       var(--text-primary);
+    --bg-color:        var(--surface-canvas);
+    --text-color:      var(--text-primary);
+    --heading-color:   var(--text-primary);
+    --card-bg:         var(--surface-card);
+    --card-border:     var(--border-default);
+    --text-muted:      var(--text-tertiary);
+    --noise-opacity:   0.04;
   }
 
   body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    background-color: var(--surface-canvas);
+    color: var(--text-primary);
     font-family: var(--font-sans);
     margin: 0;
-    line-height: 1.6;
-    transition: background-color 0.3s, color 0.3s;
+    line-height: 1.5;
+    transition: background-color 0.2s ease-out, color 0.2s ease-out;
     overflow-x: hidden;
   }
 
@@ -83,30 +173,39 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Ffilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     opacity: var(--noise-opacity);
     pointer-events: none;
     z-index: 50;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    color: var(--heading-color);
-    font-weight: 700;
+    color: var(--text-primary);
+    font-family: var(--font-display);
+    font-weight: 600;
     letter-spacing: -0.02em;
   }
 
-  .font-serif {
-    font-family: var(--font-serif);
-    font-style: italic;
-  }
+  h1 { font-weight: 700; }
+
+  .font-display { font-family: var(--font-display); }
+  .font-ui      { font-family: var(--font-ui); }
+  .font-serif   { font-family: var(--font-display); } /* legacy alias — was Instrument Serif italic */
 
   a {
-    color: var(--color-intellect);
-    transition: all 0.2s;
+    color: var(--text-brand);
+    text-decoration: none;
+    transition: color 150ms ease-out;
   }
 
   a:hover {
-    color: var(--color-insight);
+    color: var(--color-brand-700);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-500);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
   }
 }
 
@@ -117,42 +216,62 @@
     gap: 2rem;
   }
 
+  /*
+   * Venizia §6 radius DEFAULT = 8px (was 2rem/32px).
+   * Restrained academic register: shadow-xs resting, shadow-sm hover.
+   */
   .bento-card {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
-    padding: 2rem;
-    border-radius: 2rem;
+    padding: 1.5rem;
+    border-radius: var(--radius, 8px);
     backdrop-filter: blur(12px);
-    transition: all 0.5s var(--ease-expo-out);
+    transition: all 0.2s ease-out;
     position: relative;
     overflow: hidden;
   }
 
   .bento-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 32px 64px -16px rgba(0, 0, 0, 0.1);
-    border-color: rgba(10, 107, 255, 0.2);
+    border-color: var(--color-brand-200, #B9D1FF);
+    box-shadow: var(--shadow-sm);
   }
 
   .dark .bento-card:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(10, 107, 255, 0.3);
-    box-shadow: 0 32px 64px -16px rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(10, 107, 255, 0.30);
+    box-shadow: var(--shadow-sm);
   }
 
+  /*
+   * Venizia §B.1 Button — md size: h-10 (40px), px-4 (16px), radius/md (6px), Inter 500.
+   * Default = outline (transparent + brand text + Slate-300 border).
+   * .glass-button--primary modifier = primary brand fill.
+   */
   .glass-button {
-    @apply px-8 py-4 rounded-2xl font-bold transition-all duration-500 flex items-center gap-2;
-    background: rgba(10, 107, 255, 0.1);
-    border: 1px solid rgba(10, 107, 255, 0.2);
-    color: var(--color-intellect);
-    transition-timing-function: var(--ease-expo-out);
+    @apply inline-flex h-10 items-center gap-2 px-4 rounded-md text-sm font-medium transition-all duration-150;
+    background: transparent;
+    border: 1px solid var(--border-strong);
+    color: var(--text-brand);
+    transition-timing-function: ease-out;
+    font-family: var(--font-ui);
   }
 
   .glass-button:hover {
-    background: var(--color-intellect);
-    color: white;
-    transform: translateY(-4px);
-    box-shadow: 0 12px 24px -12px var(--color-intellect);
+    background: var(--surface-subtle);
+    border-color: var(--color-brand-300);
+    color: var(--color-brand-700);
+  }
+
+  .glass-button--primary {
+    background: var(--color-brand-500);
+    border-color: transparent;
+    color: #ffffff;
+  }
+
+  .glass-button--primary:hover {
+    background: var(--color-brand-600);
+    color: #ffffff;
+    box-shadow: var(--shadow-sm);
   }
 
   .text-gradient {
@@ -160,4 +279,3 @@
     padding: 0.1em 0.25em;
   }
 }
-
