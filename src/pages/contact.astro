@@ -9,7 +9,7 @@ const lang = 'vi';
 			Kết <span class="text-intellect font-montserrat italic">nối</span>
 		</h1>
 
-		<div class="bento-grid">
+		<div class="bento-grid mb-8">
 			<BentoCard class="md:col-span-2" showBorderBeam={true}>
 				<h2 class="text-3xl mb-10 text-insight font-bold tracking-tight">Thông tin Liên hệ</h2>
 				<div class="space-y-10 text-contrast/80">
@@ -35,19 +35,19 @@ const lang = 'vi';
 					</div>
 				</div>
 			</BentoCard>
-			
-			<BentoCard class="p-0 overflow-hidden min-h-[400px] border-intellect/20">
-				<iframe 
-					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.630773293551!2d106.6799830758414!3d10.762912959444738!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f1c06f4e593%3A0xd6e07adca6940a45!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBLaG9hIGjhu41jIFThu7EgbmnDqm4gLSDEkEhRRyBUUEhDTQ!5e0!3m2!1svi!2s!4v1714316143415!5m2!1svi!2s" 
-					width="100%" 
-					height="100%" 
-					style="border:0;" 
-					allowfullscreen="" 
-					loading="lazy" 
-					referrerpolicy="no-referrer-when-downgrade"
-					class="w-full h-full grayscale contrast-125 dark:invert dark:hue-rotate-180 hover:grayscale-0 transition-all duration-700"
-				></iframe>
-			</BentoCard>
+		</div>
+
+		<!-- Map: full-width, explicit height, no broken h-full chain -->
+		<div class="rounded-lg overflow-hidden border border-neutral-200 dark:border-neutral-800 h-[420px]">
+			<iframe
+				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.630773293551!2d106.6799830758414!3d10.762912959444738!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f1c06f4e593%3A0xd6e07adca6940a45!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBLaG9hIGjhu41jIFThu7EgbmnDqm4gLSDEkEhRRyBUUEhDTQ!5e0!3m2!1svi!2s!4v1714316143415!5m2!1svi!2s"
+				width="100%"
+				height="100%"
+				style="border:0; display:block;"
+				allowfullscreen=""
+				loading="lazy"
+				referrerpolicy="no-referrer-when-downgrade"
+			></iframe>
 		</div>
 	</section>
 </Layout>
