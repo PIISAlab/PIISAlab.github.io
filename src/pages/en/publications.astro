@@ -19,6 +19,7 @@ const publications = {
 		{ id: '[J01]', title: 'Relaying Architectures for 3GPP LTE-Advanced', authors: 'S. W. Peters, A. Y. Panah, K. T. Truong and R. W. Heath, Jr.', venue: 'EURASIP Journal on Wireless Communications and Networking (JWCN)', year: '2009' }
 	],
 	conferences: [
+		{ id: '[C20]', title: 'Electrohydrodynamics of a Liquid-Metal Monopole Antenna Channel', authors: 'N. M. Doan and K. T. Truong', venue: 'ASME FEDSM', year: '2026', status: 'accepted' },
 		{ id: '[C19]', title: 'Jammer Detection in Multicell Massive MIMO with Correlated Rician Channels', authors: 'G. Q. L. Vu, K. T. Truong, et al.', venue: 'IEEE ATC', year: '2025' },
 		{ id: '[C18]', title: 'Using the STEAM-D Framework for Transdisciplinary Design Training...', authors: 'K. T. Truong, L. H. Phan, et al.', venue: 'E&PDE 2025', year: '2025' },
 		{ id: '[C17]', title: 'Jammer Detection by Random Pilots in Massive MIMO...', authors: 'G. Q. L. Vu, H. Tran, and K. T. Truong', venue: 'NAFOSTED NICS', year: '2021' },
@@ -106,6 +107,7 @@ const publications = {
 										<span class="bg-insight/10 px-3 py-1 rounded-lg border border-insight/10">{pub.venue}</span>
 										<span class="mx-3 text-contrast/20 hidden sm:inline">•</span>
 										<span class="text-contrast/40">{pub.year}</span>
+										{pub.status === 'accepted' && <span class="ml-3 text-xs font-black uppercase tracking-widest text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20 px-2 py-1 rounded border border-emerald-200 dark:border-emerald-700">Accepted</span>}
 									</div>
 								</div>
 							</div>
