@@ -1,14 +1,23 @@
 import React, { useEffect, useState } from 'react';
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState(
-    typeof localStorage !== 'undefined' ? localStorage.getItem('theme') ?? 'dark' : 'dark'
-  );
+  const [theme, setTheme] = useState('dark');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.localStorage && typeof window.localStorage.getItem === 'function') {
+      const stored = window.localStorage.getItem('theme');
+      if (stored) {
+        setTheme(stored);
+      }
+    }
+  }, []);
 
   const toggleTheme = () => {
     const nextTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(nextTheme);
-    localStorage.setItem('theme', nextTheme);
+    if (typeof window !== 'undefined' && window.localStorage && typeof window.localStorage.setItem === 'function') {
+      window.localStorage.setItem('theme', nextTheme);
+    }
   };
 
   useEffect(() => {
