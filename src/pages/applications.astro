@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+import BentoCard from '../components/BentoCard.astro';
+const lang = 'vi';
+---
+<Layout title="Ứng dụng" lang={lang}>
+	<section class="mb-16">
+		<h1 class="text-5xl font-black mb-16 tracking-tighter">
+			Ứng <span class="text-intellect font-montserrat italic">dụng</span>
+		</h1>
+
+		<div class="grid md:grid-cols-2 gap-8">
+			<BentoCard showBorderBeam={true} class="flex flex-col justify-between h-full">
+				<div class="mb-8">
+					<div class="flex items-center gap-3 mb-6">
+						<span class="text-3xl">🧭</span>
+						<h2 class="text-2xl font-bold tracking-tight text-starlight">PAI Venue Advisor</h2>
+					</div>
+					<p class="text-contrast/80 leading-relaxed mb-6">
+						Hệ thống hỗ trợ đệ trình công bố khoa học tự động. Trợ lý AI phân tích tóm tắt bản thảo (Abstract) của bạn, trích xuất từ khóa chuyên ngành, và tự động so khớp, gợi ý các tạp chí Q1/Q2/Q3 hoặc hội nghị CORE A*/A/B phù hợp nhất dựa trên mức độ tương đồng ngữ nghĩa.
+					</p>
+					<div class="flex flex-wrap gap-2">
+						<span class="text-xs font-semibold px-2.5 py-1 rounded bg-intellect/10 text-intellect uppercase tracking-wider">Ollama LLM</span>
+						<span class="text-xs font-semibold px-2.5 py-1 rounded bg-insight/10 text-insight uppercase tracking-wider">React / Bun</span>
+						<span class="text-xs font-semibold px-2.5 py-1 rounded bg-prestige/10 text-prestige uppercase tracking-wider">SQLite DB</span>
+					</div>
+				</div>
+				<div>
+					<a 
+						href="http://localhost:5173" 
+						target="_blank" 
+						rel="noopener noreferrer" 
+						class="glass-button bg-intellect text-white border-transparent inline-flex items-center gap-2"
+					>
+						Khởi chạy ứng dụng
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+					</a>
+				</div>
+			</BentoCard>
+		</div>
+	</section>
+</Layout>
