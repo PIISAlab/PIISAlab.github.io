@@ -10,38 +10,45 @@ const lang = 'vi';
 		</h1>
 
 		<div class="bento-grid">
-			<BentoCard class="md:col-span-2" showBorderBeam={true}>
-				<h2 class="text-3xl mb-8 text-insight font-bold tracking-tight">Trụ cột Nghiên cứu</h2>
-				<ul class="space-y-8 text-contrast/80">
-					<li class="flex items-start group/item">
-						<span class="text-intellect mr-5 text-2xl group-hover/item:translate-x-1 transition-transform">→</span>
-						<div>
-							<strong class="text-2xl text-starlight tracking-tight">Mạng 6G & Xử lý tín hiệu:</strong>
-							<p class="text-lg mt-3 leading-relaxed">Phát triển các thuật toán tiên tiến cho thế hệ mạng không dây tiếp theo, tập trung vào Massive MIMO và Beamforming.</p>
-						</div>
-					</li>
-					<li class="flex items-start group/item">
-						<span class="text-intellect mr-5 text-2xl group-hover/item:translate-x-1 transition-transform">→</span>
-						<div>
-							<strong class="text-2xl text-starlight tracking-tight">Mô phỏng đa vật lý:</strong>
-							<p class="text-lg mt-3 leading-relaxed">Mô phỏng các hiện tượng vật lý phức tạp trong ăng-ten, truyền sóng và động học chất lỏng bằng Neural Networks.</p>
-						</div>
-					</li>
-				</ul>
+			<BentoCard class="col-span-full" showBorderBeam={true}>
+				<h2 class="text-2xl font-bold tracking-tight text-starlight mb-8">Hướng nghiên cứu</h2>
+				<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+					<div class="p-6 rounded-lg bg-foundation border border-black/5 dark:border-white/5 hover:border-intellect/30 hover:shadow-sm transition-all duration-200">
+						<span class="inline-flex p-2.5 rounded-md bg-intellect/10 text-intellect mb-5">
+							<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg>
+						</span>
+						<h3 class="text-xl font-bold text-starlight tracking-tight mb-3">Thiết kế vi mạch & FPGA/ASIC</h3>
+						<p class="text-base text-contrast/70 leading-relaxed">Thiết kế phần cứng tăng tốc thời gian thực cho xử lý ảnh/video, AI và DSP trên nền tảng FPGA/ASIC.</p>
+					</div>
+					<div class="p-6 rounded-lg bg-foundation border border-black/5 dark:border-white/5 hover:border-intellect/30 hover:shadow-sm transition-all duration-200">
+						<span class="inline-flex p-2.5 rounded-md bg-intellect/10 text-intellect mb-5">
+							<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M11 9h4a2 2 0 0 0 2-2V3"/><circle cx="9" cy="9" r="2"/><path d="M7 21v-4a2 2 0 0 1 2-2h4"/><circle cx="15" cy="15" r="2"/></svg>
+						</span>
+						<h3 class="text-xl font-bold text-starlight tracking-tight mb-3">Hệ thống nhúng & Edge AI</h3>
+						<p class="text-base text-contrast/70 leading-relaxed">Lập trình điều khiển robot và ứng dụng AI biên trên kiến trúc lai MPU/MCU (STM32, Arduino UNO Q).</p>
+					</div>
+					<div class="p-6 rounded-lg bg-foundation border border-black/5 dark:border-white/5 hover:border-intellect/30 hover:shadow-sm transition-all duration-200">
+						<span class="inline-flex p-2.5 rounded-md bg-intellect/10 text-intellect mb-5">
+							<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9"/><path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5"/><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5"/><path d="M19.1 4.9C23 8.8 23 15.2 19.1 19.1"/></svg>
+						</span>
+						<h3 class="text-xl font-bold text-starlight tracking-tight mb-3">Truyền thông vô tuyến 6G</h3>
+						<p class="text-base text-contrast/70 leading-relaxed">Thuật toán xử lý tín hiệu ISAC, bảo mật lớp vật lý (PLS) và hệ thống ăng-ten kim loại lỏng (FAS) cho mạng di động thế hệ mới.</p>
+					</div>
+				</div>
 			</BentoCard>
-			
-			<BentoCard class="bg-gradient-to-br from-intellect/5 to-transparent border-intellect/10">
-				<h2 class="text-3xl mb-8 text-intellect font-bold tracking-tight">Đào tạo</h2>
-				<ul class="space-y-6 text-contrast/80">
-					<li class="p-4 rounded-lg bg-foundation border border-black/5 dark:border-white/5">
-						<strong class="text-starlight text-lg block mb-1">Tư duy thiết kế:</strong> 
+
+			<BentoCard class="col-span-full">
+				<h2 class="text-2xl font-bold tracking-tight text-starlight mb-8">Đào tạo</h2>
+				<div class="grid sm:grid-cols-2 gap-6 text-contrast/80">
+					<div class="p-4 rounded-lg bg-foundation border border-black/5 dark:border-white/5">
+						<strong class="text-starlight text-lg block mb-1">Tư duy thiết kế:</strong>
 						<span class="text-base leading-relaxed italic">Lấy con người làm trung tâm trong các giải pháp kỹ thuật.</span>
-					</li>
-					<li class="p-4 rounded-lg bg-foundation border border-black/5 dark:border-white/5">
-						<strong class="text-starlight text-lg block mb-1">Tư duy hệ thống:</strong> 
+					</div>
+					<div class="p-4 rounded-lg bg-foundation border border-black/5 dark:border-white/5">
+						<strong class="text-starlight text-lg block mb-1">Tư duy hệ thống:</strong>
 						<span class="text-base leading-relaxed italic">Phát triển cái nhìn tổng thể về các hệ thống thông minh phức tạp.</span>
-					</li>
-				</ul>
+					</div>
+				</div>
 			</BentoCard>
 		</div>
 	</section>
