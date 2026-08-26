@@ -48,7 +48,7 @@ const lang = 'en';
 
 	<div class="bento-grid mt-32">
 		<!-- Welcome Card -->
-		<BentoCard class="md:col-span-2" showBorderBeam={true}>
+		<BentoCard class="sm:col-span-2 xl:col-span-3" showBorderBeam={true}>
 			<div class="flex flex-col h-full">
 				<div class="mb-8">
 					<span class="w-16 h-16 rounded-2xl bg-insight/10 text-insight flex items-center justify-center text-3xl group-hover:scale-110 transition-transform duration-500 ease-expo-out shadow-lg shadow-insight/5">
@@ -58,7 +58,7 @@ const lang = 'en';
 				<h2 class="text-4xl font-bold mb-6 tracking-tight">Welcome to <span class="font-serif text-intellect">PIISA Lab</span></h2>
 				<div class="text-xl text-contrast/80 space-y-6 flex-grow leading-relaxed">
 					<p>We are a research group focusing on the integration of <strong>fundamental physics laws</strong> with modern <strong>artificial intelligence techniques</strong>.</p>
-					<p>Our mission is to solve complex engineering challenges in next-generation wireless networks (6G), multi-physics simulation, and intelligent system design.</p>
+					<p>Our mission is to solve complex engineering challenges in integrated circuit design, embedded systems and edge AI, and next-generation (6G) wireless networks — through multi-physics simulation and machine learning.</p>
 				</div>
 				<div class="mt-10 flex flex-wrap gap-4">
 					<div class="px-5 py-3 rounded-2xl bg-foundation border border-black/5 dark:border-white/5 text-sm font-bold shadow-sm">
@@ -72,7 +72,7 @@ const lang = 'en';
 		</BentoCard>
 
 		<!-- Latest News Card -->
-		<BentoCard class="bg-gradient-to-br from-intellect/5 to-transparent border-intellect/10">
+		<BentoCard class="sm:col-span-2 lg:col-span-1 bg-gradient-to-br from-intellect/5 to-transparent border-intellect/10">
 			<h2 class="text-2xl font-bold mb-8 flex items-center gap-3">
 				<span class="p-2.5 rounded-xl bg-intellect/10 text-intellect">📢</span>
 				News
@@ -91,22 +91,38 @@ const lang = 'en';
 			</a>
 		</BentoCard>
 
-		<!-- Focus Area 1 -->
-		<BentoCard class="hover:border-innovation/30">
-			<div class="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity duration-500">
-				<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 7h10"/><path d="M7 12h10"/><path d="M7 17h10"/></svg>
+		<!-- Research Directions -->
+		<BentoCard class="col-span-full">
+			<div class="flex items-baseline justify-between gap-4 mb-8">
+				<h2 class="text-2xl font-bold tracking-tight text-starlight">Research Directions</h2>
+				<a href="/en/research" class="text-sm font-bold text-intellect hover:underline inline-flex items-center gap-2 group/more shrink-0">
+					View details
+					<svg class="group-hover/more:translate-x-1 transition-transform" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+				</a>
 			</div>
-			<h3 class="text-2xl font-bold mb-3 text-innovation tracking-tight">6G Communications</h3>
-			<p class="text-contrast/70 text-lg leading-relaxed">Network resource optimization and signal processing based on AI-Physics.</p>
-		</BentoCard>
-
-		<!-- Focus Area 2 -->
-		<BentoCard class="hover:border-prestige/30">
-			<div class="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity duration-500">
-				<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="7.5 4.21 12 6.81 16.5 4.21"/><polyline points="7.5 19.79 7.5 14.63 3 12"/><polyline points="21 12 16.5 14.63 16.5 19.79"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+			<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+				<div class="p-6 rounded-lg bg-foundation border border-black/5 dark:border-white/5 hover:border-intellect/30 hover:shadow-sm transition-all duration-200">
+					<span class="inline-flex p-2.5 rounded-md bg-intellect/10 text-intellect mb-5">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg>
+					</span>
+					<h3 class="text-xl font-bold text-starlight tracking-tight mb-3">IC Design &amp; FPGA/ASIC</h3>
+					<p class="text-base text-contrast/70 leading-relaxed">Real-time hardware acceleration for image processing, AI, and DSP.</p>
+				</div>
+				<div class="p-6 rounded-lg bg-foundation border border-black/5 dark:border-white/5 hover:border-intellect/30 hover:shadow-sm transition-all duration-200">
+					<span class="inline-flex p-2.5 rounded-md bg-intellect/10 text-intellect mb-5">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M11 9h4a2 2 0 0 0 2-2V3"/><circle cx="9" cy="9" r="2"/><path d="M7 21v-4a2 2 0 0 1 2-2h4"/><circle cx="15" cy="15" r="2"/></svg>
+					</span>
+					<h3 class="text-xl font-bold text-starlight tracking-tight mb-3">Embedded Systems &amp; Edge AI</h3>
+					<p class="text-base text-contrast/70 leading-relaxed">Edge AI and robot control on hybrid MPU/MCU architectures.</p>
+				</div>
+				<div class="p-6 rounded-lg bg-foundation border border-black/5 dark:border-white/5 hover:border-intellect/30 hover:shadow-sm transition-all duration-200">
+					<span class="inline-flex p-2.5 rounded-md bg-intellect/10 text-intellect mb-5">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9"/><path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5"/><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5"/><path d="M19.1 4.9C23 8.8 23 15.2 19.1 19.1"/></svg>
+					</span>
+					<h3 class="text-xl font-bold text-starlight tracking-tight mb-3">6G Wireless Communications</h3>
+					<p class="text-base text-contrast/70 leading-relaxed">ISAC, physical layer security, and fluid antenna systems for next-generation networks.</p>
+				</div>
 			</div>
-			<h3 class="text-2xl font-bold mb-3 text-prestige tracking-tight">Multi-physics Simulation and Analysis</h3>
-			<p class="text-contrast/70 text-lg leading-relaxed">Fluid dynamics and electromagnetics simulation of Fluid-antenna systems.</p>
 		</BentoCard>
 	</div>
 </Layout>
