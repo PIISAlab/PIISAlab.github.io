@@ -1,0 +1,105 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { type Lang, tr } from '../i18n';
+
+interface Props {
+	member: CollectionEntry<'people'>['data'];
+	lang: Lang;
+	/** Accent colour token for this card (intellect | insight | info | innovation | prestige). */
+	accent: string;
+}
+
+const { member, lang, accent } = Astro.props;
+const name = tr(member.name, lang);
+const initials = name.split(/\s+/).map((w) => w[0]).join('').slice(-3).toUpperCase();
+const alumni = member.status === 'alumni';
+
+const L = {
+	vi: {
+		'senior-thesis': 'Khóa luận TN', 'masters-thesis': 'Luận văn ThS', 'phd-dissertation': 'Luận án TS',
+		graduated: 'Đã tốt nghiệp', topic: 'Đề tài', tentative: 'Đề tài (dự kiến)', abstract: 'Tóm tắt', firstJob: 'Công việc đầu tiên sau khi tốt nghiệp',
+	},
+	en: {
+		'senior-thesis': 'Senior Thesis', 'masters-thesis': "Master's Report", 'phd-dissertation': 'Ph.D. Dissertation',
+		graduated: 'Graduated', topic: 'Project', tentative: 'Project (tentative)', abstract: 'Abstract', firstJob: 'First Job After Graduation',
+	},
+}[lang];
+
+const badge = alumni ? L.graduated : member.thesis ? L[member.thesis.kind] : undefined;
+// Tailwind needs literal class names, so map accents explicitly.
+const tone = {
+	intellect: { hover: 'hover:border-intellect/30 hover:shadow-intellect/5', chip: 'text-intellect bg-intellect/10 border-intellect/20', link: 'text-intellect' },
+	insight: { hover: 'hover:border-insight/30 hover:shadow-insight/5', chip: 'text-insight bg-insight/10 border-insight/20', link: 'text-insight' },
+	info: { hover: 'hover:border-info/30 hover:shadow-info/5', chip: 'text-info bg-info/10 border-info/20', link: 'text-info' },
+	innovation: { hover: 'hover:border-innovation/30 hover:shadow-innovation/5', chip: 'text-innovation bg-innovation/10 border-innovation/20', link: 'text-innovation' },
+	prestige: { hover: 'hover:border-prestige/30 hover:shadow-prestige/5', chip: 'text-prestige bg-prestige/10 border-prestige/20', link: 'text-prestige' },
+}[accent] ?? { hover: '', chip: '', link: '' };
+---
+
+<div class={`group p-6 rounded-lg bg-foundation border border-black/5 dark:border-white/5 hover:shadow-xl transition-all duration-500 ${tone.hover}`}>
+	{member.photo ? (
+		<img src={member.photo} alt={name} loading="lazy" class={`w-full rounded-lg mb-5 object-contain ${alumni ? 'grayscale-[35%]' : ''}`} />
+	) : (
+		<div class="w-full h-36 rounded-lg mb-5 bg-gradient-to-br from-prestige/10 to-insight/10 flex items-center justify-center border border-prestige/10">
+			<span class="text-4xl font-black text-prestige/40 tracking-tighter select-none">{initials}</span>
+		</div>
+	)}
+	<h3 class="text-xl font-bold text-starlight tracking-tight mb-2">{name}</h3>
+	<div class="flex flex-wrap gap-2 mb-4">
+		{member.cohort && <span class={`text-xs font-black uppercase tracking-widest px-3 py-1 rounded-sm border ${tone.chip}`}>{member.cohort}</span>}
+		{badge && <span class="text-xs font-bold text-contrast/50 bg-black/5 dark:bg-white/5 px-3 py-1 rounded-sm">{badge}</span>}
+	</div>
+	{member.thesis && (
+		<div class="pt-4 border-t border-black/5 dark:border-white/5">
+			<p class="text-xs font-black text-contrast/40 uppercase tracking-widest mb-2">{member.thesis.tentative ? L.tentative : L.topic}</p>
+			{member.thesis.abstract ? (
+				<details class="thesis-details">
+					<summary class="text-sm font-semibold text-starlight leading-relaxed">{tr(member.thesis.title, lang)}</summary>
+					<div class="mt-4">
+						<p class="text-xs font-black text-contrast/40 uppercase tracking-widest mb-2">{L.abstract}</p>
+						<p class="text-sm text-contrast/70 leading-relaxed">{tr(member.thesis.abstract, lang)}</p>
+					</div>
+				</details>
+			) : (
+				<p class="text-sm font-semibold text-starlight leading-relaxed">{tr(member.thesis.title, lang)}</p>
+			)}
+			{member.firstJob && (
+				<div class="mt-6">
+					<p class="text-xs font-black text-contrast/40 uppercase tracking-widest mb-2">{L.firstJob}</p>
+					<p class="text-sm text-contrast/70 leading-relaxed">
+						{member.firstJob.url ? (
+							<a href={member.firstJob.url} target="_blank" rel="noopener noreferrer" class={`hover:underline ${tone.link}`}>{tr(member.firstJob.name, lang)}</a>
+						) : tr(member.firstJob.name, lang)}
+					</p>
+				</div>
+			)}
+		</div>
+	)}
+</div>
+
+<style>
+	details.thesis-details > summary {
+		list-style: none;
+		cursor: pointer;
+		display: flex;
+		align-items: flex-start;
+		gap: 0.375rem;
+	}
+	details.thesis-details > summary::-webkit-details-marker {
+		display: none;
+	}
+	details.thesis-details > summary::before {
+		content: '▶';
+		font-size: 0.55rem;
+		margin-top: 0.25rem;
+		flex-shrink: 0;
+		opacity: 0.4;
+		transition: transform 0.2s ease;
+	}
+	details.thesis-details[open] > summary::before {
+		transform: rotate(90deg);
+	}
+	details.thesis-details > summary:hover::before {
+		opacity: 0.7;
+	}
+</style>

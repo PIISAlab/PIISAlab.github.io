@@ -1,0 +1,110 @@
+# PIISA Lab members. Display order = file order within each section.
+# role: pi | postdoc | phd | masters | undergrad   status: current | alumni
+# name is a plain string, or {vi, en} when it differs by language.
+# Photos live in public/images/; members without a photo get initials.
+- id: truong-trung-kien
+  name:
+    vi: TS. Trương Trung Kiên
+    en: Dr. Kien Truong
+  role: pi
+  status: current
+  photo: /images/kien-truong.jpg
+  bio:
+    vi:
+      - TS. Trương Trung Kiên hiện là Giảng viên tại Bộ môn Vật lý tin học, Khoa Vật lý - Vật lý kỹ thuật, Trường Đại học Khoa học Tự nhiên, ĐHQG-HCM. Ông là Senior Member của IEEE và là cựu sinh viên VEF.
+      - Ông nhận bằng Thạc sĩ và Tiến sĩ Kỹ thuật Điện tại Đại học Texas tại Austin (UT Austin) dưới sự hướng dẫn của Giáo sư Robert W. Heath, Jr. Các nghiên cứu của ông tập trung vào Massive MIMO, truyền tải năng lượng không dây và xử lý tín hiệu cho mạng 6G.
+    en:
+      - Dr. Kien Truong is currently a Lecturer in the Computer Science Physics Division, Faculty of Physics and Engineering Physics, University of Science, VNU-HCM. He is an IEEE Senior Member and a VEF alumnus.
+      - He received the M.S. and Ph.D. degrees in Electrical Engineering from The University of Texas at Austin (UT Austin) under the supervision of Prof. Robert W. Heath, Jr. His research interests include Massive MIMO, wireless power transfer, and signal processing for 6G networks.
+- id: bui-tri-thuc
+  name: Bùi Trí Thức
+  role: masters
+  status: current
+  cohort: K35CNBD
+  photo: /images/BuiTriThuc.jpg
+  thesis:
+    kind: masters-thesis
+    tentative: true
+    title:
+      vi: Mô phỏng và đánh giá hiệu năng hệ thống ăng-ten thông minh trong điều kiện phần cứng thực tế cho hệ thống 6G
+      en: Simulation and performance evaluation of smart antenna systems under practical hardware conditions for 6G systems
+- id: tran-thanh-thai-thao
+  name: Trần Thanh Thái Thảo
+  role: undergrad
+  status: current
+  cohort: 23VLH-TN
+  photo: /images/TranThanhThaiThao.jpeg
+  thesis:
+    kind: senior-thesis
+    title:
+      vi: Nghiên cứu triển khai hệ thống máy bán hàng dựa trên trí tuệ nhân tạo biên (Edge AI)
+      en: Research and implementation of an Edge AI-based vending machine system
+    abstract:
+      vi: 'Đề tài trước hết nghiên cứu và phát triển một mô hình ngôn ngữ nhỏ (SLM: Small Language Model) phù hợp để trao đổi phục vụ mục đích bán hàng ở một cửa hàng nhỏ. Tiếp theo, đề tài nghiên cứu triển khai và tích hợp SLM phát triển ở trên vào một kit phần cứng có năng lực và tài nguyên phù hợp tích hợp.'
+      en: This project focuses on the research and implementation of an Edge AI-based vending system. The study first develops a Small Language Model (SLM) tailored for conversational interactions in small-scale retail settings. Subsequently, the developed SLM is integrated and deployed onto an embedded hardware platform with appropriate computation and resource capacities.
+- id: nguyen-thien-nhi
+  name: Nguyễn Thiên Nhi
+  role: undergrad
+  status: current
+  cohort: 23CVD
+  photo: /images/NguyenThienNhi.jpg
+  thesis:
+    kind: senior-thesis
+    title:
+      vi: Thiết kế lõi xử lý ảnh trên FPGA cho nhận dạng màu sắc mục tiêu và phát hiện đường dẫn phục vụ điều hướng
+      en: Design and implementation of image processing cores on FPGA for target color recognition and path detection for navigation
+    abstract:
+      vi: Đề tài tập trung vào việc nghiên cứu, tối ưu hóa kiến trúc thuật toán và hiện thực hóa các lõi IP xử lý ảnh bằng ngôn ngữ mô tả phần cứng (hoặc công cụ High-Level Synthesis - HLS) chạy thời gian thực. Các nhiệm vụ kỹ thuật cụ thể bao gồm thiết kế lõi chuyển đổi không gian màu (chuyển đổi RGB sang YCbCr bằng số học dấu phẩy tĩnh được tối ưu hóa tài nguyên phần cứng), thiết kế lõi phân đoạn ảnh (nhận diện mục tiêu hoặc làn đường dựa trên ngưỡng màu và chuyển đổi ảnh sang dạng nhị phân), thiết kế lõi lọc biên cạnh Sobel (xây dựng bộ lọc chập không gian để trích xuất biên cạnh của ảnh xám, làm tiền đề cho thuật toán Hough), thiết kế lõi trích xuất đường dẫn bằng biến đổi Hough (thiết kế kiến trúc tính toán song song sử dụng bảng tra cứu lượng giác và thiết kế bộ đệm tối ưu hóa lưu trữ ma trận tích lũy bằng khối bộ nhớ M10K), và tối ưu hóa đường ống xử lý để hoạt động đồng bộ với tốc độ luồng video đầu vào. Kết quả dự kiến đạt được các lõi IP xử lý thuật toán tối ưu phần cứng có khả năng hoạt động độc lập hoặc tích hợp trực tiếp qua giao diện Streaming vào hệ thống phần cứng chung để nhận dạng vật thể và hỗ trợ dẫn đường.
+      en: This project focuses on researching, optimizing algorithmic architectures, and implementing real-time image processing IP cores using hardware description languages (or High-Level Synthesis - HLS tools). Specific technical tasks include designing a color space conversion core (RGB to YCbCr conversion using fixed-point arithmetic optimized for hardware resources); designing an image segmentation core (target or lane identification based on color thresholding and binary conversion); designing a Sobel edge detection core (constructing a spatial convolution filter to extract edges from grayscale images as a precursor to the Hough transform); designing a path extraction core using Hough transform (designing a parallel computing architecture using trigonometric look-up tables and an optimized buffer to store the accumulator matrix using M10K memory blocks); and optimizing the processing pipeline to synchronize with the input video stream rate. The resulting hardware-optimized IP cores can operate independently or integrate directly via a Streaming interface into the main hardware system for object recognition and navigation assistance.
+- id: le-minh-doan
+  name: Lê Minh Đoàn
+  role: undergrad
+  status: current
+  cohort: 23CVD
+  photo: /images/LeMinhDoan.jpg
+  thesis:
+    kind: senior-thesis
+    title:
+      vi: Thiết kế kiến trúc giao tiếp video và kiến trúc bộ nhớ đệm dòng thời gian thực trên FPGA
+      en: Design of video interface and real-time line buffer architectures on FPGA
+    abstract:
+      vi: Đề tài tập trung vào việc tự thiết kế và xây dựng hạ tầng phần cứng xử lý luồng (stream processing infrastructure) phục vụ quá trình thu nhận và phân phối dữ liệu ảnh. Các nhiệm vụ kỹ thuật cụ thể bao gồm thiết kế bộ cấu hình camera (sử dụng giao thức I2C/SPI để thiết lập các thông số hoạt động và chế độ quét cho cảm biến ảnh), thiết kế khối thu nhận dữ liệu camera (tự thiết kế khối nhận tín hiệu pixel dạng song song DVP từ camera, đồng bộ hóa tín hiệu xung nhịp pixel và tạo luồng dữ liệu đồng bộ), thiết kế kiến trúc bộ nhớ đệm dòng (sử dụng tài nguyên bộ nhớ tích hợp sẵn trên FPGA khối M10K cấu hình dưới dạng Dual-Port RAM, xây dựng cơ chế đệm dòng Line Buffer kết hợp cửa sổ trượt sliding window liên tục để cấp dữ liệu đồng thời cho phân hệ thuật toán phía sau mà không phụ thuộc vào bộ nhớ ngoài), thiết kế bộ điều khiển hiển thị (tự thiết kế khối driver xuất tín hiệu hiển thị trực quan dữ liệu ảnh gốc và kết quả thuật toán lên màn hình), và thiết kế giao tiếp đồng bộ (định nghĩa và triển khai giao tiếp truyền dữ liệu video chuẩn luồng hỗ trợ tín hiệu đồng bộ Pixel Valid, Frame Sync và cơ chế Handshake để ghép nối trực tiếp với phân hệ xử lý thuật toán). Kết quả dự kiến đạt được nền tảng hạ tầng truyền tải và quản lý dữ liệu luồng video thời gian thực hiệu năng cao, làm cơ sở cho toàn bộ hệ thống nhúng xử lý ảnh.
+      en: The project focuses on custom designing and building a stream processing hardware infrastructure for image data acquisition and distribution. Specific technical tasks include designing a camera configurator (utilizing I2C/SPI protocols to configure operational parameters and scanning modes for image sensors), designing a camera data acquisition block (designing a block to receive parallel pixel DVP signals from the camera, synchronizing pixel clock signals, and generating a synchronous data stream), designing a line buffer architecture (utilizing on-chip memory resources on the FPGA M10K blocks configured as Dual-Port RAM to construct a line buffer mechanism combined with a continuous sliding window to feed data simultaneously to downstream algorithm subsystems without relying on external memory), designing a display controller (designing a driver block to visually output raw image data and algorithm results to a display), and designing a synchronous interface (defining and implementing a streaming-standard video data interface supporting Pixel Valid, Frame Sync, and handshake mechanisms to interface directly with the algorithm processing subsystem). The expected outcome is a high-performance, real-time video stream transmission and management infrastructure that serves as the foundation for the entire image processing embedded system.
+- id: cao-khanh-duy
+  name: Cao Khánh Duy
+  role: undergrad
+  status: alumni
+  cohort: 22CVD
+  photo: /images/DuyCao.jpeg
+  thesis:
+    kind: senior-thesis
+    title:
+      vi: Thiết kế và hiện thực hệ thống tăng cường tầm nhìn trên nền tảng FPGA DE1-SoC
+      en: Design and implementation of a vision enhancement system on the FPGA DE1-SoC platform
+    abstract:
+      vi: Trong bối cảnh các ứng dụng giám sát và cứu hộ đòi hỏi khả năng quan sát chính xác dưới điều kiện thời tiết khắc nghiệt, các hệ thống tăng cường tầm nhìn đóng vai trò vô cùng cấp thiết. Khóa luận này tập trung thiết kế và hiện thực hệ thống khử sương mù, khói thời gian thực trên nền tảng FPGA DE1-SoC. Bằng cách tối ưu hóa kiến trúc SoC, nhiệm vụ được phân chia hiệu quả giữa phần cứng FPGA (xử lý DSP song song, độ trễ thấp qua Verilog) và phần mềm HPS (điều khiển hệ thống trên ARM Cortex-A9). Quy trình từ mô phỏng MATLAB, kiểm tra ModelSim đến thực thi trên Quartus đã chứng minh được ưu thế vượt trội của FPGA trong xử lý ảnh tốc độ cao. Kết quả nghiên cứu không chỉ cải thiện chất lượng hình ảnh thực tế mà còn thiết lập khung tiêu chuẩn cho các hệ thống tăng cường tầm nhìn thông minh trong tương lai.
+      en: In the context of surveillance and rescue applications requiring precise observation under harsh weather conditions, vision enhancement systems play a critically important role. This thesis focuses on the design and implementation of a real-time dehazing and desmoke system on the FPGA DE1-SoC platform. By optimizing the SoC architecture, tasks are efficiently partitioned between FPGA hardware (parallel DSP processing with low latency via Verilog) and HPS software (system control on ARM Cortex-A9). The workflow from MATLAB simulation and ModelSim verification to Quartus execution demonstrates the superior advantage of FPGAs in high-speed image processing. The research results not only improve real-world image quality but also establish a standard framework for future intelligent vision enhancement systems.
+  firstJob:
+    name:
+      vi: Công ty Cổ phần Công nghệ Otanics (Otanics Technology)
+      en: Otanics Technology Joint Stock Company
+    url: https://tomota.vn/
+- id: nguyen-thai-hoa
+  name: Nguyễn Thái Hoà
+  role: undergrad
+  status: alumni
+  cohort: 22CVD
+  photo: /images/NguyenThaiHoa.jpg
+  thesis:
+    kind: senior-thesis
+    title:
+      vi: Mô phỏng đa vật lý của các hệ thống anten có thể cấu hình lại bằng kim loại lỏng
+      en: Multi-physics simulation of liquid-metal reconfigurable antenna systems
+    abstract:
+      vi: Các hệ thống anten kim loại lỏng hiện đang thu hút sự quan tâm đặc biệt trong phát triển mạng thông tin di động thế hệ 6 (6G) nhờ khả năng tái cấu hình linh hoạt về cấu trúc hình học và đặc tính bức xạ. Khoá luận này tập trung nghiên cứu giản đồ bức xạ và các tham số hiệu năng đặc trưng của mảng anten kim loại lỏng thông qua mô phỏng điện từ sóng toàn phần (full-wave) trên giao diện Electromagnetic Waves, Frequency Domain của phần mềm COMSOL Multiphysics. Kết quả nghiên cứu phân tích chi tiết tác động của các tham số như số lượng phần tử, cấu hình hình học và tần số hoạt động đến các tham số hiệu năng then chốt như độ lợi (gain) và tổn hao phản xạ (return loss). Những phát hiện này không chỉ cung cấp cái nhìn chuyên sâu về hành vi điện từ của anten kim loại lỏng, mà còn thiết lập khung mô phỏng nền tảng cho các hệ thống anten tái cấu hình dựa trên chất lỏng trong tương lai.
+      en: Liquid-metal antenna systems are attracting significant interest in the development of sixth-generation (6G) mobile networks due to their flexible reconfigurability in geometric structure and radiation characteristics. This thesis focuses on the radiation patterns and characteristic performance parameters of liquid-metal antenna arrays through full-wave electromagnetic simulation using the Electromagnetic Waves, Frequency Domain interface in COMSOL Multiphysics. The results provide a detailed analysis of the impact of parameters such as element count, geometric configuration, and operating frequency on key performance metrics including gain and return loss. These findings not only offer deep insight into the electromagnetic behavior of liquid-metal antennas, but also establish a foundational simulation framework for future fluid-based reconfigurable antenna systems.
+  firstJob:
+    name:
+      vi: Tổng Công ty Công nghiệp Công nghệ cao Viettel (Viettel High Tech)
+      en: Viettel High Tech
+    url: https://viettelhightech.vn/

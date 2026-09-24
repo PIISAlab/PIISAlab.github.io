@@ -1,0 +1,46 @@
+# Research directions — shared by the home page (summary) and the Research page (description + figure).
+- id: ic-fpga
+  icon: chip
+  image: /images/research/ic-fpga.webp
+  title:
+    vi: Thiết kế vi mạch & FPGA/ASIC
+    en: IC Design & FPGA/ASIC
+  summary:
+    vi: Tăng tốc phần cứng thời gian thực cho xử lý ảnh, AI và DSP.
+    en: Real-time hardware acceleration for image processing, AI, and DSP.
+  description:
+    vi: Thiết kế phần cứng tăng tốc thời gian thực cho xử lý ảnh/video, AI và DSP trên nền tảng FPGA/ASIC.
+    en: Real-time hardware acceleration for image/video processing, AI, and DSP on FPGA/ASIC platforms.
+  imageAlt:
+    vi: Minh họa đẳng cự một vi mạch FPGA gắn trên bo mạch in màu xanh lá, các đường mạch phát sáng dẫn tới hai bong bóng thoại chứa biểu tượng dạng sóng tín hiệu và biểu tượng phát video.
+    en: Isometric illustration of an FPGA chip mounted on a green printed circuit board, with glowing circuit traces running to two callout bubbles holding a signal-waveform icon and a video-playback icon.
+- id: embedded-ai
+  icon: circuit
+  image: /images/research/embedded-ai.webp
+  title:
+    vi: Hệ thống nhúng & Edge AI
+    en: Embedded Systems & Edge AI
+  summary:
+    vi: AI biên và điều khiển robot trên kiến trúc lai MPU/MCU.
+    en: Edge AI and robot control on hybrid MPU/MCU architectures.
+  description:
+    vi: Lập trình điều khiển robot và ứng dụng AI biên trên kiến trúc lai MPU/MCU (STM32, Arduino UNO Q).
+    en: Robot control programming and edge AI applications on hybrid MPU/MCU architectures (STM32, Arduino UNO Q).
+  imageAlt:
+    vi: Minh họa đẳng cự một cánh tay robot đặt trên khung xe bốn bánh, nối bằng đường mạch phát sáng tới biểu tượng mạng nơ-ron "AI", một chip "MCU", một vi điều khiển STM32 và một bo mạch Arduino UNO.
+    en: Isometric illustration of a robotic arm on a four-wheeled chassis, linked by glowing traces to an "AI" neural-network node, an "MCU" chip icon, an STM32 microcontroller, and an Arduino UNO board.
+- id: wireless-6g
+  icon: signal
+  image: /images/research/wireless-6g.webp
+  title:
+    vi: Truyền thông vô tuyến 6G
+    en: 6G Wireless Communications
+  summary:
+    vi: ISAC, bảo mật lớp vật lý và ăng-ten kim loại lỏng cho mạng thế hệ mới.
+    en: ISAC, physical layer security, and fluid antenna systems for next-generation networks.
+  description:
+    vi: Thuật toán xử lý tín hiệu ISAC, bảo mật lớp vật lý (PLS) và hệ thống ăng-ten kim loại lỏng (FAS) cho mạng di động thế hệ mới.
+    en: ISAC signal processing algorithms, physical layer security (PLS), and fluid antenna systems (FAS) for next-generation mobile networks.
+  imageAlt:
+    vi: Minh họa đẳng cự một chip ăng-ten mảng nhãn "6G" với giọt kim loại lỏng trên bề mặt, các cung sóng vô tuyến phát ra hai bên, cùng biểu tượng ổ khóa và màn hình radar.
+    en: Isometric illustration of a "6G" antenna-array chip with a liquid-metal droplet on its surface, radio-wave arcs radiating to either side, alongside a padlock icon and a radar display.

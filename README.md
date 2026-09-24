@@ -1,43 +1,27 @@
-# Astro Starter Kit: Minimal
+# PIISA Lab website
+
+Source for <https://piisalab.github.io> — Physics-Informed Intelligent Systems and Applications Lab, University of Science, VNU-HCM.
+Astro + Tailwind, bilingual (Vietnamese at `/`, English at `/en/`), deployed to GitHub Pages by `.github/workflows/deploy.yml` on every push to `main`.
+
+## Updating content — edit data, not pages
+
+| To change… | Edit | Notes |
+|---|---|---|
+| Members, alumni, theses | `src/data/people.yaml` | Order in the file = order on the page. Photo goes in `public/images/`. |
+| Publications | `src/data/publications.yaml` | Add `doi:` (bare, `10.1109/...`) and the title links to it. |
+| News | `src/data/news.yaml` | Newest first; the home page shows the latest three. |
+| Research directions | `src/data/research.yaml` | Shared by the home page (`summary`) and Research page (`description`). |
+| Nav, site name, affiliation | `src/i18n.ts` | |
+
+Any field that differs by language is `{ vi: ..., en: ... }`; a plain string is shown in both.
+The schemas in `src/content.config.ts` validate every entry — a typo fails the build instead of shipping a broken page.
+
+Each page is written once in `src/pages/[...lang]/` and built for both languages.
+
+## Commands
 
 ```sh
-bun create astro@latest -- --template minimal
+bun install
+bun dev       # http://localhost:4321
+bun run build # static site in dist/
 ```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

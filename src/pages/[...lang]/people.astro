@@ -1,0 +1,70 @@
+---
+import { list } from '../../content';
+import Layout from '../../layouts/Layout.astro';
+import BentoCard from '../../components/BentoCard.astro';
+import MemberCard from '../../components/MemberCard.astro';
+import { type Lang, langPaths, tr } from '../../i18n';
+
+export const getStaticPaths = langPaths;
+const { lang } = Astro.props as { lang: Lang };
+
+const people = (await list('people'));
+const pi = people.find((p) => p.role === 'pi')!;
+const accents = ['intellect', 'info', 'insight', 'innovation', 'prestige'];
+
+const t = {
+	vi: {
+		title: 'Thành viên', h1: ['Thành', 'viên'], role: 'Principal Investigator',
+		sections: { masters: 'Học viên Cao học Hiện tại', undergrad: 'Sinh viên Đại học Hiện tại', phd: 'Nghiên cứu sinh Hiện tại', postdoc: 'Nghiên cứu viên Sau Tiến sĩ', alumni: 'Cựu thành viên' },
+	},
+	en: {
+		title: 'People', h1: ['Our', 'People'], role: 'Principal Investigator',
+		sections: { masters: "Current Master's Students", undergrad: 'Current Undergraduate Students', phd: 'Current Ph.D. Students', postdoc: 'Postdoctoral Researchers', alumni: 'Alumni' },
+	},
+}[lang];
+
+// Sections render only when they have members; icon + tint per section.
+const sections = [
+	{ key: 'postdoc', icon: '🧪', tint: 'bg-intellect/10 text-intellect', members: people.filter((p) => p.status === 'current' && p.role === 'postdoc') },
+	{ key: 'phd', icon: '📜', tint: 'bg-intellect/10 text-intellect', members: people.filter((p) => p.status === 'current' && p.role === 'phd') },
+	{ key: 'masters', icon: '🔬', tint: 'bg-intellect/10 text-intellect', members: people.filter((p) => p.status === 'current' && p.role === 'masters') },
+	{ key: 'undergrad', icon: '👥', tint: 'bg-insight/10 text-insight', members: people.filter((p) => p.status === 'current' && p.role === 'undergrad') },
+	{ key: 'alumni', icon: '🎓', tint: 'bg-prestige/10 text-prestige', members: people.filter((p) => p.status === 'alumni') },
+] as const;
+let n = 0;
+---
+
+<Layout title={t.title} lang={lang}>
+	<section class="mb-16">
+		<h1 class="text-5xl font-black mb-12 tracking-tighter">
+			{t.h1[0]} <span class="text-intellect font-montserrat italic">{t.h1[1]}</span>
+		</h1>
+
+		<div class="bento-grid">
+			<BentoCard class="md:col-span-3 flex flex-col md:flex-row gap-10 items-center md:items-start" showBorderBeam={true}>
+				<div class="w-full md:w-72 h-72 rounded-xl overflow-hidden flex-shrink-0 border-2 border-intellect/20 shadow-2xl shadow-intellect/10">
+					<img src={pi.photo} alt={tr(pi.name, lang)} class="w-full h-full object-cover" />
+				</div>
+				<div class="flex-grow">
+					<h2 class="text-4xl font-bold mb-3 tracking-tight">{tr(pi.name, lang)}</h2>
+					<p class="text-intellect font-black uppercase tracking-widest text-sm mb-8 bg-intellect/10 inline-block px-4 py-1.5 rounded-md">{t.role}</p>
+					<div class="text-contrast/80 space-y-5 text-lg leading-relaxed">
+						{pi.bio?.[lang].map((para) => <p>{para}</p>)}
+					</div>
+				</div>
+			</BentoCard>
+
+			{sections.filter((s) => s.members.length).map((s) => (
+				<BentoCard class="md:col-span-3">
+					<h2 class="text-2xl font-bold mb-8 tracking-tight flex items-center gap-3">
+						<span class={`p-2.5 rounded-md ${s.tint}`}>{s.icon}</span>
+						{t.sections[s.key]}
+					</h2>
+					<div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+						{s.members.map((m) => <MemberCard member={m} lang={lang} accent={accents[n++ % accents.length]} />)}
+					</div>
+				</BentoCard>
+			))}
+		</div>
+	</section>
+</Layout>

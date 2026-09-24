@@ -1,17 +1,10 @@
 import React, { useState } from 'react';
 
 interface Props {
-  lang: 'vi' | 'en';
-  menuItems: {
-    href: string;
-    label: {
-      vi: string;
-      en: string;
-    };
-  }[];
+  menuItems: { href: string; label: string }[];
 }
 
-export default function MobileMenu({ lang, menuItems }: Props) {
+export default function MobileMenu({ menuItems }: Props) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -59,15 +52,14 @@ export default function MobileMenu({ lang, menuItems }: Props) {
         <div className="absolute top-16 left-0 right-0 bg-foundation border-b border-neutral-200 dark:border-neutral-800 p-4 shadow-lg animate-fade-in z-50">
           <ul className="flex flex-col space-y-2">
             {menuItems.map((item) => {
-              const href = lang === 'vi' ? item.href : `/en${item.href === '/' ? '' : item.href}`;
               return (
                 <li key={item.href}>
                   <a
-                    href={href}
+                    href={item.href}
                     className="text-base font-inter font-medium block py-2 px-3 rounded-md hover:bg-black/5 dark:hover:bg-white/5 hover:text-intellect transition-colors"
                     onClick={() => setIsOpen(false)}
                   >
-                    {item.label[lang]}
+                    {item.label}
                   </a>
                 </li>
               );

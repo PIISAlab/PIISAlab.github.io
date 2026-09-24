@@ -1,12 +1,30 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import BentoCard from '../components/BentoCard.astro';
-const lang = 'vi';
+import Layout from "../../layouts/Layout.astro";
+import BentoCard from "../../components/BentoCard.astro";
+import { type Lang, langPaths } from "../../i18n";
+
+export const getStaticPaths = langPaths;
+const { lang } = Astro.props as { lang: Lang };
+
+const t = {
+	"vi": {
+		"s0": "Ứng dụng",
+		"s1": ["Ứng", "dụng"],
+		"s2": "Hệ thống hỗ trợ đệ trình công bố khoa học tự động. Trợ lý AI phân tích tóm tắt bản thảo (Abstract) của bạn, trích xuất từ khóa chuyên ngành, và tự động so khớp, gợi ý các tạp chí Q1/Q2/Q3 hoặc hội nghị CORE A*/A/B phù hợp nhất dựa trên mức độ tương đồng ngữ nghĩa.",
+		"s3": "Khởi chạy ứng dụng"
+	},
+	"en": {
+		"s0": "Applications",
+		"s1": ["Web", "Applications"],
+		"s2": "An autonomous AI co-pilot that helps researchers analyze manuscript abstracts, extract core technical keywords, and recommend optimal Q1/Q2/Q3 journals and CORE A*/A/B conferences based on semantic profiles, impact factors, and upcoming timelines.",
+		"s3": "Launch Application"
+	}
+}[lang];
 ---
-<Layout title="Ứng dụng" lang={lang}>
+<Layout title={t.s0} lang={lang}>
 	<section class="mb-16">
 		<h1 class="text-5xl font-black mb-16 tracking-tighter">
-			Ứng <span class="text-intellect font-montserrat italic">dụng</span>
+			{t.s1[0]} <span class="text-intellect font-montserrat italic">{t.s1[1]}</span>
 		</h1>
 
 		<div class="grid md:grid-cols-2 gap-8">
@@ -17,7 +35,7 @@ const lang = 'vi';
 						<h2 class="text-2xl font-bold tracking-tight text-starlight">PIISA Submission Venue Recommender</h2>
 					</div>
 					<p class="text-contrast/80 leading-relaxed mb-6">
-						Hệ thống hỗ trợ đệ trình công bố khoa học tự động. Trợ lý AI phân tích tóm tắt bản thảo (Abstract) của bạn, trích xuất từ khóa chuyên ngành, và tự động so khớp, gợi ý các tạp chí Q1/Q2/Q3 hoặc hội nghị CORE A*/A/B phù hợp nhất dựa trên mức độ tương đồng ngữ nghĩa.
+						{t.s2}
 					</p>
 					<div class="flex flex-wrap gap-2">
 						<span class="text-xs font-semibold px-2.5 py-1 rounded bg-intellect/10 text-intellect uppercase tracking-wider">Ollama LLM</span>
@@ -32,7 +50,7 @@ const lang = 'vi';
 						rel="noopener noreferrer" 
 						class="glass-button bg-intellect text-white border-transparent inline-flex items-center gap-2"
 					>
-						Khởi chạy ứng dụng
+						{t.s3}
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 					</a>
 				</div>

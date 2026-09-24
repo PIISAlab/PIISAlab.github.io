@@ -2,33 +2,16 @@
 import ThemeToggle from './ThemeToggle';
 import MobileMenu from './MobileMenu';
 
+import { type Lang, nav, url, switchUrl } from "../i18n";
+
 interface Props {
-	lang: 'vi' | 'en';
+	lang: Lang;
 }
 
 const { lang } = Astro.props;
 
-const menuItems = [
-	{ href: '/', label: { vi: 'Trang chủ', en: 'Home' } },
-	{ href: '/research', label: { vi: 'Nghiên cứu', en: 'Research' } },
-	{ href: '/people', label: { vi: 'Thành viên', en: 'People' } },
-	{ href: '/publications', label: { vi: 'Công bố', en: 'Publications' } },
-	{ href: '/applications', label: { vi: 'Ứng dụng', en: 'Applications' } },
-	{ href: '/opportunities', label: { vi: 'Cơ hội', en: 'Opportunities' } },
-	{ href: '/contact', label: { vi: 'Liên hệ', en: 'Contact' } },
-];
-
-const currentPath = Astro.url.pathname;
-
-// Target URL for switching languages
-let targetUrl = '/';
-if (lang === 'vi') {
-    // Current is Vietnamese (root), switch to English
-    targetUrl = `/en${currentPath === '/' ? '' : currentPath}`;
-} else {
-    // Current is English (/en/...), switch to Vietnamese (root)
-    targetUrl = currentPath.replace(/^\/en/, '') || '/';
-}
+const menuItems = nav.map((item) => ({ href: url(lang, item.path), label: item.label[lang], path: item.path }));
+const targetUrl = switchUrl(lang, Astro.url.pathname);
 
 ---
 
@@ -37,18 +20,17 @@ if (lang === 'vi') {
 		<!-- Venizia spec §B.8 TopBar: 64px height (h-16) -->
 		<div class="flex justify-between items-center h-16">
 			<!-- Logo: Montserrat 900 (font-black) per Venizia §4.1 display family -->
-			<a href={lang === 'vi' ? '/' : '/en'} class="text-2xl font-montserrat font-black text-starlight tracking-tight transition-colors">
+			<a href={url(lang, '/')} class="text-2xl font-montserrat font-black text-starlight tracking-tight transition-colors">
 				PIISA<span class="text-intellect">Lab</span>
 			</a>
 
 			<!-- Nav links: Inter 500 (font-medium) per Venizia §4.3 chrome typography -->
 			<ul class="hidden md:flex space-x-8">
 				{menuItems.map(item => {
-					const href = lang === 'vi' ? item.href : `/en${item.href === '/' ? '' : item.href}`;
 					return (
 						<li>
-							<a href={href} class="text-sm font-inter font-medium hover:text-intellect dark:hover:text-insight transition-colors">
-								{item.label[lang]}
+							<a href={item.href} class="text-sm font-inter font-medium hover:text-intellect dark:hover:text-insight transition-colors">
+								{item.label}
 							</a>
 						</li>
 					);
@@ -63,7 +45,7 @@ if (lang === 'vi') {
 				>
 					{lang === 'vi' ? '🇺🇸 EN' : '🇻🇳 VN'}
 				</a>
-				<MobileMenu client:load lang={lang} menuItems={menuItems} />
+				<MobileMenu client:load menuItems={menuItems} />
 			</div>
 		</div>
 	</div>

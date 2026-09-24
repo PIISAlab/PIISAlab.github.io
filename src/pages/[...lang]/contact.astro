@@ -1,27 +1,51 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import BentoCard from '../components/BentoCard.astro';
-const lang = 'vi';
+import Layout from "../../layouts/Layout.astro";
+import BentoCard from "../../components/BentoCard.astro";
+import { type Lang, langPaths } from "../../i18n";
+
+export const getStaticPaths = langPaths;
+const { lang } = Astro.props as { lang: Lang };
+
+const t = {
+	"vi": {
+		"s0": "Liên hệ",
+		"s1": ["Kết", "nối"],
+		"s2": "Thông tin Liên hệ",
+		"s3": "Địa chỉ:",
+		"s4": "Bộ môn Vật lý tin học, Khoa Vật lý - Vật lý kỹ thuật",
+		"s5": "Trường Đại học Khoa học Tự nhiên, ĐHQG-HCM.",
+		"s6": "Nguyễn Văn Cừ, Phường 4, Quận 5, TP. Hồ Chí Minh, Việt Nam."
+	},
+	"en": {
+		"s0": "Contact",
+		"s1": ["Get in", "Touch"],
+		"s2": "Contact Information",
+		"s3": "Address:",
+		"s4": "Faculty of Physics - Engineering Physics",
+		"s5": "University of Science, VNU-HCM.",
+		"s6": "Nguyen Van Cu Street, Ward 4, District 5, Ho Chi Minh City, Vietnam."
+	}
+}[lang];
 ---
-<Layout title="Liên hệ" lang={lang}>
+<Layout title={t.s0} lang={lang}>
 	<section class="mb-16">
 		<h1 class="text-5xl font-black mb-16 tracking-tighter">
-			Kết <span class="text-intellect font-montserrat italic">nối</span>
+			{t.s1[0]} <span class="text-intellect font-montserrat italic">{t.s1[1]}</span>
 		</h1>
 
 		<div class="bento-grid mb-8">
 			<BentoCard class="md:col-span-2" showBorderBeam={true}>
-				<h2 class="text-3xl mb-10 text-insight font-bold tracking-tight">Thông tin Liên hệ</h2>
+				<h2 class="text-3xl mb-10 text-insight font-bold tracking-tight">{t.s2}</h2>
 				<div class="space-y-10 text-contrast/80">
 					<div class="p-6 rounded-lg bg-foundation border border-black/5 dark:border-white/5">
 						<h3 class="text-xl text-starlight font-bold mb-4 flex items-center gap-3">
 							<span class="p-2 rounded-lg bg-intellect/10 text-intellect">📍</span>
-							Địa chỉ:
+							{t.s3}
 						</h3>
 						<div class="text-lg leading-relaxed pl-12">
-							<p class="font-bold text-starlight">PIISA Lab, Bộ môn Vật lý tin học, Khoa Vật lý - Vật lý kỹ thuật</p>
-							<p>Trường Đại học Khoa học Tự nhiên, ĐHQG-HCM.</p>
-							<p>227 Nguyễn Văn Cừ, Phường 4, Quận 5, TP. Hồ Chí Minh, Việt Nam.</p>
+							<p class="font-bold text-starlight">PIISA Lab, {t.s4}</p>
+							<p>{t.s5}</p>
+							<p>227 {t.s6}</p>
 						</div>
 					</div>
 					<div class="p-6 rounded-lg bg-foundation border border-black/5 dark:border-white/5">

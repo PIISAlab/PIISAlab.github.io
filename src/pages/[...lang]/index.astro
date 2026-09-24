@@ -1,0 +1,130 @@
+---
+import { list } from '../../content';
+import Layout from '../../layouts/Layout.astro';
+import BentoCard from '../../components/BentoCard.astro';
+import ResearchIcon from '../../components/ResearchIcon.astro';
+import { type Lang, langPaths, tr, url, site, formatDate } from '../../i18n';
+
+export const getStaticPaths = langPaths;
+const { lang } = Astro.props as { lang: Lang };
+
+const directions = (await list('research'));
+const members = (await list('people')).filter((d) => d.status === 'current').length;
+const pubs = (await list('publications')).filter((d) => d.type !== 'thesis').length;
+const news = (await list('news')).sort((a, b) => +b.date - +a.date).slice(0, 3);
+const pad = (n: number) => String(n).padStart(2, '0');
+
+const t = {
+	vi: {
+		title: 'Trang chủ', explore: 'Khám phá Nghiên cứu', viewPubs: 'Xem Công bố',
+		welcome: 'Chào mừng đến với',
+		intro: ['Nhóm nghiên cứu của chúng tôi tập trung vào việc kết hợp các <strong>quy luật vật lý cơ bản</strong> với các <strong>kỹ thuật trí tuệ nhân tạo</strong> hiện đại.',
+			'Sứ mệnh của chúng tôi là giải quyết các thách thức kỹ thuật phức tạp trong thiết kế vi mạch, hệ thống nhúng &amp; AI biên, và mạng không dây thế hệ mới (6G) — thông qua mô phỏng đa vật lý và học máy.'],
+		members: 'Thành viên', pubs: 'Công bố', news: 'Tin tức', allNews: 'Tất cả tin tức', directions: 'Hướng nghiên cứu', details: 'Xem chi tiết',
+	},
+	en: {
+		title: 'Home', explore: 'Explore Research', viewPubs: 'View Publications',
+		welcome: 'Welcome to',
+		intro: ['We are a research group focusing on the integration of <strong>fundamental physics laws</strong> with modern <strong>artificial intelligence techniques</strong>.',
+			'Our mission is to solve complex engineering challenges in integrated circuit design, embedded systems and edge AI, and next-generation (6G) wireless networks — through multi-physics simulation and machine learning.'],
+		members: 'Members', pubs: 'Publications', news: 'News', allNews: 'All news', directions: 'Research Directions', details: 'View details',
+	},
+}[lang];
+const arrow = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
+---
+
+<Layout title={t.title} lang={lang}>
+	<section class="relative min-h-[80vh] flex flex-col items-center justify-center py-24 overflow-hidden">
+		<div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[800px] bg-intellect/10 blur-[160px] rounded-full -z-10 animate-pulse"></div>
+		<div class="absolute bottom-0 right-1/4 w-[600px] h-[400px] bg-insight/10 blur-[120px] rounded-full -z-10"></div>
+		<div class="absolute inset-0 -z-20 opacity-[0.03] dark:opacity-[0.07]" style="background-image: url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M30 5v10M30 45v10M5 30h10M45 30h10M12.32 12.32l7.07 7.07M40.61 40.61l7.07 7.07M12.32 47.68l7.07-7.07M40.61 19.39l7.07-7.07\" stroke=\"%230A6BFF\" stroke-width=\"1\" stroke-linecap=\"round\"/%3E%3C/svg%3E');"></div>
+
+		<div class="text-center z-10 max-w-5xl px-4">
+			<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-intellect/10 border border-intellect/20 text-intellect text-xs font-bold uppercase tracking-widest mb-10 animate-fade-in shadow-xl shadow-intellect/5 backdrop-blur-sm">
+				<span class="relative flex h-2 w-2">
+					<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-intellect opacity-75"></span>
+					<span class="relative inline-flex rounded-full h-2 w-2 bg-intellect"></span>
+				</span>
+				The Nexus of Physics & Intelligence
+			</div>
+
+			<h1 class="text-5xl md:text-7xl font-montserrat font-black tracking-tighter mb-10 leading-[1] text-starlight">
+				Physics-Informed <br/>
+				<span class="text-intellect font-montserrat italic"> Intelligent Systems & Apps </span>
+			</h1>
+
+			<p class="text-xl md:text-3xl text-contrast/80 max-w-4xl mx-auto leading-relaxed mb-16 font-medium">
+				{tr(site.fullName, lang)}
+				<span class="block text-sm md:text-base mt-6 text-contrast/50 font-normal tracking-wide">{tr(site.affiliation, lang)}</span>
+			</p>
+
+			<div class="flex flex-wrap justify-center gap-4">
+				<a href={url(lang, '/research')} class="glass-button glass-button--primary">
+					{t.explore}
+					<Fragment set:html={arrow} />
+				</a>
+				<a href={url(lang, '/publications')} class="glass-button">{t.viewPubs}</a>
+			</div>
+		</div>
+	</section>
+
+	<div class="bento-grid mt-32">
+		<BentoCard class="sm:col-span-2 xl:col-span-3" showBorderBeam={true}>
+			<div class="flex flex-col h-full">
+				<div class="mb-8">
+					<span class="w-16 h-16 rounded-2xl bg-insight/10 text-insight flex items-center justify-center text-3xl group-hover:scale-110 transition-transform duration-500 ease-expo-out shadow-lg shadow-insight/5">✦</span>
+				</div>
+				<h2 class="text-4xl font-bold mb-6 tracking-tight">{t.welcome} <span class="font-serif text-intellect">PIISA Lab</span></h2>
+				<div class="text-xl text-contrast/80 space-y-6 flex-grow leading-relaxed">
+					{t.intro.map((p) => <p set:html={p} />)}
+				</div>
+				<div class="mt-10 flex flex-wrap gap-4">
+					<a href={url(lang, '/publications')} class="px-5 py-3 rounded-2xl bg-foundation border border-black/5 dark:border-white/5 text-sm font-bold shadow-sm text-inherit">
+						<span class="text-intellect text-lg mr-1">{pad(pubs)}</span> {t.pubs}
+					</a>
+					<a href={url(lang, '/people')} class="px-5 py-3 rounded-2xl bg-foundation border border-black/5 dark:border-white/5 text-sm font-bold shadow-sm text-inherit">
+						<span class="text-insight text-lg mr-1">{pad(members)}</span> {t.members}
+					</a>
+				</div>
+			</div>
+		</BentoCard>
+
+		<BentoCard class="sm:col-span-2 lg:col-span-1 bg-gradient-to-br from-intellect/5 to-transparent border-intellect/10">
+			<h2 class="text-2xl font-bold mb-8 flex items-center gap-3">
+				<span class="p-2.5 rounded-xl bg-intellect/10 text-intellect">📢</span>
+				{t.news}
+			</h2>
+			<div class="space-y-8">
+				{news.map((item) => (
+					<div class="group/news cursor-default">
+						<span class="text-xs font-black text-intellect uppercase tracking-widest bg-intellect/10 px-3 py-1.5 rounded-lg">{formatDate(item.date, lang)}</span>
+						<p class="text-lg mt-4 text-starlight font-bold leading-tight group-hover/news:text-intellect transition-colors duration-300">{tr(item.text, lang)}</p>
+					</div>
+				))}
+			</div>
+			<a href={url(lang, '/news')} class="mt-16 inline-flex items-center gap-2 text-sm font-bold text-intellect hover:underline group/more">
+				{t.allNews}
+				<Fragment set:html={arrow} />
+			</a>
+		</BentoCard>
+
+		<BentoCard class="col-span-full">
+			<div class="flex items-baseline justify-between gap-4 mb-8">
+				<h2 class="text-2xl font-bold tracking-tight text-starlight">{t.directions}</h2>
+				<a href={url(lang, '/research')} class="text-sm font-bold text-intellect hover:underline inline-flex items-center gap-2 group/more shrink-0">
+					{t.details}
+					<Fragment set:html={arrow} />
+				</a>
+			</div>
+			<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+				{directions.map((d) => (
+					<div class="p-6 rounded-lg bg-foundation border border-black/5 dark:border-white/5 hover:border-intellect/30 hover:shadow-sm transition-all duration-200">
+						<span class="inline-flex p-2.5 rounded-md bg-intellect/10 text-intellect mb-5"><ResearchIcon name={d.icon} /></span>
+						<h3 class="text-xl font-bold text-starlight tracking-tight mb-3">{tr(d.title, lang)}</h3>
+						<p class="text-base text-contrast/70 leading-relaxed">{tr(d.summary, lang)}</p>
+					</div>
+				))}
+			</div>
+		</BentoCard>
+	</div>
+</Layout>

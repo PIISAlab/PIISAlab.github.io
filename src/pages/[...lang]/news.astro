@@ -1,0 +1,27 @@
+---
+import { list } from '../../content';
+import Layout from '../../layouts/Layout.astro';
+import { type Lang, langPaths, tr, formatDate } from '../../i18n';
+
+export const getStaticPaths = langPaths;
+const { lang } = Astro.props as { lang: Lang };
+
+const news = (await list('news')).sort((a, b) => +b.date - +a.date);
+const t = { vi: { title: 'Tin tức', h1: ['Tin', 'tức'], more: 'Xem thêm' }, en: { title: 'News', h1: ['Lab', 'News'], more: 'Read more' } }[lang];
+---
+<Layout title={t.title} lang={lang}>
+	<section class="mb-16 max-w-4xl">
+		<h1 class="text-5xl font-black mb-16 tracking-tighter">
+			{t.h1[0]} <span class="text-intellect font-montserrat italic">{t.h1[1]}</span>
+		</h1>
+		<ol class="space-y-6">
+			{news.map((item) => (
+				<li class="p-8 rounded-lg bg-card-bg border border-card-border">
+					<time datetime={item.date.toISOString().slice(0, 10)} class="text-xs font-black text-intellect uppercase tracking-widest bg-intellect/10 px-3 py-1.5 rounded-lg">{formatDate(item.date, lang)}</time>
+					<p class="text-lg mt-4 text-starlight font-bold leading-snug">{tr(item.text, lang)}</p>
+					{item.link && <a href={item.link} class="mt-4 inline-block text-sm font-bold text-intellect hover:underline">{t.more} →</a>}
+				</li>
+			))}
+		</ol>
+	</section>
+</Layout>
