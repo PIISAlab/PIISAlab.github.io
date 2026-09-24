@@ -98,6 +98,20 @@
   venue: EURASIP Journal on Wireless Communications and Networking (JWCN)
   year: 2009
   doi: 10.1155/2009/618787
+- id: c22
+  label: C22
+  type: conference
+  title: 'DFAS-N-PSK: Secure Multicell Massive MIMO with Generalized N-PSK Jamming Detection Under Identical Spatially Correlated Rician Fading'
+  authors: G. Q. L. Vu, K. T. Truong, H. Tran, and T. N. Le
+  venue: IEEE ATC
+  year: 2026
+- id: c21
+  label: C21
+  type: conference
+  title: A real-time FPGA-based vision enhancement system
+  authors: K. D. Cao and K. T. Truong
+  venue: ICEBA
+  year: 2026
 - id: c20
   label: C20
   type: conference
