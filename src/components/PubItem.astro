@@ -1,0 +1,30 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { Lang } from '../i18n';
+
+interface Props {
+	pub: CollectionEntry<'publications'>['data'];
+	lang: Lang;
+}
+const { pub, lang } = Astro.props;
+const href = pub.doi ? `https://doi.org/${pub.doi}` : pub.url;
+// Emphasise the PI in author lists, the usual convention on lab sites.
+const authors = pub.authors.replace(/K\. T\. Truong/g, '<strong class="font-semibold text-fg">K. T. Truong</strong>');
+---
+<li class="grid grid-cols-[3.5rem_1fr] gap-x-4 py-5 border-b border-line last:border-0" data-type={pub.type} data-year={pub.year}>
+	<span class="font-ui text-xs font-semibold text-fg-subtle pt-1 tabular-nums">[{pub.label}]</span>
+	<div>
+		<h3 class="font-sans text-base font-semibold leading-snug tracking-normal">
+			{href ? <a href={href} target="_blank" rel="noopener noreferrer" class="text-fg hover:text-fg-brand">{pub.title}</a> : pub.title}
+		</h3>
+		<p class="mt-1 text-sm text-fg-muted" set:html={authors} />
+		<p class="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
+			<span class="italic text-fg-muted">{pub.venue}</span>
+			<span class="text-fg-subtle">·</span>
+			<span class="font-ui tabular-nums text-fg-subtle">{pub.year}</span>
+			{pub.status === 'accepted' && <span class="tag tag-brand">{lang === 'vi' ? 'Đã chấp nhận' : 'Accepted'}</span>}
+			{pub.doi && <a href={href} target="_blank" rel="noopener noreferrer" class="font-ui text-xs font-medium">DOI</a>}
+			{!pub.doi && pub.url && <a href={pub.url} target="_blank" rel="noopener noreferrer" class="font-ui text-xs font-medium">{pub.type === 'patent' ? 'Google Patents' : 'Link'}</a>}
+		</p>
+	</div>
+</li>

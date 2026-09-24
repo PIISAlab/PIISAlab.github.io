@@ -1,129 +1,114 @@
 ---
 import { list } from '../../content';
 import Layout from '../../layouts/Layout.astro';
-import BentoCard from '../../components/BentoCard.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import PubItem from '../../components/PubItem.astro';
 import { type Lang, langPaths } from '../../i18n';
 
 export const getStaticPaths = langPaths;
 const { lang } = Astro.props as { lang: Lang };
 
-const all = (await list('publications'));
-const byType = (...types: string[]) => all.filter((p) => types.includes(p.type));
-const link = (p: (typeof all)[number]) => (p.doi ? `https://doi.org/${p.doi}` : p.url);
+const all = await list('publications');
+const years = [...new Set(all.map((p) => p.year))].sort((a, b) => b - a);
 
 const t = {
-	vi: { title: 'Công bố', h1: ['Toàn bộ', 'Công bố'], journals: 'Tạp chí Quốc tế', conferences: 'Hội nghị Quốc tế', patents: 'Bằng sáng chế US', domestic: 'Trong nước', theses: 'Luận án & Luận văn', accepted: 'Đã chấp nhận', phd: 'Luận án Tiến sĩ', ms: 'Báo cáo Thạc sĩ' },
-	en: { title: 'Publications', h1: ['Full', 'Publications'], journals: 'International Journals', conferences: 'International Conferences', patents: 'US Patents', domestic: 'Domestic', theses: 'Theses', accepted: 'Accepted', phd: 'Ph.D. Dissertation', ms: "Master's Report" },
+	vi: {
+		title: 'Công bố', eyebrow: 'Công bố', h1: 'Công bố khoa học',
+		lead: 'Bài báo tạp chí, hội nghị, bằng sáng chế và luận án của nhóm. Nhấn vào tiêu đề để mở bài báo qua DOI.',
+		all: 'Tất cả', allYears: 'Mọi năm', search: 'Tìm theo tiêu đề, tác giả, nơi công bố…', none: 'Không có công bố phù hợp.', shown: 'công bố',
+		groups: { journal: 'Tạp chí Quốc tế', conference: 'Hội nghị Quốc tế', patent: 'Bằng sáng chế US', domestic: 'Công bố Trong nước', thesis: 'Luận án & Luận văn' },
+	},
+	en: {
+		title: 'Publications', eyebrow: 'Publications', h1: 'Publications',
+		lead: 'Journal and conference papers, patents, and theses from the lab. Click a title to open the paper via its DOI.',
+		all: 'All', allYears: 'All years', search: 'Search title, author, venue…', none: 'No matching publications.', shown: 'shown',
+		groups: { journal: 'International Journals', conference: 'International Conferences', patent: 'US Patents', domestic: 'Domestic Publications', thesis: 'Theses' },
+	},
 }[lang];
 
-const lists = [
-	{ key: 'journals', letter: 'J', tone: 'insight', items: byType('journal') },
-	{ key: 'conferences', letter: 'C', tone: 'intellect', items: byType('conference') },
+const groups = [
+	{ key: 'journal', items: all.filter((p) => p.type === 'journal') },
+	{ key: 'conference', items: all.filter((p) => p.type === 'conference') },
+	{ key: 'patent', items: all.filter((p) => p.type === 'patent') },
+	{ key: 'domestic', items: all.filter((p) => p.type.startsWith('domestic')) },
+	{ key: 'thesis', items: all.filter((p) => p.type === 'thesis') },
 ] as const;
-const toneClass = {
-	insight: { h2: 'text-insight', badge: 'bg-insight/10 text-insight border-insight/20 shadow-insight/5', card: 'hover:border-insight/30 hover:bg-insight/5', title: 'group-hover:text-insight', tag: 'text-insight bg-insight/10', venue: 'text-insight/80', venueBg: 'bg-insight/10 border-insight/10' },
-	intellect: { h2: 'text-intellect', badge: 'bg-intellect/10 text-intellect border-intellect/20 shadow-intellect/5', card: 'hover:border-intellect/30 hover:bg-intellect/5', title: 'group-hover:text-intellect', tag: 'text-intellect bg-intellect/10', venue: 'text-intellect/80', venueBg: 'bg-intellect/10 border-intellect/10' },
-};
-const theses = byType('thesis');
 ---
 <Layout title={t.title} lang={lang}>
-	<section class="mb-16">
-		<h1 class="text-5xl font-black mb-16 tracking-tighter">
-			{t.h1[0]} <span class="text-intellect font-montserrat italic">{t.h1[1]}</span>
-		</h1>
+	<PageHeader eyebrow={t.eyebrow} title={t.h1} lead={t.lead} />
 
-		<div class="space-y-24">
-			{lists.map((list) => {
-				const c = toneClass[list.tone];
-				return (
-					<div>
-						<h2 class={`text-3xl mb-10 font-bold flex items-center tracking-tight ${c.h2}`}>
-							<span class={`w-12 h-12 rounded-xl flex items-center justify-center mr-5 text-lg border shadow-lg ${c.badge}`}>{list.letter}</span>
-							{t[list.key]}
-						</h2>
-						<div class="grid gap-6">
-							{list.items.map((pub) => (
-								<div class={`p-8 rounded-lg bg-card-bg border border-card-border transition-all duration-500 ease-expo-out group relative overflow-hidden ${c.card}`}>
-									<div class="flex items-start gap-6 relative z-10">
-										<span class={`text-xs font-black px-3 py-1.5 rounded-lg shrink-0 mt-1 tracking-widest ${c.tag}`}>[{pub.label}]</span>
-										<div>
-											<h3 class={`text-xl text-starlight font-bold leading-snug mb-3 transition-colors duration-300 tracking-tight ${c.title}`}>
-												{link(pub) ? <a href={link(pub)} target="_blank" rel="noopener noreferrer" class="text-inherit">{pub.title}</a> : pub.title}
-											</h3>
-											<p class="text-base text-contrast/60 mb-4 leading-relaxed">{pub.authors}</p>
-											<div class={`flex flex-wrap items-center gap-y-2 text-sm font-bold ${c.venue}`}>
-												<span class={`px-3 py-1 rounded-lg border ${c.venueBg}`}>{pub.venue}</span>
-												<span class="mx-3 text-contrast/20 hidden sm:inline">•</span>
-												<span class="text-contrast/40">{pub.year}</span>
-												{pub.status === 'accepted' && <span class="ml-3 text-xs font-black uppercase tracking-widest text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20 px-2 py-1 rounded border border-emerald-200 dark:border-emerald-700">{t.accepted}</span>}
-												{pub.doi && <a href={`https://doi.org/${pub.doi}`} target="_blank" rel="noopener noreferrer" class="ml-3 text-xs font-semibold text-contrast/50 hover:text-intellect">DOI</a>}
-											</div>
-										</div>
-									</div>
-								</div>
-							))}
-						</div>
-					</div>
-				);
-			})}
-
-			<div class="grid md:grid-cols-2 gap-12">
-				<div>
-					<h2 class="text-3xl mb-10 text-starlight font-bold flex items-center tracking-tight">
-						<span class="w-12 h-12 rounded-xl bg-black/5 dark:bg-white/5 text-starlight flex items-center justify-center mr-5 text-lg border border-black/10 dark:border-white/10 shadow-lg shadow-black/5">P</span>
-						{t.patents}
-					</h2>
-					<div class="space-y-6">
-						{byType('patent').map((pub) => (
-							<div class="p-6 rounded-lg bg-card-bg border border-card-border hover:border-intellect/20 transition-all duration-300">
-								<div class="flex justify-between items-start mb-3">
-									<span class="text-xs font-black text-intellect tracking-widest bg-intellect/10 px-2 py-1 rounded">[{pub.label}]</span>
-									<span class="text-xs font-bold text-contrast/40">{pub.year}</span>
-								</div>
-								<h3 class="text-starlight font-bold mb-3 text-base leading-snug tracking-tight">
-									{pub.url ? <a href={pub.url} target="_blank" rel="noopener noreferrer" class="text-inherit hover:text-intellect">{pub.title}</a> : pub.title}
-								</h3>
-								<p class="text-[11px] font-black text-contrast/50 uppercase tracking-widest bg-black/5 dark:bg-white/5 px-2 py-1 rounded inline-block">{pub.venue}</p>
-							</div>
-						))}
-					</div>
-				</div>
-
-				<div>
-					<h2 class="text-3xl mb-10 text-contrast/80 font-bold flex items-center tracking-tight">
-						<span class="w-12 h-12 rounded-xl bg-black/5 dark:bg-white/5 text-contrast/80 flex items-center justify-center mr-5 text-lg border border-black/10 dark:border-white/10 shadow-lg shadow-black/5">D</span>
-						{t.domestic}
-					</h2>
-					<div class="space-y-6">
-						{byType('domestic-journal', 'domestic-conference').map((pub) => (
-							<div class="p-6 rounded-lg bg-card-bg border border-card-border hover:border-insight/20 transition-all duration-300">
-								<div class="flex justify-between items-start mb-3">
-									<span class="text-xs font-black text-insight tracking-widest bg-insight/10 px-2 py-1 rounded">[{pub.label}]</span>
-									<span class="text-xs font-bold text-contrast/40">{pub.year}</span>
-								</div>
-								<h3 class="text-starlight font-bold mb-3 text-base leading-snug tracking-tight">{pub.title}</h3>
-								<p class="text-[11px] font-bold text-contrast/50 italic bg-black/5 dark:bg-white/5 px-2 py-1 rounded inline-block">{pub.venue}</p>
-							</div>
-						))}
-					</div>
-				</div>
+	<div class="page py-10">
+		<form data-pub-filter class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between" role="search" onsubmit="return false">
+			<div class="flex flex-wrap gap-2" role="group" aria-label={t.eyebrow}>
+				<button type="button" data-group="all" aria-pressed="true" class="filter-chip">{t.all} <span class="tabular-nums">{all.length}</span></button>
+				{groups.map((g) => <button type="button" data-group={g.key} aria-pressed="false" class="filter-chip">{t.groups[g.key]} <span class="tabular-nums">{g.items.length}</span></button>)}
 			</div>
+			<div class="flex gap-2">
+				<select name="year" aria-label={t.allYears} class="h-10 rounded-md border border-line-strong bg-card px-3 font-ui text-sm text-fg">
+					<option value="">{t.allYears}</option>
+					{years.map((y) => <option value={y}>{y}</option>)}
+				</select>
+				<input type="search" name="q" placeholder={t.search} aria-label={t.search} class="h-10 w-full md:w-72 rounded-md border border-line-strong bg-card px-3 font-ui text-sm text-fg placeholder:text-fg-subtle" />
+			</div>
+		</form>
+		<p data-pub-count class="mt-4 font-ui text-sm text-fg-subtle" aria-live="polite"></p>
 
-			<BentoCard class="bg-gradient-to-br from-intellect/5 to-transparent border-intellect/20" showBorderBeam={true}>
-				<h2 class="text-2xl font-bold mb-10 flex items-center tracking-tight">
-					<span class="w-10 h-10 rounded-lg bg-intellect/10 flex items-center justify-center mr-4">🎓</span>
-					{t.theses}
-				</h2>
-				<div class="grid md:grid-cols-2 gap-12">
-					{theses.map((th, i) => (
-						<div class={`border-l-4 pl-8 py-2 ${i % 2 ? 'border-insight/30' : 'border-intellect/30'}`}>
-							<span class={`text-xs font-black uppercase tracking-[0.2em] ${i % 2 ? 'text-insight' : 'text-intellect'}`}>{th.label === 'PhD' ? t.phd : t.ms} ({th.year})</span>
-							<p class="text-xl text-starlight font-bold mt-3 leading-snug tracking-tight">{th.title}</p>
-							<p class="text-sm text-contrast/60 mt-4 font-medium italic">{th.venue.replace(/^[^,]+, /, '')}</p>
-						</div>
-					))}
-				</div>
-			</BentoCard>
-		</div>
-	</section>
+		{groups.map((g) => (
+			<section data-section={g.key} class="mt-10" aria-labelledby={`pub-${g.key}`}>
+				<h2 id={`pub-${g.key}`} class="section-title">{t.groups[g.key]}</h2>
+				<ul class="card mt-4 px-5">
+					{g.items.map((p) => <PubItem pub={p} lang={lang} />)}
+				</ul>
+			</section>
+		))}
+		<p data-pub-empty hidden class="mt-10 text-fg-muted">{t.none}</p>
+	</div>
 </Layout>
+
+<style is:global>
+	.filter-chip {
+		display: inline-flex; align-items: center; gap: 0.375rem; height: 2rem; padding-inline: 0.75rem;
+		border-radius: var(--radius-md); border: 1px solid var(--border-default); background: var(--surface-card);
+		font-family: var(--font-ui); font-size: 0.8125rem; font-weight: 500; color: var(--text-secondary);
+		transition: background-color 150ms ease-out, color 150ms ease-out, border-color 150ms ease-out;
+	}
+	.filter-chip span { color: var(--text-tertiary); }
+	.filter-chip:hover { border-color: var(--border-strong); color: var(--text-primary); }
+	.filter-chip[aria-pressed='true'] { background: var(--surface-brand); border-color: transparent; color: var(--text-brand); }
+	.filter-chip[aria-pressed='true'] span { color: inherit; }
+</style>
+
+<script define:vars={{ shownLabel: t.shown }}>
+	const form = document.querySelector('[data-pub-filter]');
+	const chips = [...form.querySelectorAll('[data-group]')];
+	const sections = [...document.querySelectorAll('[data-section]')];
+	const count = document.querySelector('[data-pub-count]');
+	const empty = document.querySelector('[data-pub-empty]');
+	let group = 'all';
+	const norm = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+
+	function apply() {
+		const year = form.year.value;
+		const q = norm(form.q.value.trim());
+		let shown = 0;
+		for (const sec of sections) {
+			let inSec = 0;
+			for (const li of sec.querySelectorAll('li')) {
+				const ok = (!year || li.dataset.year === year) && (!q || norm(li.textContent).includes(q));
+				li.hidden = !ok;
+				if (ok) inSec++;
+			}
+			sec.hidden = (group !== 'all' && sec.dataset.section !== group) || inSec === 0;
+			if (!sec.hidden) shown += inSec;
+		}
+		count.textContent = `${shown} ${shownLabel}`;
+		empty.hidden = shown > 0;
+	}
+	chips.forEach((c) => c.addEventListener('click', () => {
+		group = c.dataset.group;
+		chips.forEach((x) => x.setAttribute('aria-pressed', String(x === c)));
+		apply();
+	}));
+	form.addEventListener('input', apply);
+	apply();
+</script>

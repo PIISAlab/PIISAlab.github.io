@@ -1,130 +1,148 @@
 ---
 import { list } from '../../content';
 import Layout from '../../layouts/Layout.astro';
-import BentoCard from '../../components/BentoCard.astro';
-import ResearchIcon from '../../components/ResearchIcon.astro';
-import { type Lang, langPaths, tr, url, site, formatDate } from '../../i18n';
+import Arrow from '../../components/Arrow.astro';
+import PubItem from '../../components/PubItem.astro';
+import { type Lang, langPaths, tr, url, formatDate } from '../../i18n';
 
 export const getStaticPaths = langPaths;
 const { lang } = Astro.props as { lang: Lang };
 
-const directions = (await list('research'));
-const members = (await list('people')).filter((d) => d.status === 'current').length;
-const pubs = (await list('publications')).filter((d) => d.type !== 'thesis').length;
+const directions = await list('research');
+const people = await list('people');
+const pubs = await list('publications');
 const news = (await list('news')).sort((a, b) => +b.date - +a.date).slice(0, 3);
-const pad = (n: number) => String(n).padStart(2, '0');
+const papers = pubs.filter((p) => ['journal', 'conference'].includes(p.type));
+const recent = [...papers].sort((a, b) => b.year - a.year || a.order - b.order).slice(0, 4);
+
+const stats = [
+	{ value: papers.length, label: { vi: 'Bài báo quốc tế', en: 'International papers' }, href: '/publications' },
+	{ value: pubs.filter((p) => p.type === 'patent').length, label: { vi: 'Bằng sáng chế US', en: 'US patents' }, href: '/publications' },
+	{ value: people.filter((p) => p.status === 'current').length, label: { vi: 'Thành viên hiện tại', en: 'Current members' }, href: '/people' },
+	{ value: people.filter((p) => p.status === 'alumni').length, label: { vi: 'Cựu thành viên', en: 'Alumni' }, href: '/people' },
+];
 
 const t = {
 	vi: {
-		title: 'Trang chủ', explore: 'Khám phá Nghiên cứu', viewPubs: 'Xem Công bố',
-		welcome: 'Chào mừng đến với',
-		intro: ['Nhóm nghiên cứu của chúng tôi tập trung vào việc kết hợp các <strong>quy luật vật lý cơ bản</strong> với các <strong>kỹ thuật trí tuệ nhân tạo</strong> hiện đại.',
-			'Sứ mệnh của chúng tôi là giải quyết các thách thức kỹ thuật phức tạp trong thiết kế vi mạch, hệ thống nhúng &amp; AI biên, và mạng không dây thế hệ mới (6G) — thông qua mô phỏng đa vật lý và học máy.'],
-		members: 'Thành viên', pubs: 'Công bố', news: 'Tin tức', allNews: 'Tất cả tin tức', directions: 'Hướng nghiên cứu', details: 'Xem chi tiết',
+		title: 'Trang chủ',
+		eyebrow: 'Trường ĐH Khoa học Tự nhiên · ĐHQG-HCM',
+		h1: ['Hệ thống Thông minh', 'Dựa trên Vật lý'],
+		lead: 'PIISA kết hợp các quy luật vật lý cơ bản với trí tuệ nhân tạo hiện đại để giải quyết các bài toán kỹ thuật trong thiết kế vi mạch, hệ thống nhúng & AI biên, và truyền thông vô tuyến 6G.',
+		explore: 'Hướng nghiên cứu', pubs: 'Công bố',
+		directions: 'Hướng nghiên cứu', directionsLead: 'Ba hướng nghiên cứu bổ trợ nhau, từ phần cứng đến hệ thống và mạng.', more: 'Tìm hiểu thêm',
+		news: 'Tin tức', allNews: 'Tất cả tin tức', recent: 'Công bố gần đây', allPubs: 'Toàn bộ công bố',
+		joinTitle: 'Tham gia cùng PIISA', joinText: 'Chúng tôi chào đón sinh viên đại học, học viên cao học và nghiên cứu sinh yêu thích vật lý, toán học và kỹ thuật.', join: 'Cơ hội nghiên cứu', contact: 'Liên hệ',
 	},
 	en: {
-		title: 'Home', explore: 'Explore Research', viewPubs: 'View Publications',
-		welcome: 'Welcome to',
-		intro: ['We are a research group focusing on the integration of <strong>fundamental physics laws</strong> with modern <strong>artificial intelligence techniques</strong>.',
-			'Our mission is to solve complex engineering challenges in integrated circuit design, embedded systems and edge AI, and next-generation (6G) wireless networks — through multi-physics simulation and machine learning.'],
-		members: 'Members', pubs: 'Publications', news: 'News', allNews: 'All news', directions: 'Research Directions', details: 'View details',
+		title: 'Home',
+		eyebrow: 'University of Science · VNU-HCM',
+		h1: ['Physics-Informed', 'Intelligent Systems'],
+		lead: 'PIISA combines fundamental physical laws with modern artificial intelligence to solve engineering problems in integrated circuit design, embedded systems & edge AI, and 6G wireless communications.',
+		explore: 'Research directions', pubs: 'Publications',
+		directions: 'Research directions', directionsLead: 'Three complementary directions, from hardware to systems to networks.', more: 'Learn more',
+		news: 'News', allNews: 'All news', recent: 'Recent publications', allPubs: 'All publications',
+		joinTitle: 'Join PIISA', joinText: 'We welcome undergraduates, master’s and Ph.D. students with a strong interest in physics, mathematics, and engineering.', join: 'Research opportunities', contact: 'Contact',
 	},
 }[lang];
-const arrow = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
+const [lead, second, third] = directions;
 ---
 
 <Layout title={t.title} lang={lang}>
-	<section class="relative min-h-[80vh] flex flex-col items-center justify-center py-24 overflow-hidden">
-		<div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[800px] bg-intellect/10 blur-[160px] rounded-full -z-10 animate-pulse"></div>
-		<div class="absolute bottom-0 right-1/4 w-[600px] h-[400px] bg-insight/10 blur-[120px] rounded-full -z-10"></div>
-		<div class="absolute inset-0 -z-20 opacity-[0.03] dark:opacity-[0.07]" style="background-image: url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M30 5v10M30 45v10M5 30h10M45 30h10M12.32 12.32l7.07 7.07M40.61 40.61l7.07 7.07M12.32 47.68l7.07-7.07M40.61 19.39l7.07-7.07\" stroke=\"%230A6BFF\" stroke-width=\"1\" stroke-linecap=\"round\"/%3E%3C/svg%3E');"></div>
-
-		<div class="text-center z-10 max-w-5xl px-4">
-			<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-intellect/10 border border-intellect/20 text-intellect text-xs font-bold uppercase tracking-widest mb-10 animate-fade-in shadow-xl shadow-intellect/5 backdrop-blur-sm">
-				<span class="relative flex h-2 w-2">
-					<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-intellect opacity-75"></span>
-					<span class="relative inline-flex rounded-full h-2 w-2 bg-intellect"></span>
-				</span>
-				The Nexus of Physics & Intelligence
+	<!-- Hero -->
+	<section class="border-b border-line">
+		<div class="page grid items-center gap-12 py-16 md:py-24 lg:grid-cols-[1.1fr_1fr]">
+			<div>
+				<p class="eyebrow">{t.eyebrow}</p>
+				<h1 class="mt-4 text-4xl font-bold leading-[1.1] sm:text-5xl lg:text-6xl">
+					{t.h1[0]}<br />
+					<span class="bg-gradient-to-r from-slate-900 to-brand-600 bg-clip-text text-transparent dark:from-zinc-900 dark:to-brand-400">{t.h1[1]}</span>
+				</h1>
+				<p class="mt-6 max-w-xl text-lg text-fg-muted">{t.lead}</p>
+				<div class="mt-8 flex flex-wrap gap-3">
+					<a href={url(lang, '/research')} class="btn btn-lg btn-primary">{t.explore} <Arrow /></a>
+					<a href={url(lang, '/publications')} class="btn btn-lg btn-outline">{t.pubs}</a>
+				</div>
 			</div>
-
-			<h1 class="text-5xl md:text-7xl font-montserrat font-black tracking-tighter mb-10 leading-[1] text-starlight">
-				Physics-Informed <br/>
-				<span class="text-intellect font-montserrat italic"> Intelligent Systems & Apps </span>
-			</h1>
-
-			<p class="text-xl md:text-3xl text-contrast/80 max-w-4xl mx-auto leading-relaxed mb-16 font-medium">
-				{tr(site.fullName, lang)}
-				<span class="block text-sm md:text-base mt-6 text-contrast/50 font-normal tracking-wide">{tr(site.affiliation, lang)}</span>
-			</p>
-
-			<div class="flex flex-wrap justify-center gap-4">
-				<a href={url(lang, '/research')} class="glass-button glass-button--primary">
-					{t.explore}
-					<Fragment set:html={arrow} />
-				</a>
-				<a href={url(lang, '/publications')} class="glass-button">{t.viewPubs}</a>
+			<div class="grid grid-cols-2 gap-3" aria-hidden="true">
+				<img src={lead.image} alt="" width="1200" height="900" fetchpriority="high" class="col-span-2 w-full aspect-[16/9] object-cover rounded-lg border border-line bg-[#12233F]" />
+				<img src={second.image} alt="" width="1200" height="900" loading="lazy" class="w-full aspect-[4/3] object-cover rounded-lg border border-line bg-[#12233F]" />
+				<img src={third.image} alt="" width="1200" height="900" loading="lazy" class="w-full aspect-[4/3] object-cover rounded-lg border border-line bg-[#12233F]" />
 			</div>
 		</div>
 	</section>
 
-	<div class="bento-grid mt-32">
-		<BentoCard class="sm:col-span-2 xl:col-span-3" showBorderBeam={true}>
-			<div class="flex flex-col h-full">
-				<div class="mb-8">
-					<span class="w-16 h-16 rounded-2xl bg-insight/10 text-insight flex items-center justify-center text-3xl group-hover:scale-110 transition-transform duration-500 ease-expo-out shadow-lg shadow-insight/5">✦</span>
-				</div>
-				<h2 class="text-4xl font-bold mb-6 tracking-tight">{t.welcome} <span class="font-serif text-intellect">PIISA Lab</span></h2>
-				<div class="text-xl text-contrast/80 space-y-6 flex-grow leading-relaxed">
-					{t.intro.map((p) => <p set:html={p} />)}
-				</div>
-				<div class="mt-10 flex flex-wrap gap-4">
-					<a href={url(lang, '/publications')} class="px-5 py-3 rounded-2xl bg-foundation border border-black/5 dark:border-white/5 text-sm font-bold shadow-sm text-inherit">
-						<span class="text-intellect text-lg mr-1">{pad(pubs)}</span> {t.pubs}
-					</a>
-					<a href={url(lang, '/people')} class="px-5 py-3 rounded-2xl bg-foundation border border-black/5 dark:border-white/5 text-sm font-bold shadow-sm text-inherit">
-						<span class="text-insight text-lg mr-1">{pad(members)}</span> {t.members}
-					</a>
-				</div>
-			</div>
-		</BentoCard>
-
-		<BentoCard class="sm:col-span-2 lg:col-span-1 bg-gradient-to-br from-intellect/5 to-transparent border-intellect/10">
-			<h2 class="text-2xl font-bold mb-8 flex items-center gap-3">
-				<span class="p-2.5 rounded-xl bg-intellect/10 text-intellect">📢</span>
-				{t.news}
-			</h2>
-			<div class="space-y-8">
-				{news.map((item) => (
-					<div class="group/news cursor-default">
-						<span class="text-xs font-black text-intellect uppercase tracking-widest bg-intellect/10 px-3 py-1.5 rounded-lg">{formatDate(item.date, lang)}</span>
-						<p class="text-lg mt-4 text-starlight font-bold leading-tight group-hover/news:text-intellect transition-colors duration-300">{tr(item.text, lang)}</p>
-					</div>
-				))}
-			</div>
-			<a href={url(lang, '/news')} class="mt-16 inline-flex items-center gap-2 text-sm font-bold text-intellect hover:underline group/more">
-				{t.allNews}
-				<Fragment set:html={arrow} />
-			</a>
-		</BentoCard>
-
-		<BentoCard class="col-span-full">
-			<div class="flex items-baseline justify-between gap-4 mb-8">
-				<h2 class="text-2xl font-bold tracking-tight text-starlight">{t.directions}</h2>
-				<a href={url(lang, '/research')} class="text-sm font-bold text-intellect hover:underline inline-flex items-center gap-2 group/more shrink-0">
-					{t.details}
-					<Fragment set:html={arrow} />
+	<!-- Stats -->
+	<section class="border-b border-line bg-subtle">
+		<dl class="page grid grid-cols-2 md:grid-cols-4">
+			{stats.map((s, i) => (
+				<a href={url(lang, s.href)} class:list={['group py-8 px-4 text-fg hover:text-fg', i % 2 === 1 && 'border-l border-line', i >= 2 && 'border-t md:border-t-0 border-line', i === 2 && 'md:border-l']}>
+					<dd class="font-display text-3xl font-semibold tabular-nums group-hover:text-fg-brand transition-colors">{s.value}</dd>
+					<dt class="mt-1 font-ui text-sm text-fg-muted">{tr(s.label, lang)}</dt>
 				</a>
-			</div>
-			<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-				{directions.map((d) => (
-					<div class="p-6 rounded-lg bg-foundation border border-black/5 dark:border-white/5 hover:border-intellect/30 hover:shadow-sm transition-all duration-200">
-						<span class="inline-flex p-2.5 rounded-md bg-intellect/10 text-intellect mb-5"><ResearchIcon name={d.icon} /></span>
-						<h3 class="text-xl font-bold text-starlight tracking-tight mb-3">{tr(d.title, lang)}</h3>
-						<p class="text-base text-contrast/70 leading-relaxed">{tr(d.summary, lang)}</p>
+			))}
+		</dl>
+	</section>
+
+	<!-- Research directions -->
+	<section class="page py-16 md:py-20">
+		<div class="max-w-2xl">
+			<h2 class="section-title">{t.directions}</h2>
+			<p class="mt-2 text-fg-muted">{t.directionsLead}</p>
+		</div>
+		<div class="mt-8 grid gap-6 md:grid-cols-3">
+			{directions.map((d) => (
+				<a href={`${url(lang, '/research')}#${d.id}`} class="card card-interactive group flex flex-col overflow-hidden text-fg hover:text-fg">
+					<img src={d.image} alt={tr(d.imageAlt, lang)} width="1200" height="900" loading="lazy" class="w-full aspect-[4/3] object-cover bg-[#12233F]" />
+					<div class="flex flex-1 flex-col p-6">
+						<h3 class="text-lg">{tr(d.title, lang)}</h3>
+						<p class="mt-2 flex-1 text-fg-muted">{tr(d.summary, lang)}</p>
+						<span class="link-arrow mt-4 text-fg-brand">{t.more} <Arrow /></span>
 					</div>
-				))}
+				</a>
+			))}
+		</div>
+	</section>
+
+	<!-- News + recent publications -->
+	<section class="border-y border-line bg-subtle">
+		<div class="page grid gap-12 py-16 md:py-20 lg:grid-cols-[1fr_1.6fr]">
+			<div>
+				<div class="flex items-baseline justify-between gap-4">
+					<h2 class="section-title">{t.news}</h2>
+					<a href={url(lang, '/news')} class="link-arrow">{t.allNews} <Arrow /></a>
+				</div>
+				<ol class="mt-6 space-y-4">
+					{news.map((item) => (
+						<li class="card p-5">
+							<time datetime={item.date.toISOString().slice(0, 10)} class="font-ui text-xs font-medium text-fg-subtle">{formatDate(item.date, lang)}</time>
+							<p class="mt-2 text-fg">{tr(item.text, lang)}</p>
+						</li>
+					))}
+				</ol>
 			</div>
-		</BentoCard>
-	</div>
+			<div>
+				<div class="flex items-baseline justify-between gap-4">
+					<h2 class="section-title">{t.recent}</h2>
+					<a href={url(lang, '/publications')} class="link-arrow">{t.allPubs} <Arrow /></a>
+				</div>
+				<ul class="card mt-6 px-5">
+					{recent.map((p) => <PubItem pub={p} lang={lang} />)}
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<!-- Join -->
+	<section class="page pt-16 md:pt-20">
+		<div class="card flex flex-col gap-6 p-8 md:flex-row md:items-center md:justify-between md:p-10 bg-brand-surface border-transparent">
+			<div class="max-w-2xl">
+				<h2 class="section-title">{t.joinTitle}</h2>
+				<p class="mt-2 text-fg-muted">{t.joinText}</p>
+			</div>
+			<div class="flex flex-wrap gap-3 shrink-0">
+				<a href={url(lang, '/opportunities')} class="btn btn-primary">{t.join} <Arrow /></a>
+				<a href={url(lang, '/contact')} class="btn btn-outline bg-card">{t.contact}</a>
+			</div>
+		</div>
+	</section>
 </Layout>

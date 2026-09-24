@@ -1,60 +1,43 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import BentoCard from "../../components/BentoCard.astro";
-import { type Lang, langPaths } from "../../i18n";
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import Arrow from '../../components/Arrow.astro';
+import { type Lang, langPaths } from '../../i18n';
 
 export const getStaticPaths = langPaths;
 const { lang } = Astro.props as { lang: Lang };
 
 const t = {
-	"vi": {
-		"s0": "Ứng dụng",
-		"s1": ["Ứng", "dụng"],
-		"s2": "Hệ thống hỗ trợ đệ trình công bố khoa học tự động. Trợ lý AI phân tích tóm tắt bản thảo (Abstract) của bạn, trích xuất từ khóa chuyên ngành, và tự động so khớp, gợi ý các tạp chí Q1/Q2/Q3 hoặc hội nghị CORE A*/A/B phù hợp nhất dựa trên mức độ tương đồng ngữ nghĩa.",
-		"s3": "Khởi chạy ứng dụng"
+	vi: {
+		title: 'Ứng dụng', eyebrow: 'Ứng dụng', h1: 'Ứng dụng web',
+		lead: 'Các công cụ do PIISA phát triển để hỗ trợ công việc nghiên cứu.',
+		desc: 'Hệ thống hỗ trợ đệ trình công bố khoa học tự động. Trợ lý AI phân tích tóm tắt bản thảo (Abstract) của bạn, trích xuất từ khóa chuyên ngành, và tự động so khớp, gợi ý các tạp chí Q1/Q2/Q3 hoặc hội nghị CORE A*/A/B phù hợp nhất dựa trên mức độ tương đồng ngữ nghĩa.',
+		launch: 'Khởi chạy ứng dụng',
 	},
-	"en": {
-		"s0": "Applications",
-		"s1": ["Web", "Applications"],
-		"s2": "An autonomous AI co-pilot that helps researchers analyze manuscript abstracts, extract core technical keywords, and recommend optimal Q1/Q2/Q3 journals and CORE A*/A/B conferences based on semantic profiles, impact factors, and upcoming timelines.",
-		"s3": "Launch Application"
-	}
+	en: {
+		title: 'Applications', eyebrow: 'Applications', h1: 'Web applications',
+		lead: 'Tools built at PIISA to support research work.',
+		desc: 'An autonomous AI co-pilot that helps researchers analyze manuscript abstracts, extract core technical keywords, and recommend optimal Q1/Q2/Q3 journals and CORE A*/A/B conferences based on semantic profiles, impact factors, and upcoming timelines.',
+		launch: 'Launch Application',
+	},
 }[lang];
 ---
-<Layout title={t.s0} lang={lang}>
-	<section class="mb-16">
-		<h1 class="text-5xl font-black mb-16 tracking-tighter">
-			{t.s1[0]} <span class="text-intellect font-montserrat italic">{t.s1[1]}</span>
-		</h1>
+<Layout title={t.title} lang={lang}>
+	<PageHeader eyebrow={t.eyebrow} title={t.h1} lead={t.lead} />
 
-		<div class="grid md:grid-cols-2 gap-8">
-			<BentoCard showBorderBeam={true} class="flex flex-col justify-between h-full">
-				<div class="mb-8">
-					<div class="flex items-center gap-3 mb-6">
-						<span class="text-3xl">🧭</span>
-						<h2 class="text-2xl font-bold tracking-tight text-starlight">PIISA Submission Venue Recommender</h2>
-					</div>
-					<p class="text-contrast/80 leading-relaxed mb-6">
-						{t.s2}
-					</p>
-					<div class="flex flex-wrap gap-2">
-						<span class="text-xs font-semibold px-2.5 py-1 rounded bg-intellect/10 text-intellect uppercase tracking-wider">Ollama LLM</span>
-						<span class="text-xs font-semibold px-2.5 py-1 rounded bg-insight/10 text-insight uppercase tracking-wider">React / Bun</span>
-						<span class="text-xs font-semibold px-2.5 py-1 rounded bg-prestige/10 text-prestige uppercase tracking-wider">SQLite DB</span>
-					</div>
-				</div>
-				<div>
-					<a 
-						href="/applications/recommender/" 
-						target="_blank" 
-						rel="noopener noreferrer" 
-						class="glass-button bg-intellect text-white border-transparent inline-flex items-center gap-2"
-					>
-						{t.s3}
-						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-					</a>
-				</div>
-			</BentoCard>
-		</div>
-	</section>
+	<div class="page grid gap-6 py-12 md:grid-cols-2">
+		<article class="card flex flex-col p-6 md:p-8">
+			<span class="inline-flex w-fit rounded-md bg-brand-surface p-2.5 text-fg-brand">
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36z"/></svg>
+			</span>
+			<h2 class="mt-4 text-xl">PIISA Submission Venue Recommender</h2>
+			<p class="mt-3 flex-1 text-fg-muted">{t.desc}</p>
+			<div class="mt-5 flex flex-wrap gap-1.5">
+				<span class="tag">Ollama LLM</span>
+				<span class="tag">React / Bun</span>
+				<span class="tag">SQLite</span>
+			</div>
+			<a href="/applications/recommender/" target="_blank" rel="noopener noreferrer" class="btn btn-primary mt-6 w-fit">{t.launch} <Arrow /></a>
+		</article>
+	</div>
 </Layout>

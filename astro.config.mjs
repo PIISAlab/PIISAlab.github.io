@@ -1,19 +1,11 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
+// Vietnamese at the root, English under /en — routed by src/pages/[...lang]/ (see src/i18n.ts).
 export default defineConfig({
   site: 'https://piisalab.github.io',
-  i18n: {
-    defaultLocale: 'vi',
-    locales: ['vi', 'en'],
-    routing: {
-      prefixDefaultLocale: false
-    }
-  },
-  integrations: [react()],
   vite: {
     plugins: [tailwindcss()]
   }

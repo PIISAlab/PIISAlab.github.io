@@ -1,0 +1,17 @@
+---
+// Standard inner-page header: eyebrow, h1, optional lead paragraph.
+interface Props {
+	eyebrow?: string;
+	title: string;
+	lead?: string;
+}
+const { eyebrow, title, lead } = Astro.props;
+---
+<header class="border-b border-line bg-subtle">
+	<div class="page py-12 md:py-16">
+		{eyebrow && <p class="eyebrow mb-3">{eyebrow}</p>}
+		<h1 class="text-3xl md:text-4xl font-semibold">{title}</h1>
+		{lead && <p class="mt-4 max-w-3xl text-lg text-fg-muted">{lead}</p>}
+		<slot />
+	</div>
+</header>

@@ -39,27 +39,22 @@ const fullTitle = `${title} | ${site.name}`;
 		<meta property="og:description" content={description} />
 		<meta property="og:url" content={abs(path)} />
 		<meta property="og:locale" content={lang === 'vi' ? 'vi_VN' : 'en_US'} />
+		<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)" />
+		<meta name="theme-color" content="#09090B" media="(prefers-color-scheme: dark)" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;0,800;0,900;1,700&family=Be+Vietnam+Pro:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Be+Vietnam+Pro:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 		<script is:inline>
-			const getTheme = () => {
-				if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-					return localStorage.getItem('theme');
-				}
-				return 'dark';
-			};
-			const theme = getTheme();
-			if (theme === 'light') {
-				document.documentElement.classList.remove('dark');
-			} else {
-				document.documentElement.classList.add('dark');
-			}
+			// Light by default; a saved choice from the toggle wins. Runs before paint to avoid a flash.
+			try {
+				if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
+			} catch {}
 		</script>
 	</head>
 	<body class="min-h-screen flex flex-col">
+		<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] btn btn-primary">{lang === 'vi' ? 'Chuyển đến nội dung' : 'Skip to content'}</a>
 		<Navigation lang={lang} />
-		<main class="flex-grow container mx-auto px-4 py-12">
+		<main id="main" class="flex-grow">
 			<slot />
 		</main>
 		<Footer lang={lang} />

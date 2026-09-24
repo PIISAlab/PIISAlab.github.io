@@ -1,70 +1,70 @@
 ---
 import { list } from '../../content';
 import Layout from '../../layouts/Layout.astro';
-import BentoCard from '../../components/BentoCard.astro';
+import PageHeader from '../../components/PageHeader.astro';
 import MemberCard from '../../components/MemberCard.astro';
-import { type Lang, langPaths, tr } from '../../i18n';
+import { type Lang, langPaths, tr, site, url } from '../../i18n';
 
 export const getStaticPaths = langPaths;
 const { lang } = Astro.props as { lang: Lang };
 
-const people = (await list('people'));
+const people = await list('people');
 const pi = people.find((p) => p.role === 'pi')!;
-const accents = ['intellect', 'info', 'insight', 'innovation', 'prestige'];
 
 const t = {
 	vi: {
-		title: 'Thành viên', h1: ['Thành', 'viên'], role: 'Principal Investigator',
-		sections: { masters: 'Học viên Cao học Hiện tại', undergrad: 'Sinh viên Đại học Hiện tại', phd: 'Nghiên cứu sinh Hiện tại', postdoc: 'Nghiên cứu viên Sau Tiến sĩ', alumni: 'Cựu thành viên' },
+		title: 'Thành viên', eyebrow: 'Thành viên', h1: 'Con người của PIISA', role: 'Trưởng nhóm nghiên cứu (PI)',
+		lead: 'Giảng viên, học viên cao học và sinh viên cùng nghiên cứu tại PIISA, cùng các cựu thành viên đã tốt nghiệp.',
+		pubs: 'Công bố', email: 'Email',
+		sections: { postdoc: 'Nghiên cứu viên Sau Tiến sĩ', phd: 'Nghiên cứu sinh', masters: 'Học viên Cao học', undergrad: 'Sinh viên Đại học', alumni: 'Cựu thành viên' },
 	},
 	en: {
-		title: 'People', h1: ['Our', 'People'], role: 'Principal Investigator',
-		sections: { masters: "Current Master's Students", undergrad: 'Current Undergraduate Students', phd: 'Current Ph.D. Students', postdoc: 'Postdoctoral Researchers', alumni: 'Alumni' },
+		title: 'People', eyebrow: 'People', h1: 'The people of PIISA', role: 'Principal Investigator',
+		lead: 'Faculty, graduate and undergraduate researchers working at PIISA, and the alumni who have graduated from the lab.',
+		pubs: 'Publications', email: 'Email',
+		sections: { postdoc: 'Postdoctoral Researchers', phd: 'Ph.D. Students', masters: "Master's Students", undergrad: 'Undergraduate Students', alumni: 'Alumni' },
 	},
 }[lang];
 
-// Sections render only when they have members; icon + tint per section.
 const sections = [
-	{ key: 'postdoc', icon: '🧪', tint: 'bg-intellect/10 text-intellect', members: people.filter((p) => p.status === 'current' && p.role === 'postdoc') },
-	{ key: 'phd', icon: '📜', tint: 'bg-intellect/10 text-intellect', members: people.filter((p) => p.status === 'current' && p.role === 'phd') },
-	{ key: 'masters', icon: '🔬', tint: 'bg-intellect/10 text-intellect', members: people.filter((p) => p.status === 'current' && p.role === 'masters') },
-	{ key: 'undergrad', icon: '👥', tint: 'bg-insight/10 text-insight', members: people.filter((p) => p.status === 'current' && p.role === 'undergrad') },
-	{ key: 'alumni', icon: '🎓', tint: 'bg-prestige/10 text-prestige', members: people.filter((p) => p.status === 'alumni') },
+	{ key: 'postdoc', members: people.filter((p) => p.status === 'current' && p.role === 'postdoc') },
+	{ key: 'phd', members: people.filter((p) => p.status === 'current' && p.role === 'phd') },
+	{ key: 'masters', members: people.filter((p) => p.status === 'current' && p.role === 'masters') },
+	{ key: 'undergrad', members: people.filter((p) => p.status === 'current' && p.role === 'undergrad') },
+	{ key: 'alumni', members: people.filter((p) => p.status === 'alumni') },
 ] as const;
-let n = 0;
 ---
 
 <Layout title={t.title} lang={lang}>
-	<section class="mb-16">
-		<h1 class="text-5xl font-black mb-12 tracking-tighter">
-			{t.h1[0]} <span class="text-intellect font-montserrat italic">{t.h1[1]}</span>
-		</h1>
+	<PageHeader eyebrow={t.eyebrow} title={t.h1} lead={t.lead} />
 
-		<div class="bento-grid">
-			<BentoCard class="md:col-span-3 flex flex-col md:flex-row gap-10 items-center md:items-start" showBorderBeam={true}>
-				<div class="w-full md:w-72 h-72 rounded-xl overflow-hidden flex-shrink-0 border-2 border-intellect/20 shadow-2xl shadow-intellect/10">
-					<img src={pi.photo} alt={tr(pi.name, lang)} class="w-full h-full object-cover" />
+	<div class="page">
+		<section class="grid gap-8 border-b border-line py-12 md:grid-cols-[16rem_1fr] md:gap-12">
+			<img src={pi.photo} alt={tr(pi.name, lang)} class="w-full max-w-64 aspect-[24/25] object-cover object-top rounded-lg border border-line" />
+			<div>
+				<p class="eyebrow">{t.role}</p>
+				<h2 class="mt-2 text-3xl">{tr(pi.name, lang)}</h2>
+				<div class="mt-4 max-w-3xl space-y-4 text-fg-muted">
+					{pi.bio?.[lang].map((para) => <p>{para}</p>)}
 				</div>
-				<div class="flex-grow">
-					<h2 class="text-4xl font-bold mb-3 tracking-tight">{tr(pi.name, lang)}</h2>
-					<p class="text-intellect font-black uppercase tracking-widest text-sm mb-8 bg-intellect/10 inline-block px-4 py-1.5 rounded-md">{t.role}</p>
-					<div class="text-contrast/80 space-y-5 text-lg leading-relaxed">
-						{pi.bio?.[lang].map((para) => <p>{para}</p>)}
-					</div>
+				<div class="mt-6 flex flex-wrap gap-3">
+					<a href={`mailto:${site.email}`} class="btn btn-outline">{t.email}: {site.email}</a>
+					<a href="https://orcid.org/0000-0003-2934-7924" target="_blank" rel="noopener noreferrer" class="btn btn-outline">ORCID</a>
+					<a href={url(lang, '/publications')} class="btn btn-outline">{t.pubs}</a>
 				</div>
-			</BentoCard>
+			</div>
+		</section>
 
-			{sections.filter((s) => s.members.length).map((s) => (
-				<BentoCard class="md:col-span-3">
-					<h2 class="text-2xl font-bold mb-8 tracking-tight flex items-center gap-3">
-						<span class={`p-2.5 rounded-md ${s.tint}`}>{s.icon}</span>
-						{t.sections[s.key]}
-					</h2>
-					<div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-						{s.members.map((m) => <MemberCard member={m} lang={lang} accent={accents[n++ % accents.length]} />)}
-					</div>
-				</BentoCard>
-			))}
-		</div>
-	</section>
+		{sections.filter((s) => s.members.length).map((s) => (
+			<section class="pt-12" aria-labelledby={`sec-${s.key}`}>
+				<h2 id={`sec-${s.key}`} class="section-title flex items-baseline gap-3">
+					{t.sections[s.key]}
+					<span class="font-ui text-sm font-medium text-fg-subtle tabular-nums">{s.members.length}</span>
+				</h2>
+				<div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+					{s.members.map((m) => <MemberCard member={m} lang={lang} />)}
+				</div>
+			</section>
+		))}
+	</div>
 </Layout>

@@ -1,66 +1,67 @@
 ---
 import { list } from '../../content';
 import Layout from '../../layouts/Layout.astro';
-import BentoCard from '../../components/BentoCard.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import ResearchIcon from '../../components/ResearchIcon.astro';
 import { type Lang, langPaths, tr } from '../../i18n';
 
 export const getStaticPaths = langPaths;
 const { lang } = Astro.props as { lang: Lang };
 
-const directions = (await list('research'));
+const directions = await list('research');
 
 const t = {
 	vi: {
-		title: 'Nghiên cứu', h1: ['Nghiên cứu &', 'Kỹ thuật'], directions: 'Hướng nghiên cứu', education: 'Đào tạo',
-		pillars: [['Tư duy thiết kế:', 'Lấy con người làm trung tâm trong các giải pháp kỹ thuật.'], ['Tư duy hệ thống:', 'Phát triển cái nhìn tổng thể về các hệ thống thông minh phức tạp.']],
+		title: 'Nghiên cứu', eyebrow: 'Nghiên cứu', h1: 'Hướng nghiên cứu',
+		lead: 'PIISA nghiên cứu các hệ thống thông minh dựa trên vật lý, từ vi mạch và phần cứng tăng tốc, qua hệ thống nhúng và AI biên, đến mạng vô tuyến thế hệ mới.',
+		education: 'Triết lý đào tạo',
+		pillars: [['Tư duy thiết kế', 'Lấy con người làm trung tâm trong các giải pháp kỹ thuật.'], ['Tư duy hệ thống', 'Phát triển cái nhìn tổng thể về các hệ thống thông minh phức tạp.']],
 	},
 	en: {
-		title: 'Research', h1: ['Research &', 'Engineering'], directions: 'Research Directions', education: 'Education',
-		pillars: [['Design Thinking:', 'Human-centered approach in engineering solutions.'], ['Systems Thinking:', 'Developing a holistic view of complex intelligent systems.']],
+		title: 'Research', eyebrow: 'Research', h1: 'Research directions',
+		lead: 'PIISA studies physics-informed intelligent systems, from integrated circuits and hardware acceleration, through embedded systems and edge AI, to next-generation wireless networks.',
+		education: 'Education philosophy',
+		pillars: [['Design Thinking', 'Human-centered approach in engineering solutions.'], ['Systems Thinking', 'Developing a holistic view of complex intelligent systems.']],
 	},
 }[lang];
 ---
 <Layout title={t.title} lang={lang}>
-	<section class="mb-16">
-		<h1 class="text-5xl font-black mb-16 tracking-tighter">
-			{t.h1[0]} <span class="text-intellect font-montserrat italic">{t.h1[1]}</span>
-		</h1>
+	<PageHeader eyebrow={t.eyebrow} title={t.h1} lead={t.lead}>
+		<nav class="mt-6 flex flex-wrap gap-2" aria-label={t.h1}>
+			{directions.map((d) => <a href={`#${d.id}`} class="tag hover:border-line-hover hover:text-fg">{tr(d.title, lang)}</a>)}
+		</nav>
+	</PageHeader>
 
-		<div class="bento-grid">
-			<BentoCard class="col-span-full" showBorderBeam={true}>
-				<h2 class="text-2xl font-bold tracking-tight text-starlight mb-8">{t.directions}</h2>
-				<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-					{directions.map((d, i) => (
-						<div class="overflow-hidden rounded-lg bg-foundation border border-black/5 dark:border-white/5 hover:border-intellect/30 hover:shadow-sm transition-all duration-200">
-							<img
-								src={d.image}
-								alt={tr(d.imageAlt, lang)}
-								width="1200" height="900"
-								loading={i === 0 ? 'eager' : 'lazy'}
-								fetchpriority={i === 0 ? 'high' : undefined}
-								decoding="async"
-								class="block w-full aspect-[4/3] object-cover object-center bg-[#12233F] dark:ring-1 dark:ring-inset dark:ring-white/10"
-							/>
-							<div class="p-6">
-								<h3 class="text-lg font-semibold text-starlight tracking-tight mb-2">{tr(d.title, lang)}</h3>
-								<p class="text-base text-contrast/70 leading-relaxed">{tr(d.description, lang)}</p>
-							</div>
-						</div>
-					))}
+	<div class="page divide-y divide-line">
+		{directions.map((d, i) => (
+			<section id={d.id} class="grid items-center gap-8 py-14 md:grid-cols-2 md:gap-12 scroll-mt-20">
+				<img
+					src={d.image}
+					alt={tr(d.imageAlt, lang)}
+					width="1200" height="900"
+					loading={i === 0 ? 'eager' : 'lazy'}
+					fetchpriority={i === 0 ? 'high' : undefined}
+					decoding="async"
+					class:list={['w-full aspect-[4/3] object-cover rounded-lg border border-line bg-[#12233F]', i % 2 === 1 && 'md:order-last']}
+				/>
+				<div>
+					<span class="inline-flex rounded-md bg-brand-surface p-2.5 text-fg-brand"><ResearchIcon name={d.icon} /></span>
+					<h2 class="mt-4 text-2xl">{tr(d.title, lang)}</h2>
+					<p class="mt-3 text-lg text-fg-muted">{tr(d.description, lang)}</p>
 				</div>
-			</BentoCard>
+			</section>
+		))}
+	</div>
 
-			<BentoCard class="col-span-full">
-				<h2 class="text-2xl font-bold tracking-tight text-starlight mb-8">{t.education}</h2>
-				<div class="grid sm:grid-cols-2 gap-6 text-contrast/80">
-					{t.pillars.map(([k, v]) => (
-						<div class="p-4 rounded-lg bg-foundation border border-black/5 dark:border-white/5">
-							<strong class="text-starlight text-lg block mb-1">{k}</strong>
-							<span class="text-base leading-relaxed italic">{v}</span>
-						</div>
-					))}
+	<section class="page pt-6">
+		<h2 class="section-title">{t.education}</h2>
+		<div class="mt-6 grid gap-4 sm:grid-cols-2">
+			{t.pillars.map(([k, v]) => (
+				<div class="card p-6">
+					<h3 class="text-lg">{k}</h3>
+					<p class="mt-2 text-fg-muted">{v}</p>
 				</div>
-			</BentoCard>
+			))}
 		</div>
 	</section>
 </Layout>
