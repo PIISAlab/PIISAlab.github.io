@@ -28,6 +28,18 @@
     title:
       vi: Mô phỏng và đánh giá hiệu năng hệ thống ăng-ten thông minh trong điều kiện phần cứng thực tế cho hệ thống 6G
       en: Simulation and performance evaluation of smart antenna systems under practical hardware conditions for 6G systems
+- id: vo-quang-huy
+  name: Võ Quang Huy
+  role: masters
+  status: current
+  cohort: K35CNBD
+  photo: /images/VoQuangHuy.jpg
+  thesis:
+    kind: masters-thesis
+    tentative: true
+    title:
+      vi: Nghiên cứu, thiết kế hệ thống nhúng phân tán điều khiển bầy đàn robot trên SoC dị thể
+      en: Research and design of a distributed embedded system for robot swarm control on heterogeneous SoCs
 - id: tran-thanh-thai-thao
   name: Trần Thanh Thái Thảo
   role: undergrad
