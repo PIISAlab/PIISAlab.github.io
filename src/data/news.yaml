@@ -1,4 +1,9 @@
 # Lab news, newest first. `link` is optional (internal path or full URL).
+- id: 2026-09-iceba
+  date: 2026-09-20
+  text:
+    vi: Bài báo "A real-time FPGA-based vision enhancement system" bởi Cao Duy và TS. Trương Trung Kiên đã được chấp nhận tại ICEBA 2026 (kỷ yếu đăng trên Lecture Notes in Electrical Engineering, Springer Nature).
+    en: Paper "A real-time FPGA-based vision enhancement system" by Duy Cao and Dr. Kien Truong accepted at ICEBA 2026 (proceedings in Lecture Notes in Electrical Engineering, Springer Nature).
 - id: 2026-04-fedsm
   date: 2026-04-07
   text:
