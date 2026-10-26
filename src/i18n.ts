@@ -52,7 +52,7 @@ export const site = {
 		en: 'Physics-Informed Intelligent Systems and Applications (PIISA) Lab',
 	},
 	affiliation: {
-		vi: 'Bộ môn Vật lý tin học, Khoa Vật lý - Vật lý kỹ thuật, Trường Đại học Khoa học Tự nhiên, ĐHQG-HCM',
+		vi: 'Bộ môn Vật lý tin học, Khoa Vật lý - Vật lý kỹ thuật, Trường Đại học Khoa học tự nhiên, ĐHQG-HCM',
 		en: 'Computer Science Physics Division, Faculty of Physics and Engineering Physics, University of Science, VNU-HCM',
 	},
 	description: {

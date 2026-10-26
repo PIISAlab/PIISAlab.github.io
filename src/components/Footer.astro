@@ -6,7 +6,7 @@ interface Props {
 }
 const { lang } = Astro.props;
 const t = {
-	vi: { address: ['Nhóm nghiên cứu PIISA, Trường Đại học Khoa học Tự nhiên, ĐHQG-HCM', '227 Nguyễn Văn Cừ, Phường 4, Quận 5, TP. Hồ Chí Minh'], pages: 'Trang', contact: 'Liên hệ' },
+	vi: { address: ['Nhóm nghiên cứu PIISA, Trường Đại học Khoa học tự nhiên, ĐHQG-HCM', '227 Nguyễn Văn Cừ, Phường 4, Quận 5, TP. Hồ Chí Minh'], pages: 'Trang', contact: 'Liên hệ' },
 	en: { address: ['PIISA Lab, University of Science, VNU-HCM', '227 Nguyen Van Cu Street, Ward 4, District 5, Ho Chi Minh City'], pages: 'Pages', contact: 'Contact' },
 }[lang];
 ---
@@ -32,6 +32,6 @@ const t = {
 		</div>
 	</div>
 	<div class="border-t border-line">
-		<p class="page py-5 font-ui text-xs text-fg-subtle">© {new Date().getFullYear()} PIISA Lab · <a href="https://hcmus.edu.vn/" target="_blank" rel="noopener noreferrer" class="text-fg-subtle hover:text-fg">{lang === 'vi' ? 'Trường ĐH Khoa học Tự nhiên, ĐHQG-HCM' : 'University of Science, VNU-HCM'}</a></p>
+		<p class="page py-5 font-ui text-xs text-fg-subtle">© {new Date().getFullYear()} PIISA Lab · <a href="https://hcmus.edu.vn/" target="_blank" rel="noopener noreferrer" class="text-fg-subtle hover:text-fg">{lang === 'vi' ? 'Trường ĐH Khoa học tự nhiên, ĐHQG-HCM' : 'University of Science, VNU-HCM'}</a></p>
 	</div>
 </footer>
