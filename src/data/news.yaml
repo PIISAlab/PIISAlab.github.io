@@ -1,4 +1,5 @@
 # Lab news, newest first. `link` is optional (internal path or full URL).
+# Keep only items from the last 3 months before the update date; older items live on the Publications / People pages.
 - id: 2026-10-rivf
   date: 2026-10-26
   text:
@@ -9,8 +10,3 @@
   text:
     vi: Bài báo "A real-time FPGA-based vision enhancement system" bởi Cao Duy và TS. Trương Trung Kiên đã được chấp nhận tại ICEBA 2026 (kỷ yếu đăng trên Lecture Notes in Electrical Engineering, Springer Nature).
     en: Paper "A real-time FPGA-based vision enhancement system" by Duy Cao and Dr. Kien Truong accepted at ICEBA 2026 (proceedings in Lecture Notes in Electrical Engineering, Springer Nature).
-- id: 2026-04-fedsm
-  date: 2026-04-07
-  text:
-    vi: Bài báo "Electrohydrodynamics of a Liquid-Metal Monopole Antenna Channel" bởi TS. Đoàn Nhật Minh và TS. Trương Trung Kiên đã được chấp nhận tại FEDSM2026.
-    en: Paper "Electrohydrodynamics of a Liquid-Metal Monopole Antenna Channel" by Dr. Minh Doan and Dr. Kien Truong accepted at FEDSM2026.
