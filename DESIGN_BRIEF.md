@@ -9,7 +9,7 @@
 
 ## 1. Intent
 
-PIISA is **Prof. Kien's research lab at VNU-HCM** (Physics-Informed Intelligent Systems and Application). It is a separate organisation from Venizia AI — but it is the same hand on the pen. We share the design system because we share the standard.
+PIISA is **Prof. Kien's research lab at VNU-HCM** (Physics-Informed Intelligent Systems and Applications). It is a separate organisation from Venizia AI — but it is the same hand on the pen. We share the design system because we share the standard.
 
 The goal of this brief is to **align PIISA's token layer with Venizia's official Design System** so that the two surfaces feel like siblings, not strangers. PIISA receives the system in its **calm, academic register** — Venizia's "calm enterprise" mode — not the startup-aggressive register reserved for product surfaces.
 
