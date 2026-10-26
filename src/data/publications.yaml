@@ -98,6 +98,14 @@
   venue: EURASIP Journal on Wireless Communications and Networking (JWCN)
   year: 2009
   doi: 10.1155/2009/618787
+- id: c23
+  label: C23
+  type: conference
+  title: A Fluidically Reconfigurable Liquid-Metal Yagi-Uda Antenna for Four-State Azimuth Beam Steering in 6G Systems
+  authors: T. H. Nguyen et al.
+  venue: IEEE RIVF
+  year: 2026
+  status: accepted
 - id: c22
   label: C22
   type: conference
