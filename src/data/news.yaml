@@ -1,4 +1,9 @@
 # Lab news, newest first. `link` is optional (internal path or full URL).
+- id: 2026-10-rivf
+  date: 2026-10-26
+  text:
+    vi: Bài báo "A Fluidically Reconfigurable Liquid-Metal Yagi-Uda Antenna for Four-State Azimuth Beam Steering in 6G Systems" bởi Nguyễn Thái Hoà và cộng sự đã được chấp nhận trình bày tại RIVF 2026 (kỷ yếu sẽ được đệ trình lên IEEE Xplore).
+    en: Paper "A Fluidically Reconfigurable Liquid-Metal Yagi-Uda Antenna for Four-State Azimuth Beam Steering in 6G Systems" by Thai Hoa Nguyen et al. accepted for presentation at RIVF 2026 (proceedings to be submitted to IEEE Xplore).
 - id: 2026-09-iceba
   date: 2026-09-20
   text:
