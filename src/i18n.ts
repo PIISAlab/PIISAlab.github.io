@@ -48,7 +48,7 @@ export const nav = [
 export const site = {
 	name: 'PIISA Lab',
 	fullName: {
-		vi: 'Nhóm nghiên cứu Hệ thống Thông minh và Ứng dụng Dựa trên Vật lý (PIISA)',
+		vi: 'Nhóm nghiên cứu Hệ thống thông minh và Ứng dụng Dựa trên Vật lý (PIISA)',
 		en: 'Physics-Informed Intelligent Systems and Applications (PIISA) Lab',
 	},
 	affiliation: {
